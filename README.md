@@ -9,17 +9,11 @@ over most fundamental functions and delivers symmetric implementation that can b
 
 All functionality is decomposed into several packages:
 
-- **Auth** - authentication and authorization primitives
-- **Build** - component factories framework
-- **Cache** - object caching
 - **Commands** - Commanding and Eventing patterns
 - **Config** - configuration framework
-- **Connect** - connection management
 - **Convert** - portable soft value converters
-- **Count** - performance counters components
 - **Data** - data value objects and random value generators
 - **Errors** - portable application errors
-- **Log** - logging components
 - **Random** - random data generators
 - **Refer** - component referencing framework
 - **Reflect** - portable reflection helpers
@@ -28,10 +22,10 @@ All functionality is decomposed into several packages:
 
 Quick Links:
 
-* [Downloads](https://github.com/pip-services/pip-services-commons-java/blob/master/doc/Downloads.md)
-* [API Reference](http://htmlpreview.github.io/?https://github.com/pip-services/pip-services-commons-java/blob/master/doc/api/index.html)
-* [Building and Testing](https://github.com/pip-services/pip-services-commons-java/blob/master/doc/Development.md)
-* [Contributing](https://github.com/pip-services/pip-services-commons-java/blob/master/doc/Development.md/#contrib)
+* [Downloads](https://github.com/pip-services-java/pip-services-commons-java/blob/master/doc/Downloads.md)
+* [API Reference](http://htmlpreview.github.io/?https://github.com/pip-services-java/pip-services-commons-java/blob/master/doc/api/index.html)
+* [Building and Testing](https://github.com/pip-services-java/pip-services-commons-java/blob/master/doc/Development.md)
+* [Contributing](https://github.com/pip-services-java/pip-services-commons-java/blob/master/doc/Development.md/#contrib)
 
 ## Acknowledgements
 

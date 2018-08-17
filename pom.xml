@@ -20,7 +20,16 @@
 
   <developers>
     <developer>
-      <name>Sergey Seroukhov</name>
+      <email>seroukhov@gmail.com</email>
+	  <name>Sergey Seroukhov</name>
+	  <url>https://github.com/seroukhov</url>
+	  <id>seroukhov</id>
+    </developer>
+    <developer>
+      <email>nuzhnykhev@gmail.com</email>
+	  <name>Egor Nuzhnykh</name>
+	  <url>https://github.com/EgorNuzhnykh</url>
+	  <id>EgorNuzhnykh</id>
     </developer>
   </developers>
 
@@ -148,25 +157,10 @@
        <version>2.7.2</version>
     </dependency>
     <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.4</version>
-    </dependency>
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.github.jknack</groupId>
-      <artifactId>handlebars</artifactId>
-      <version>4.1.0</version>     
-    </dependency>
-	<dependency>
-    	<groupId>org.glassfish.jersey.media</groupId>
-    	<artifactId>jersey-media-sse</artifactId>
-    	<version>2.27</version>
-	</dependency>
   </dependencies>
 </project>
