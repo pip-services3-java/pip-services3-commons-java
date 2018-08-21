@@ -38,6 +38,12 @@
     <developerConnection>scm:git:git@github.com:pip-services-java/pip-services-commons-java.git</developerConnection>
     <url>https://github.com/pip-services-java/pip-services-commons-java</url>
   </scm>
+  
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
 
   <distributionManagement>
     <snapshotRepository>
@@ -77,8 +83,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
+            <source>3.1</source>
+            <target>3.1</target>
         </configuration>
       </plugin>
       <plugin>
