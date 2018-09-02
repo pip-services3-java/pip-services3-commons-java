@@ -3,6 +3,9 @@ package org.pipservices.commons.reflect;
 import java.time.*;
 import java.util.*;
 
+import org.pipservices.commons.convert.TypeCode;
+import org.pipservices.commons.convert.TypeConverter;
+
 public class TypeMatcher {
 	
     public static boolean matchValue(Object expectedType, Object actualValue) {
@@ -26,6 +29,9 @@ public class TypeMatcher {
         if (expectedType instanceof String)
             return matchTypeByName((String)expectedType, actualType);
 
+        if (expectedType instanceof TypeCode)
+        	return TypeConverter.toTypeCode(actualType).equals(expectedType);
+        
         return false;
     }
 

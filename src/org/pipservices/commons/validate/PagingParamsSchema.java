@@ -6,8 +6,8 @@ public class PagingParamsSchema extends ObjectSchema {
 	
 	public PagingParamsSchema()
     {
-        withOptionalProperty("skip", long.class);
-        withOptionalProperty("take", long.class);
+        withOptionalProperty("skip", TypeCode.Long);
+        withOptionalProperty("take", TypeCode.Long);
         withOptionalProperty("total", TypeCode.Boolean);
     }
 

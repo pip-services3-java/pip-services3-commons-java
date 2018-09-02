@@ -27,12 +27,12 @@ public class PropertyReflectorTest {
 	public void testGetProperties() {
 		TestClass obj = new TestClass();
 		List<String> names = PropertyReflector.getPropertyNames(obj);
-		assertEquals(2, names.size());
+		assertEquals(3, names.size());
 		assertTrue(names.contains("publicField"));
 		assertTrue(names.contains("publicProp"));
 		
 		Map<String, Object> map = PropertyReflector.getProperties(obj);
-		assertEquals(2, map.size());
+		assertEquals(3, map.size());
 		assertEquals("ABC", map.get("publicField"));
 		assertNotNull(map.get("publicProp"));
 	}
@@ -47,8 +47,8 @@ public class PropertyReflectorTest {
 
         Map<String, Object> map = PropertyReflector.getProperties(obj);
         assertEquals(3, map.size());
-        assertTrue(map.containsKey("NestedProperty"));
-        assertEquals(10, ((TestNestedClass)map.get("NestedProperty")).getIntProperty());
+        assertTrue(map.containsKey("nestedProperty"));
+        assertEquals(10, ((TestNestedClass)map.get("nestedProperty")).getIntProperty());
     }
 	
 	@Test

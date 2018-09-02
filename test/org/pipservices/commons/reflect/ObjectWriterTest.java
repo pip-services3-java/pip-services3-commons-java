@@ -36,11 +36,11 @@ public class ObjectWriterTest {
 		ObjectWriter.setProperty(map, "key3", "AAAA");
 		assertEquals("AAAA", map.get("key3"));
 		
-		ObjectWriter.setProperty(map, "Key1", 5555);
-		assertEquals(5555, map.get("Key1"));
+		ObjectWriter.setProperty(map, "key1", 5555);
+		assertEquals(5555, map.get("key1"));
 		
-		ObjectWriter.setProperty(map, "Key2", "BBBB");
-		assertEquals("BBBB", map.get("Key2"));
+		ObjectWriter.setProperty(map, "key2", "BBBB");
+		assertEquals("BBBB", map.get("key2"));
 	}
 
 	@Test

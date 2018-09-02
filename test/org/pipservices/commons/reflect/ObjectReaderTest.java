@@ -69,12 +69,12 @@ public class ObjectReaderTest {
 	public void testGetObjectProperties() {
 		TestClass obj = new TestClass();
 		List<String> names = ObjectReader.getPropertyNames(obj);
-		assertEquals(2, names.size());
+		assertEquals(3, names.size());
 		assertTrue(names.contains("publicField"));
 		assertTrue(names.contains("publicProp"));
 		
 		Map<String, Object> map = ObjectReader.getProperties(obj);
-		assertEquals(2, map.size());
+		assertEquals(3, map.size());
 		assertEquals("ABC", map.get("publicField"));
 		assertNotNull(map.get("publicProp"));
 	}

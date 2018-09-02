@@ -8,11 +8,11 @@ public class NameResolverTest {
 
 	@Test
 	public void testNormalNameResolution() {
-        ConfigParams config = ConfigParams.fromTuples("Id", "ABC");
+        ConfigParams config = ConfigParams.fromTuples("id", "ABC");
         String name = NameResolver.resolve(config);
         assertEquals("ABC", name);
 
-        config = ConfigParams.fromTuples("NAME", "ABC");
+        config = ConfigParams.fromTuples("name", "ABC");
         name = NameResolver.resolve(config);
         assertEquals("ABC", name);
     }
