@@ -10,9 +10,9 @@ public class Opener {
 	 * Checks if component that implement IOpenable interface is opened
 	 * @param component a component to be checked
 	 */
-	public static boolean isOpenedOne(Object component) {
+	public static boolean isOpenOne(Object component) {
 		if (component instanceof IOpenable)
-			return ((IOpenable)component).isOpened();
+			return ((IOpenable)component).isOpen();
 		else
 			return true;
 	}	
@@ -21,12 +21,12 @@ public class Opener {
 	 * Checks if components that implement IOpenable interface are opened
 	 * @param components a list of components to be checked
 	 */
-	public static boolean isOpened(Iterable<Object> components) {
+	public static boolean isOpen(Iterable<Object> components) {
 		if (components == null) return true;
 		
 		boolean result = true;
 		for (Object component : components)
-			result = result && isOpenedOne(component);
+			result = result && isOpenOne(component);
 		
 		return result;
 	}
