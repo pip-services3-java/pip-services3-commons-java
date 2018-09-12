@@ -24,7 +24,7 @@ public class ProjectionParams extends ArrayList<String> {
 
 		for (int index = 0; index < array.size(); index++) {
 			String value = array.getAsString(index);
-			if (value!=null && value.length() > 0) {
+			if (value != null && value.length() > 0) {
 				add(value);
 			}
 		}
@@ -72,7 +72,7 @@ public class ProjectionParams extends ArrayList<String> {
 	}
 
 	private static void parseValue(String prefix, List<String> result, String value, char delimiter) {
-			value = value.trim();
+		value = value.trim();
 
 		int openBracket = 0;
 		int openBracketIndex = -1;
@@ -119,7 +119,7 @@ public class ProjectionParams extends ArrayList<String> {
 
 					String subValue = value.substring(0, commaIndex);
 					if (subValue != null && subValue.length() > 0) {
-						if (prefix != null && prefix.length() > 0) {				
+						if (prefix != null && prefix.length() > 0) {
 							result.add(prefix + "." + subValue);
 						} else {
 							result.add(subValue);
@@ -140,7 +140,7 @@ public class ProjectionParams extends ArrayList<String> {
 			}
 		}
 
-		if (value!=null && value.length() > 0 && openBracketIndex == -1 && commaIndex == -1) {
+		if (value != null && value.length() > 0 && openBracketIndex == -1 && commaIndex == -1) {
 			if (prefix != null && prefix.length() > 0) {
 				result.add(prefix + "." + value);
 			} else {
