@@ -80,6 +80,7 @@ public class Command implements ICommand {
 	 *                      execution.
 	 * @return execution result.
 	 * @throws ApplicationException when execution fails for whatever reason.
+	 * @see Parameters
 	 */
 	@Override
 	public Object execute(String correlationId, Parameters args) throws ApplicationException {
