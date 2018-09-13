@@ -6,19 +6,30 @@ import org.pipservices.commons.run.*;
 import org.pipservices.commons.validate.*;
 
 /**
- * Interface for commands that execute functional operations.
+ * An interface for Commands, which are part of the Command design pattern. 
+ * Each command wraps a method or function and allows to call them in uniform and safe manner.
+ * 
+ * @see Command
+ * @see IExecutable
+ * @see ICommandInterceptor
+ * @see InterceptedCommand
  */
 public interface ICommand extends IExecutable {
 	/**
 	 * Gets the command name.
-	 * @return the command name
+	 * 
+	 * @return the command name.
 	 */
 	String getName();
-		
+
 	/**
-	 * Performs validation of the command arguments.
-	 * @param args command arguments
-	 * @return a list of validation results
+	 * Validates command arguments before execution using defined schema.
+	 * 
+	 * @param args the parameters (arguments) to validate.
+	 * @return an array of ValidationResults.
+	 * 
+	 * @see Parameters
+	 * @see ValidationResult
 	 */
 	List<ValidationResult> validate(Parameters args);
 }

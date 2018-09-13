@@ -1,5 +1,11 @@
 package org.pipservices.commons.convert;
 
+/**
+ * Codes for the data types that can be
+ * converted using TypeConverter.
+ * 
+ * @see TypeConverter
+ */
 public enum TypeCode {
 	Unknown,
 	String,

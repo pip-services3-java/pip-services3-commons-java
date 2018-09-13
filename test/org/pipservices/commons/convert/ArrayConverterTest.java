@@ -24,6 +24,11 @@ public class ArrayConverterTest {
         
         String[] stringArray = {"ab", "cd"};
         assertTrue(ArrayConverter.toNullableArray(stringArray).getClass().getName() == "java.util.ArrayList");
+        
+        List<Object> value = ArrayConverter.listToArray("123,456");
+        assertTrue(value.size() == 2);
+        assertEquals("123", value.get(0));
+        assertEquals("456", value.get(1));
     }
 
 }

@@ -9,18 +9,18 @@ public class NameResolverTest {
 	@Test
 	public void testNormalNameResolution() {
         ConfigParams config = ConfigParams.fromTuples("id", "ABC");
-        String name = NameResolver.resolve(config);
+        String name = NameResolver.resolve(config, null);
         assertEquals("ABC", name);
 
         config = ConfigParams.fromTuples("name", "ABC");
-        name = NameResolver.resolve(config);
+        name = NameResolver.resolve(config, null);
         assertEquals("ABC", name);
     }
 
     @Test
     public void testEmptyName() {
         ConfigParams config = ConfigParams.fromTuples();
-        String name = NameResolver.resolve(config);
+        String name = NameResolver.resolve(config, null);
         assertNull(name);
     }
 
