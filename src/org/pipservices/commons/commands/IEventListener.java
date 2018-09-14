@@ -28,7 +28,7 @@ public interface IEventListener {
 	/**
 	 * A method called when events this listener is subscrubed to are fired.
 	 * 
-	 * @param event         a fired evemt
+	 * @param event         a fired event
 	 * @param correlationId optional transaction id to trace calls across
 	 *                      components.
 	 * @param args          event arguments.

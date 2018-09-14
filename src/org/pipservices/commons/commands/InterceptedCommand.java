@@ -21,7 +21,7 @@ import org.pipservices.commons.validate.*;
  *   }
  *         
  *   public Object execute(String correlationId, ICommand command, Parameters args) {
- *     console.log("Executed command " + command.getName());
+ *     System.out.println("Executed command " + command.getName());
  *     return command.execute(correlationId, args);
  *   }
  *         
