@@ -74,7 +74,7 @@ public class DoubleConverter {
 	}
 
 	/**
-	 * Converts value into integer or returns default value when conversion is not
+	 * Converts value into doubles or returns default value when conversion is not
 	 * possible.
 	 * 
 	 * @param value        the value to convert.

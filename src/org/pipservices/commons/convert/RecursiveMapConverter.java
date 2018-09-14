@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.*;
 
 /**
  * Converts arbitrary values into map objects using extended conversion rules.
- * This class is similar to [[MapConverter]], but is recursively converts all values
+ * This class is similar to MapConverter, but is recursively converts all values
  * stored in objects and arrays.
  * <p>
  * ### Example ###

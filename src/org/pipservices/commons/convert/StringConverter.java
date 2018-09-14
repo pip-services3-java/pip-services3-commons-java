@@ -15,10 +15,10 @@ import java.util.*;
  * ### Example ###
  * <pre>
  * {@code
- * String value1 = StringConverter.ToString(123.456); // Result: "123.456"
- * String value2 = StringConverter.ToString(true); // Result: "true"
- * String value3 = StringConverter.ToString(ZonedDateTime.now()); // Result: "2018-01-01T00:00:00.00"
- * String value4 = StringConverter.ToString(new int[]{1, 2, 3}); // Result: "1,2,3"
+ * String value1 = StringConverter.toString(123.456); // Result: "123.456"
+ * String value2 = StringConverter.toString(true); // Result: "true"
+ * String value3 = StringConverter.toString(ZonedDateTime.now()); // Result: "2018-01-01T00:00:00.00"
+ * String value4 = StringConverter.toString(new int[]{1, 2, 3}); // Result: "1,2,3"
  * }
  * </pre>
  */
