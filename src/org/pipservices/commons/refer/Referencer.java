@@ -3,47 +3,76 @@ package org.pipservices.commons.refer;
 import org.pipservices.commons.errors.ConfigException;
 
 /**
- * Helper class that assigns references to components
+ * Helper class that sets and unsets references to components.
+ * 
+ * @see IReferenceable
+ * @see IUnreferenceable
  */
 public class Referencer {
 	/**
-	 * Assigns references to component that implement IReferenceable interface  
-	 * @param references references to be assigned
-	 * @param component a components to assign references
-	 * @throws ConfigException 
+	 * Sets references to specific component.
+	 * 
+	 * To set references components must implement IReferenceable interface. If they
+	 * don't the call to this method has no effect.
+	 * 
+	 * @param references the references to be set.
+	 * @param component  the component to set references to.
+	 * @throws ReferenceException when no references found.
+	 * @throws ConfigException
+	 * 
+	 * @see IReferenceable
 	 */
-	public static void setReferencesForOne(IReferences references, Object component) 
-		throws ReferenceException, ConfigException {
-		
+	public static void setReferencesForOne(IReferences references, Object component)
+			throws ReferenceException, ConfigException {
+
 		if (component instanceof IReferenceable)
-			((IReferenceable)component).setReferences(references);
+			((IReferenceable) component).setReferences(references);
 	}
 
 	/**
-	 * Assigns references to components that implement IReferenceable interface  
-	 * @param references references to be assigned
-	 * @param components a list of components to assign references
-	 * @throws ConfigException 
+	 * Sets references to multiple components.
+	 * 
+	 * To set references components must implement IReferenceable interface. If they
+	 * don't the call to this method has no effect.
+	 * 
+	 * @param references the references to be set.
+	 * @param components a list of components to set the references to.
+	 * @throws ReferenceException when no references found.
+	 * @throws ConfigException
+	 * 
+	 * @see IReferenceable
 	 */
-	public static void setReferences(IReferences references, Iterable<Object> components) 
-		throws ReferenceException, ConfigException {
-		
+	public static void setReferences(IReferences references, Iterable<Object> components)
+			throws ReferenceException, ConfigException {
+
 		for (Object component : components)
 			setReferencesForOne(references, component);
 	}
 
 	/**
-	 * Clears references for component that implement IUnreferenceable interface 
-	 * @param component a components to clear references
+	 * Unsets references in specific component.
+	 * 
+	 * To unset references components must implement IUnreferenceable interface. If
+	 * they don't the call to this method has no effect.
+	 * 
+	 * @param component the component to unset references.
+	 * 
+	 * @see IUnreferenceable
 	 */
 	public static void unsetReferencesForOne(Object component) {
 		if (component instanceof IUnreferenceable)
-			((IUnreferenceable)component).unsetReferences();
+			((IUnreferenceable) component).unsetReferences();
 	}
 
 	/**
-	 * Clears references for components that implement IUnreferenceable interface 
-	 * @param components a list of components to clear references
+	 * Unsets references in multiple components.
+	 * 
+	 * To unset references components must implement IUnreferenceable interface. If
+	 * they don't the call to this method has no effect.
+	 * 
+	 * @param components the list of components, whose references must be cleared.
+	 * 
+	 * @see IUnreferenceable
 	 */
 	public static void unsetReferences(Iterable<Object> components) {
 		for (Object component : components)

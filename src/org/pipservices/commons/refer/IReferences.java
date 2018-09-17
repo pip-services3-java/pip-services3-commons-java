@@ -5,131 +5,200 @@ import java.util.*;
 import org.pipservices.commons.errors.*;
 
 /**
- * Set of component references with abilities to add new references, find reference using locators 
- * or remove reference from the set
+ * Interface for a map that holds component references and passes them to components
+ * to establish dependencies with each other.
+ * 
+ * Together with IReferenceable and IUnreferenceable interfaces it implements
+ * a Locator pattern that is used by PipServices toolkit for Inversion of Control
+ * to assign external dependencies to components. 
+ * 
+ * The IReferences object is a simple map, where keys are locators
+ * and values are component references. It allows to add, remove and find components
+ * by their locators. Locators can be any values like integers, strings or component types.
+ * But most often PipServices toolkit uses Descriptor as locators that match
+ * by 5 fields: group, type, kind, name and version.
+ * <p>
+ * ### Example ###
+ * <pre>
+ * {@code
+ *  public class MyController implements IReferenceable {
+ *     public IMyPersistence _persistence;
+ *     ...    
+ *     public void setReferences(IReferences references) {
+ *       this._persistence = (IMyPersistence)references.getOneRequired(
+ *         new Descriptor("mygroup", "persistence", "*", "*", "1.0")
+ *       );
+ *     }
+ *     ...
+ *  }
+ * 
+ *  MyMongoDbPersistence persistence = new MyMongoDbPersistence();
+ * 
+ *  MyController controller = new MyController();
+ * 
+ *  References references = References.fromTuples(
+ *    new Descriptor("mygroup", "persistence", "mongodb", "default", "1.0"), persistence,
+ *    new Descriptor("mygroup", "controller", "default", "default", "1.0"), controller
+ *  );
+ *  controller.setReferences(references);
+ * 	}
+ * </pre>
+ * @see Descriptor
+ * @see References
  */
 public interface IReferences {
 	/**
-	 * Puts a new component reference to the set with explicit locator
-	 * @param locator a locator to find the reference
-	 * @param component a component reference to be added
+	 * Puts a new reference into this reference map.
+	 * 
+	 * @param locator   a locator to find the reference by.
+	 * @param component a component reference to be added.
+	 * @throws ApplicationException
 	 */
 	void put(Object locator, Object component) throws ApplicationException;
 
 	/**
-	 * Removes component reference from the set. 
-	 * The method removes only the last reference.
-	 * @param locator a locator to find the reference to remove
-	 * @return a removed reference
+	 * Removes a previously added reference that matches specified locator. If many
+	 * references match the locator, it removes only the first one. When all
+	 * references shall be removed, use removeAll() method instead.
+	 * 
+	 * @param locator a locator to remove reference
+	 * @return the removed component reference.
+	 * @throws ApplicationException
+	 * 
+	 * @see #removeAll(Object)
 	 */
-	Object remove(Object locator) throws ApplicationException;	
+	Object remove(Object locator) throws ApplicationException;
 
 	/**
-	 * Removes all component references from the set. 
-	 * @param locator a locator to find the reference to remove
-	 * @return a list with removed references
+	 * Removes all component references that match the specified locator.
+	 * 
+	 * @param locator the locator to remove references by.
+	 * @return a list, containing all removed references.
+	 * @throws ApplicationException
 	 */
 	List<Object> removeAll(Object locator) throws ApplicationException;
-	
-	/* <summary>
-	 Gets all stored component locators
-	 </summary>
-	 <returns>a list with component locators</returns>
+
+	/**
+	 * Gets locators for all registered component references in this reference map.
+	 * 
+	 * @return a list with component locators.
 	 */
 	List<Object> getAllLocators();
-	
+
 	/**
-	 * Gets all stored component references
-	 * @return a list with component references
+	 * Gets all component references registered in this reference map.
+	 * 
+	 * @return a list with component references.
 	 */
-	List<Object> getAll();	
-		
+	List<Object> getAll();
+
 	/**
-	 * Gets a list of component references that match provided locator
-	 * @param locator a locator to find references
-	 * @return a list with found component references
+	 * Gets all component references that match specified locator.
+	 * 
+	 * @param locator the locator to find references by.
+	 * @return a list with matching component references or empty list if nothing
+	 *         was found.
 	 */
 	List<Object> getOptional(Object locator);
 
 	/**
-	 * Gets a list of component references that match provided locator
-	 * and matching to the specified type.
-	 * @param locator a locator to find references
-	 * @return a list with found component references
+	 * Gets all component references that match specified locator and matching to
+	 * the specified type.
+	 * 
+	 * @param type    the Class type that defined the type of the result.
+	 * @param locator the locator to find references by.
+	 * @return a list with matching component references or empty list if nothing
+	 *         was found.
 	 */
 	<T> List<T> getOptional(Class<T> type, Object locator);
 
 	/**
-	 * Gets a list of component references that match provided locator.
-	 * If no references found an exception is thrown
-	 * @param locator a locator to find references
-	 * @return a list with found component references
-	 * @throws ReferenceException when no single component reference is found 
+	 * Gets all component references that match specified locator. At least one
+	 * component reference must be present. If it doesn't the method throws an
+	 * error.
+	 * 
+	 * @param locator the locator to find references by.
+	 * @return a list with matching component references.
+	 * 
+	 * @throws ReferenceException when no references found.
 	 */
 	List<Object> getRequired(Object locator) throws ReferenceException;
 
 	/**
-	 * Gets a list of component references that match provided locator.
-	 * and matching to the specified type.
-	 * If no references found an exception is thrown
-	 * @param locator a locator to find references
-	 * @return a list with found component references
-	 * @throws ReferenceException when no single component reference is found 
+	 * Gets all component references that match specified locator. At least one
+	 * component reference must be present and matching to the specified type.
+	 * 
+	 * If it doesn't the method throws an error.
+	 * 
+	 * @param type    the Class type that defined the type of the result.
+	 * @param locator the locator to find references by.
+	 * @return a list with matching component references.
+	 * 
+	 * @throws ReferenceException when no references found.
 	 */
 	<T> List<T> getRequired(Class<T> type, Object locator) throws ReferenceException;
 
 	/**
-	 * Gets a component references that matches provided locator.
-	 * The search is performed from latest added references.
-	 * @param locator a locator to find a reference
-	 * @return a found component reference or <code>null</code> if nothing was found
+	 * Gets an optional component reference that matches specified locator.
+	 * 
+	 * @param locator the locator to find references by.
+	 * @return a matching component reference or null if nothing was found.
 	 */
 	Object getOneOptional(Object locator);
 
 	/**
-	 * Gets a component references that matches provided locator
-	 * and matching to the specified type.
-	 * The search is performed from latest added references.
-	 * @param locator a locator to find a reference
-	 * @return a found component reference or <code>null</code> if nothing was found
+	 * Gets an optional component reference that matches specified locator and
+	 * matching to the specified type.
+	 * 
+	 * @param type    the Class type that defined the type of the result.
+	 * @param locator the locator to find references by.
+	 * @return a matching component reference or null if nothing was found.
 	 */
 	<T> T getOneOptional(Class<T> type, Object locator);
-	
+
 	/**
-	 * Gets a component references that matches provided locator.
-	 * The search is performed from latest added references.
-	 * @param locator a locator to find a reference
-	 * @return a found component reference
-	 * @throws ReferenceException when requested component wasn't found
+	 * Gets a required component reference that matches specified locator.
+	 * 
+	 * @param locator the locator to find a reference by.
+	 * @return a matching component reference.
+	 * @throws ReferenceException when no references found.
 	 */
 	Object getOneRequired(Object locator) throws ReferenceException;
 
 	/**
-	 * Gets a component references that matches provided locator
-	 * and matching to the specified type.
-	 * The search is performed from latest added references.
-	 * @param locator a locator to find a reference
-	 * @return a found component reference
-	 * @throws ReferenceException when requested component wasn't found
+	 * Gets a required component reference that matches specified locator and
+	 * matching to the specified type.
+	 * 
+	 * @param type    the Class type that defined the type of the result.
+	 * @param locator the locator to find a reference by.
+	 * @return a matching component reference.
+	 * @throws ReferenceException when no references found.
 	 */
 	<T> T getOneRequired(Class<T> type, Object locator) throws ReferenceException;
 
 	/**
-	 * Find all references by specified query criteria
-	 * @param query a query criteria
-	 * @param required force to raise exception is no reference is found
-	 * @return list of found references
-	 * @throws ReferenceException when requested component wasn't found
+	 * Gets all component references that match specified locator.
+	 * 
+	 * @param locator  the locator to find a reference by.
+	 * @param required forces to raise an exception if no reference is found.
+	 * @return a list with matching component references.
+	 * 
+	 * @throws ReferenceException when required is set to true but no references
+	 *                            found.
 	 */
 	List<Object> find(Object locator, boolean required) throws ReferenceException;
 
 	/**
-	 * Find all references by specified query criteria
-	 * and matching to the specified type.
-	 * @param query a query criteria
-	 * @param required force to raise exception is no reference is found
-	 * @return list of found references
-	 * @throws ReferenceException when requested component wasn't found
+	 * Gets all component references that match specified locator and matching to
+	 * the specified type.
+	 * 
+	 * @param type     the Class type that defined the type of the result.
+	 * @param locator  the locator to find a reference by.
+	 * @param required forces to raise an exception if no reference is found.
+	 * @return a list with matching component references.
+	 * 
+	 * @throws ReferenceException when required is set to true but no references
+	 *                            found.
 	 */
 	<T> List<T> find(Class<T> type, Object locator, boolean required) throws ReferenceException;
 }
