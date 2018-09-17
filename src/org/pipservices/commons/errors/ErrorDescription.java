@@ -4,15 +4,33 @@ import org.pipservices.commons.data.*;
 
 import com.fasterxml.jackson.annotation.*;
 
+/**
+ * Serializeable error description. It is use to pass information about errors
+ * between microservices implemented in different languages. On the receiving side
+ * ErrorDescription is used to recreate exception object close to its original type
+ * without missing additional details.
+ * 
+ * @see ApplicationException
+ * @see ApplicationExceptionFactory
+ */
 public class ErrorDescription {
+	/** Data type of the original error */
 	private String _type;
+	/** Standard error category */
 	private String _category;
+	/** HTTP status code associated with this error type */
 	private int _status;
+	/** A unique error code */
 	private String _code;
+	/** A human-readable error description (usually written in English) */
 	private String _message;
+	/** A map with additional details that can be used to restore error description in other languages */
 	private StringValueMap _details;
+	/** A unique transaction id to trace execution throug call chain */
 	private String _correlationId;
+	/** Original error wrapped by this exception */
 	private String _cause;
+	/** Stack trace of the exception */
 	private String _stackTrace;
 
 	public ErrorDescription() {}

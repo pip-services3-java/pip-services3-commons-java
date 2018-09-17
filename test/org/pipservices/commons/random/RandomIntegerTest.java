@@ -41,8 +41,5 @@ public class RandomIntegerTest {
         
         list = RandomInteger.sequence(4, 4);
         assertTrue(list.size() == 4);
-        
-        list = RandomInteger.sequence(5); 
-        assertTrue(list.size() == 5);
     }    
 }

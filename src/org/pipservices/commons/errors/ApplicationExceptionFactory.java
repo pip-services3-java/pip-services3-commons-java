@@ -1,7 +1,21 @@
 package org.pipservices.commons.errors;
 
+/**
+ * Factory to recreate exceptions from ErrorDescription values passed through the wire.
+ * 
+ * @see ErrorDescription
+ * @see ApplicationException
+ */
 public class ApplicationExceptionFactory {
 	
+	/**
+	 * Recreates ApplicationException object from serialized ErrorDescription.
+	 * 
+	 * It tries to restore original exception type using type or error category fields.
+	 * 
+	 * @param description	a serialized error description received as a result of remote call
+	 * @return new ApplicationException object from serialized ErrorDescription.
+	 */
     public ApplicationException create(ErrorDescription description) {
     	if (description == null)
     		throw new NullPointerException("Description cannot be null");

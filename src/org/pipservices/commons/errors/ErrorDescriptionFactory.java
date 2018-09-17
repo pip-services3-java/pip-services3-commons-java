@@ -1,7 +1,24 @@
 package org.pipservices.commons.errors;
 
+/**
+ * Factory to create serializeable ErrorDescription from ApplicationException
+ * or from arbitrary errors.
+ * 
+ * The ErrorDescriptions are used to pass errors through the wire between microservices
+ * implemented in different languages. They allow to restore exceptions on the receiving side
+ * close to the original type and preserve additional information.
+ * 
+ * @see ErrorDescription
+ * @see ApplicationException
+ */
 public class ErrorDescriptionFactory {
 
+	/**
+     * Creates a serializable ErrorDescription from error object.
+     * 
+	 * @param ex  	an error object
+	 * @return a serializeable ErrorDescription object that describes the error.
+	 */
 	public static ErrorDescription create(ApplicationException ex) {
     	ErrorDescription description = new ErrorDescription();
     	description.setCategory(ex.getCategory());
@@ -15,6 +32,13 @@ public class ErrorDescriptionFactory {
     	return description;
     }
 
+	/**
+     * Creates a serializable ErrorDescription from throwable object with unknown error category. 
+     * 
+     * @param ex				an error object
+	 * @param correlationId  	(optional) a unique transaction id to trace execution through call chain.
+	 * @return a serializeable ErrorDescription object that describes the error.
+	 */
     public static ErrorDescription create(Throwable ex, String correlationId) {
     	ErrorDescription description = new ErrorDescription();
     	description.setType(ex.getClass().getCanonicalName());

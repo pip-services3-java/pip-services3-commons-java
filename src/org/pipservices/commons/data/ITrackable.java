@@ -3,7 +3,28 @@ package org.pipservices.commons.data;
 import java.time.*;
 
 /**
- * Interface for data objects that can track their changes including logical deletion 
+ * Interface for data objects that can track their changes, including logical deletion.
+ * <p>
+ * ### Example ###
+ * <pre>
+ * {@code
+ *  public class MyData implements IStringIdentifiable, ITrackable {
+ *    private String id;
+ *    public String field1;
+ *    public int field2;
+ *    ...
+ *    public String getId() {...}
+ *    public void setId(String newId) {...}
+ *    
+ *    public ZonedDateTime getCreateTime(){...};
+ *    public void setCreateTime(){...};
+ *    public ZonedDateTime getLastChangeTime(){...};
+ *    public void setLastChangeTime(){...};
+ *    public boolean isDeleted(){...};
+ *    public void setDeleted(){...};
+ *  }
+ *  }
+ *  </pre>
  */
 public interface ITrackable {
 	/**
@@ -38,7 +59,7 @@ public interface ITrackable {
 
 	/**
 	 * Sets the logical deletion flag
-	 * @param <code>true</code> if the object was deleted and <code>false</code> if the object is still active
+	 * @param value boolean value to set
 	 */
 	void setDeleted(boolean value);
 }

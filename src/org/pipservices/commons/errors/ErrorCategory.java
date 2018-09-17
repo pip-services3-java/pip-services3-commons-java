@@ -1,7 +1,8 @@
 package org.pipservices.commons.errors;
 
 /**
- * Defines broad categories of application errors.
+ * Defines standard error categories to application exceptions
+ * supported by PipServices toolkit.
  */
 public class ErrorCategory {
 	/**
@@ -26,9 +27,9 @@ public class ErrorCategory {
 	public final static String InvalidState = "InvalidState";
 	
 	/**
-	 * Errors happened during connection to remote services.
-	 * They can be related to misconfiguration, network issues
-	 * or remote service itself 
+	 * Errors caused by remote calls timeouted and not returning results.
+	 * It allows to clearly separate communication related problems
+	 * from other application errors. 
 	 */
 	public final static String NoResponse = "NoResponse";
 
@@ -50,8 +51,8 @@ public class ErrorCategory {
 	public final static String BadRequest = "BadRequest";
 	
 	/**
-	 * Access errors caused by missing user identity
-	 * or security permissions
+	 * Access errors caused by missing user identity (authentication error)
+	 * or incorrect security permissions (authorization error).
 	 */
 	public final static String Unauthorized = "Unauthorized";
 
@@ -61,8 +62,8 @@ public class ErrorCategory {
 	public final static String NotFound = "NotFound";
 	
 	/**
-	 * Errors raised by conflict in object versions
-	 * posted by user and stored on server.
+	 * Errors raised by conflicts between object versions that were
+	 * posted by the user and those that are stored on the server.
 	 */
 	public final static String Conflict = "Conflict";	
 	

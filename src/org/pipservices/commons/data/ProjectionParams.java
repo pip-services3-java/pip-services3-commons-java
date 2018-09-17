@@ -2,6 +2,28 @@ package org.pipservices.commons.data;
 
 import java.util.*;
 
+/**
+ * Defines projection parameters with list if fields to include into query results.
+ * 
+ * The parameters support two formats: dot format and nested format.
+ * 
+ * The dot format is the standard way to define included fields and subfields using
+ * dot object notation: "field1,field2.field21,field2.field22.field221"
+ * 
+ * As alternative the nested format offers a more compact representation:
+ * "field1,field2(field21,field22(field221))"
+ * <p>
+ * ### Example ###
+ * <pre>
+ * {@code
+ * FilterParams filter = FilterParams.fromTuples("type", "Type1");
+ * PagingParams paging = new PagingParams(0, 100);
+ * ProjectionParams projection = ProjectionParams.fromString("field1,field2(field21,field22)")
+ * 
+ * myDataClient.getDataByFilter(filter, paging, projection);
+ * }
+ * </pre>
+ */
 public class ProjectionParams extends ArrayList<String> {
 
 	private static final long serialVersionUID = 5876557837753631885L;
@@ -10,6 +32,11 @@ public class ProjectionParams extends ArrayList<String> {
 	public ProjectionParams() {
 	}
 
+	/**
+     * Creates a new instance of the projection parameters and assigns its value.
+     * 
+     * @param values     (optional) values to initialize this object.
+     */
 	public ProjectionParams(String[] values) {
 		if (values != null) {
 			for (int i = 0; i < values.length; i++)
@@ -17,6 +44,11 @@ public class ProjectionParams extends ArrayList<String> {
 		}
 	}
 
+	/**
+     * Creates a new instance of the projection parameters and assigns its value.
+     * 
+     * @param array     (optional) values to initialize this object.
+     */
 	public ProjectionParams(AnyValueArray array) {
 		if (array == null) {
 			return;
@@ -30,6 +62,14 @@ public class ProjectionParams extends ArrayList<String> {
 		}
 	}
 
+	/**
+     * Converts specified value into ProjectionParams.
+     * 
+     * @param value     value to be converted
+     * @return         a newly created ProjectionParams.
+     * 
+     * @see AnyValueArray#fromValue(Object)
+     */
 	public static ProjectionParams fromValue(Object value) {
 		if (value instanceof ProjectionParams) //// value.getClass() == ProjectionParams.class
 		{
@@ -40,14 +80,34 @@ public class ProjectionParams extends ArrayList<String> {
 		return new ProjectionParams(array);
 	}
 
+	/**
+     * Parses comma-separated list of projection fields.
+     * 
+     * @param values    one or more comma-separated lists of projection fields
+     * @return         a newly created ProjectionParams.
+     */
 	public static ProjectionParams fromValues(String... values) {
 		return fromValues(defaultDelimiter, values);
 	}
 
+	/**
+     * Parses comma-separated list of projection fields.
+     * 
+     * @param delimiter a certain type of delimiter
+     * @param values    one or more comma-separated lists of projection fields
+     * @return         a newly created ProjectionParams.
+     */
 	public static ProjectionParams fromValues(char delimiter, String... values) {
 		return new ProjectionParams(parse(delimiter, values));
 	}
 
+	/** 
+     * Gets a string representation of the object.
+     * The result is a comma-separated list of projection fields
+     * "field1,field2.field21,field2.field22.field221"
+     * 
+     * @return a string representation of the object.
+     */
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		for (int index = 0; index < builder.length(); index++) {

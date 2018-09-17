@@ -1,7 +1,24 @@
 package org.pipservices.commons.data;
 
 /**
- * Interface for data objects that have human-readable name
+ * Interface for data objects that have human-readable names.
+ * <p>
+ * ### Example ###
+ * <pre>
+ * {@code
+ *  public class MyData implements IStringIdentifiable, INamed {
+ *    private String id;
+ *    private String name;
+ *    public String field1;
+ *    public int field2;
+ *    ...
+ *    public String getId() {...}
+ *    public void setId(String newId) {...}
+ *    public String getName() {...}
+ *    public void setName(String newName) {...}
+ * }
+ * }
+ * </pre>
  */
 public interface INamed {
 	/**

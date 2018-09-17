@@ -13,14 +13,6 @@ public class RandomDateTimeTest {
     	ZonedDateTime date;
     	date = RandomDateTime.nextDate(2015, 2016);
     	assertTrue(date.getYear() == 2015 || date.getYear() == 2016 );  
-
-    	date = RandomDateTime.nextDate(0, 0);
-    	assertTrue(date.getYear() >= ZonedDateTime.now().getYear() - 10 
-			&& date.getYear() <= ZonedDateTime.now().getYear());
-    	
-    	date = RandomDateTime.nextDate();
-    	assertTrue(date.getYear() >= ZonedDateTime.now().getYear() - 10 
-			&& date.getYear() <= ZonedDateTime.now().getYear());  
     }
     
     @Test

@@ -1,7 +1,23 @@
 package org.pipservices.commons.data;
 
 /**
- * Interface for data objects that can be identified by an id
+ * Generic interface for data objects that can be uniquely identified by an id.
+ * 
+ * The type specified in the interface defines the type of id field.
+ * <p>
+ * ### Example ###
+ * <pre>
+ * {@code
+ *  public class MyData implements IIdentifiable<String> {
+ *    private String id;
+ *    public String field1;
+ *    public int field2; 
+ *    ...
+ *    public String getId() {...}
+ *    public void setId(String newId) {...}
+ *  }
+ *  }
+ *  </pre>
  */
 public interface IIdentifiable<K> {
 	/**

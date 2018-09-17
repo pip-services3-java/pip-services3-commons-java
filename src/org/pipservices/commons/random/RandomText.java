@@ -3,6 +3,18 @@ package org.pipservices.commons.random;
 import java.util.*;
 import java.util.stream.*;
 
+/**
+ * Random generator for various text values like names, addresses or phone numbers.
+ * <p>
+ * ### Example ###
+ * <pre>
+ * {@code
+ * String value1 = RandomText.name();     // Possible result: "Sergio"
+ * String value2 = RandomText.verb();      // Possible result: "Run"
+ * String value3 = RandomText.Text(50);    // Possible result: "Run jorge. Red high scream?"
+ * }
+ * </pre>
+ */
 public class RandomText {
     private static final String[] _namePrefixes = new String[] { "Dr.", "Mr.", "Mrs" };
     private static final String[] _nameSuffixes = new String[] { "Jr.", "Sr.", "II", "III" };
@@ -69,26 +81,54 @@ public class RandomText {
 		Stream.concat(Arrays.stream(_adjectives), Arrays.stream(_verbs)))
 		.toArray(String[]::new);
 
+    /**
+     * Generates a random color name.
+     * The result value is capitalized.
+     * 
+     * @return a random color name.
+     */
     public static String color() {
         return RandomString.pick(_colors);
     }
 
+    /**
+     * Generates a random noun.
+     * The result value is capitalized.
+     * 
+     * @return a random noun.
+     */
     public static String stuff() {
         return RandomString.pick(_stuffs);
     }
 
+    /**
+     * Generates a random adjective.
+     * The result value is capitalized.
+     * 
+     * @return a random adjective.
+     */
     public static String adjective() {
         return RandomString.pick(_adjectives);
     }
 
+    /**
+     * Generates a random verb.
+     * The result value is capitalized.
+     * 
+     * @return a random verb.
+     */
     public static String verb() {
         return RandomString.pick(_verbs);
     }
 
-    public static String phrase(int size) {
-    	return phrase(size, size);
-    }
-
+    /**
+     * Generates a random phrase which consists of few words separated by spaces.
+     * The first word is capitalized, others are not.
+     * 
+     * @param minSize     (optional) minimum string length.
+     * @param maxSize     maximum string length.
+     * @return a random phrase.
+     */
     public static String phrase(int minSize, int maxSize) {
         maxSize = Math.max(minSize, maxSize);
         int size = RandomInteger.nextInteger(minSize, maxSize);
@@ -103,6 +143,12 @@ public class RandomText {
         return result.toString();
     }
 
+    /**
+     * Generates a random person's name which has the following structure
+     * optional prefix - first name - second name - optional suffix
+     * 
+     * @return a random name.
+     */
     public static String fullName() {
         StringBuilder result = new StringBuilder();
 
@@ -119,10 +165,22 @@ public class RandomText {
         return result.toString();
     }
 
+    /**
+     * Generates a random word from available first names, last names, colors, stuffs, adjectives, or verbs.
+     * 
+     * @return a random word.
+     */
     public static String word() {
         return RandomString.pick(_allWords);
     }
 
+    /**
+     * Generates a random text that consists of random number of random words separated by spaces.
+     * 
+     * @param min   (optional) a minimum number of words.
+     * @param max   a maximum number of words.
+     * @return     a random text.
+     */
     public static String words(int min, int max) {
         StringBuilder result = new StringBuilder();
         
@@ -133,6 +191,12 @@ public class RandomText {
         return result.toString();
     }
 
+    /**
+     * Generates a random phone number.
+     * The phone number has the format: (XXX) XXX-YYYY
+     * 
+     * @return a random phone number.
+     */
     public static String phone() {
         StringBuilder result = new StringBuilder();
         
@@ -146,14 +210,22 @@ public class RandomText {
         return result.toString();
     }
 
+    /**
+     * Generates a random email address.
+     * 
+     * @return a random email address.
+     */
     public static String email() {
         return words(2,6) + "@" + words(1,3) + ".com";
     }
 
-    public static String text(int size) {
-    	return text(size, size);
-    }
-
+    /**
+     * Generates a random text, consisting of first names, last names, colors, stuffs, adjectives, verbs, and punctuation marks.
+     * 
+     * @param minSize   minimum amount of words to generate. Text will contain 'minSize' words if 'maxSize' is omitted.
+     * @param maxSize   (optional) maximum amount of words to generate.
+     * @return         a random text.
+     */
     public static String text(int minSize, int maxSize) {
         maxSize = Math.max(minSize, maxSize);
         int size = RandomInteger.nextInteger(minSize, maxSize);
