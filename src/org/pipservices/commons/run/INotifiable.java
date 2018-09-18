@@ -3,13 +3,36 @@ package org.pipservices.commons.run;
 import org.pipservices.commons.errors.*;
 
 /**
- * Interface for components that support parameterized one-way notification 
+ * Interface for components that can be asynchronously notified.
+ * The notification may include optional argument that describe
+ * the occured event.
+ * <p>
+ * ### Example ###
+ * <pre>
+ * {@code
+ * class MyComponent implements INotifable {
+ *   ...
+ *   public void notify(String correlationId, Parameters args) {
+ *     System.out.println("Occured event " + args.getAsString("event"));
+ *   }
+ * }
+ * 
+ * MyComponent myComponent = new MyComponent();
+ * 
+ * myComponent.notify("123", Parameters.fromTuples("event", "Test Event"));
+ * }
+ * </pre>
+ * @see Notifier
+ * @see IExecutable
  */
 public interface INotifiable {
 	/**
-	 * Executes a unit of work with given parameters
-	 * @param correlationId a unique transaction id to trace calls across components
-	 * @param args a set of parameters for execution
+	 * Notifies the component about occured event.
+	 * 
+	 * @param correlationId (optional) transaction id to trace execution through
+	 *                      call chain.
+	 * @param args          notification arguments.
+	 * @throws ApplicationException when errors occured.
 	 */
 	void notify(String correlationId, Parameters args) throws ApplicationException;
 }

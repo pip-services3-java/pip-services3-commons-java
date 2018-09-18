@@ -651,7 +651,7 @@ public class StringValueMap extends HashMap<String, String> implements Cloneable
 	 *               even elements are values
 	 * @return a newly created StringValueMap.
 	 * 
-	 * @see [[fromTuplesArray]]
+	 * @see #fromTuplesArray(Object[])
 	 */
 	public static StringValueMap fromTuples(Object... tuples) {
 		return StringValueMap.fromTuplesArray(tuples);

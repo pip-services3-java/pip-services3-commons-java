@@ -5,44 +5,65 @@ import java.util.*;
 import org.pipservices.commons.errors.*;
 
 /**
- * Helper class that triggers execution for components
+ * Helper class that executes components.
+ * 
+ * @see IExecutable
  */
 public class Executor {
 	/**
-	 * Triggers execution for component that implement IExecutable interface. 
-	 * @param correlationId a unique transaction id to trace calls across components
-	 * @param component a components to be executed
-	 * @param args a set of parameters to pass to executed components
-	 * @return execution results
+	 * Executes specific component.
+	 * 
+	 * To be executed components must implement IExecutable interface. If they don't
+	 * the call to this method has no effect.
+	 * 
+	 * @param correlationId (optional) transaction id to trace execution through
+	 *                      call chain.
+	 * @param component     the component that is to be executed.
+	 * @param args          execution arguments.
+	 * @return execution result.
+	 * @throws ApplicationException when errors occured.
+	 * 
+	 * @see IExecutable
+	 * @see Parameters
 	 */
-	public static Object executeOne(
-		String correlationId, Object component, Parameters args)
-		throws ApplicationException {
-		
+	public static Object executeOne(String correlationId, Object component, Parameters args)
+			throws ApplicationException {
+
 		if (component instanceof IExecutable)
-			return ((IExecutable)component).execute(correlationId, args);
-		else return null;
+			return ((IExecutable) component).execute(correlationId, args);
+		else
+			return null;
 	}
 
 	/**
-	 * Triggers execution for components that implement IExecutable interfaces. 
-	 * @param correlationId a unique transaction id to trace calls across components
-	 * @param components a list of components to be executed
-	 * @param args a set of parameters to pass to executed components
-	 * @return execution results
+	 * Executes multiple components.
+	 * 
+	 * To be executed components must implement IExecutable interface. If they don't
+	 * the call to this method has no effect.
+	 * 
+	 * @param correlationId (optional) transaction id to trace execution through
+	 *                      call chain.
+	 * @param components    a list of components that are to be executed.
+	 * @param args          execution arguments.
+	 * @return execution result.
+	 * @throws ApplicationException when errors occured.
+	 * 
+	 * @see #executeOne(String, Object, Parameters)
+	 * @see IExecutable
+	 * @see Parameters
 	 */
-	public static List<Object> execute(
-		String correlationId, Iterable<Object> components, Parameters args)
-		throws ApplicationException {
-		
-		List<Object> results = new ArrayList<Object>();				
-		if (components == null) return results;
-		
-		for (Object component : components) { 
+	public static List<Object> execute(String correlationId, Iterable<Object> components, Parameters args)
+			throws ApplicationException {
+
+		List<Object> results = new ArrayList<Object>();
+		if (components == null)
+			return results;
+
+		for (Object component : components) {
 			if (component instanceof IExecutable)
 				results.add(executeOne(correlationId, component, args));
 		}
-		
+
 		return results;
 	}
 }

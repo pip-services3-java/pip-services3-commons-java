@@ -3,14 +3,36 @@ package org.pipservices.commons.run;
 import org.pipservices.commons.errors.*;
 
 /**
- * Interface for components that support parameterized execution that returns a result
+ * Interface for components that can be called to execute work.
+ * <p>
+ * ### Example ###
+ * <pre>
+ * {@code
+ * class EchoComponent implements IExecutable {
+ *   ...
+ *   public void execute(String correlationId, Parameters args) {
+ *     Object result = args.getAsObject("message");
+ *   }
+ * }
+ * 
+ * EchoComponent echo = new EchoComponent();
+ * String message = "Test";
+ * echo.execute("123", Parameters.fromTuples("message", message));
+ * }
+ * </pre>
+ * @see Executor
+ * @see INotifiable
+ * @see Parameters
  */
 public interface IExecutable {
 	/**
-	 * Executes a unit of work with given parameters
-	 * @param correlationId a unique transaction id to trace calls across components
-	 * @param args a set of parameters for execution
-	 * @return execution result
+	 * Executes component with arguments and receives execution result.
+	 * 
+	 * @param correlationId (optional) transaction id to trace execution through
+	 *                      call chain.
+	 * @param args          execution arguments.
+	 * @return execution result.
+	 * @throws ApplicationException when errors occured.
 	 */
 	Object execute(String correlationId, Parameters args) throws ApplicationException;
 }

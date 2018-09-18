@@ -34,7 +34,7 @@ public interface IReferenceable {
 	 * 
 	 * @param references references to locate the component dependencies.
 	 * @throws ReferenceException when no references found.
-	 * @throws ConfigException
+	 * @throws ConfigException when configuration is wrong
 	 * @see IReferences
 	 */
 	void setReferences(IReferences references) throws ReferenceException, ConfigException;

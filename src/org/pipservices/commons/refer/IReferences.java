@@ -52,7 +52,7 @@ public interface IReferences {
 	 * 
 	 * @param locator   a locator to find the reference by.
 	 * @param component a component reference to be added.
-	 * @throws ApplicationException
+	 * @throws ApplicationException when errors occured.
 	 */
 	void put(Object locator, Object component) throws ApplicationException;
 
@@ -63,7 +63,7 @@ public interface IReferences {
 	 * 
 	 * @param locator a locator to remove reference
 	 * @return the removed component reference.
-	 * @throws ApplicationException
+	 * @throws ApplicationException when errors occured.
 	 * 
 	 * @see #removeAll(Object)
 	 */
@@ -74,7 +74,7 @@ public interface IReferences {
 	 * 
 	 * @param locator the locator to remove references by.
 	 * @return a list, containing all removed references.
-	 * @throws ApplicationException
+	 * @throws ApplicationException when errors occured.
 	 */
 	List<Object> removeAll(Object locator) throws ApplicationException;
 

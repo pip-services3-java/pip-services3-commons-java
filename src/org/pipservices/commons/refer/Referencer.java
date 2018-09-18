@@ -18,7 +18,7 @@ public class Referencer {
 	 * @param references the references to be set.
 	 * @param component  the component to set references to.
 	 * @throws ReferenceException when no references found.
-	 * @throws ConfigException
+	 * @throws ConfigException when configuration is wrong.
 	 * 
 	 * @see IReferenceable
 	 */
@@ -38,7 +38,7 @@ public class Referencer {
 	 * @param references the references to be set.
 	 * @param components a list of components to set the references to.
 	 * @throws ReferenceException when no references found.
-	 * @throws ConfigException
+	 * @throws ConfigException when configuration is wrong.
 	 * 
 	 * @see IReferenceable
 	 */
