@@ -20,7 +20,7 @@ public class RandomInteger {
 	/**
 	 * Generates a integer in the range [0, 'max'].
 	 * 
-	 * @param max (optional) maximum value of the float that will be generated.
+	 * @param max (optional) maximum value of the integer that will be generated.
 	 *            Defaults to 'min' if omitted.
 	 * @return generated random integer value.
 	 */
@@ -34,7 +34,7 @@ public class RandomInteger {
 	 * 
 	 * @param min minimum value of the integer that will be generated. If 'max' is
 	 *            omitted, then 'max' is set to 'min' and 'min' is set to 0.
-	 * @param max (optional) maximum value of the float that will be generated.
+	 * @param max (optional) maximum value of the integer that will be generated.
 	 *            Defaults to 'min' if omitted.
 	 * @return generated random integer value.
 	 */
@@ -74,7 +74,7 @@ public class RandomInteger {
 	 * 
 	 * @param min minimum value of the integer that will be generated. If 'max' is
 	 *            omitted, then 'max' is set to 'min' and 'min' is set to 0.
-	 * @param max (optional) maximum value of the float that will be generated.
+	 * @param max (optional) maximum value of the integer that will be generated.
 	 *            Defaults to 'min' if omitted.
 	 * @return generated array of integers.
 	 */
