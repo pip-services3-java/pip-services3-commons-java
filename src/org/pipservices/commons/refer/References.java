@@ -136,7 +136,7 @@ public class References implements IReferences {
 
 		synchronized (_lock) {
 			for (Reference reference : _references)
-				locators.add(reference.getComponent());
+				locators.add(reference.getLocator());
 		}
 
 		return locators;
