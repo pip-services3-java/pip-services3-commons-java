@@ -5,7 +5,7 @@ import org.pipservices.commons.errors.*;
 /**
  * Helper class that closes previously opened components.
  * 
- * ICloseable
+ * @see IClosable
  */
 public class Closer {
 	/**

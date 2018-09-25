@@ -96,7 +96,7 @@ public class DependencyResolver implements IReferenceable, IReconfigurable {
 	 * Configures the component with specified parameters.
 	 * 
 	 * @param config configuration parameters to set.
-	 * 
+	 * @throws ConfigException when configuration is wrong.
 	 * @see ConfigParams
 	 */
 	@Override
@@ -223,13 +223,6 @@ public class DependencyResolver implements IReferenceable, IReconfigurable {
 		return locator != null ? _references.getOneOptional(locator) : null;
 	}
 
-	/**
-	 * Gets a component references that matches provided locator and matching to the
-	 * specified type. The search is performed from latest added references.
-	 * 
-	 * @param name a dependency name
-	 * @return a found component reference or <code>null</code> if nothing was found
-	 */
 	/**
 	 * Gets one optional dependency by its name and matching to the specified type.
 	 * 

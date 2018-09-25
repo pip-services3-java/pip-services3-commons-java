@@ -14,8 +14,8 @@ public class RandomTextTest {
     	
     	String text = RandomText.phrase(4, 10);
     	assertTrue(text.length() >= 4 && text.length() <= 10 ); 
-    	text = RandomText.phrase(4, 10);
-    	assertTrue(text.length() >= 4); 
+    	String text1 = RandomText.phrase(4, 10);
+    	assertTrue(text1.length() >= 4); 
     }
     
     @Test

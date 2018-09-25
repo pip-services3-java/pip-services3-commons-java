@@ -38,7 +38,7 @@ public class TypeMatcher {
 
 	/**
 	 * Matches expected type to an actual type. The types can be specified as types,
-	 * type names or [[TypeCode]].
+	 * type names or TypeCode.
 	 * 
 	 * @param expectedType an expected type to match.
 	 * @param actualType   an actual type to match.
