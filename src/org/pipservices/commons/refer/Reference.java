@@ -2,7 +2,7 @@ package org.pipservices.commons.refer;
 
 /**
  * Contains a reference to a component and locator to find it.
- * It is used by References to store registered component references.
+ * It is used by {@link References} to store registered component references.
  */
 public class Reference {
 	private Object _locator;

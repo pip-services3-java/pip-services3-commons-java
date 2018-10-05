@@ -3,7 +3,7 @@ package org.pipservices.commons.validate;
 import org.pipservices.commons.convert.TypeCode;
 
 /**
- * Schema to validate PagingParams.
+ * Schema to validate {@link org.pipservices.commons.data.PagingParams}.
  * 
  * @see org.pipservices.commons.data.PagingParams
  */
