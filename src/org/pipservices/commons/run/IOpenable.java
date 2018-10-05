@@ -45,7 +45,7 @@ public interface IOpenable extends IClosable {
 	 * 
 	 * @return true if the component has been opened and false otherwise.
 	 */
-	boolean isOpen();;
+	boolean isOpen();
 
 	/**
 	 * Opens the component.

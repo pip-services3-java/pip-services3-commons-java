@@ -1,5 +1,6 @@
 package org.pipservices.commons.convert;
 
+import java.lang.reflect.Array;
 import java.time.*;
 import java.time.format.*;
 import java.util.*;
@@ -55,6 +56,30 @@ public class StringConverter {
 		if (value instanceof ZonedDateTime)
 			return ((ZonedDateTime) value).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 
+		// Convert list
+		if (value instanceof List<?>) {
+			StringBuilder builder = new StringBuilder();
+			for (Object element : (List<?>)value) {
+				if (builder.length() > 0)
+					builder.append(",");
+				builder.append(element);
+			}
+			return builder.toString();
+		}
+
+		// Convert array
+		if (value.getClass().isArray()) {
+			StringBuilder builder = new StringBuilder();
+			int length = Array.getLength(value);
+			for (int index = 0; index < length; index++) {
+				if (builder.length() > 0)
+					builder.append(",");
+				builder.append(Array.get(value, index));
+			}
+			return builder.toString();
+		}
+		
+		
 		// Everything else
 		return value.toString();
 	}
