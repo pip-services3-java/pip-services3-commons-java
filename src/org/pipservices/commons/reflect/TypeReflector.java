@@ -10,10 +10,10 @@ import org.pipservices.commons.errors.*;
 
 /**
  * Helper class to perform object type introspection and object instantiation.
- * 
+ * <p>
  * This class has symmetric implementation across all languages supported
  * by Pip.Services toolkit and used to support dynamic data processing.
- * 
+ * <p>
  * Because all languages have different casing and case sensitivity rules,
  * this TypeReflector treats all type names as case insensitive.
  * <p>

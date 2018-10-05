@@ -8,7 +8,7 @@ import org.pipservices.commons.run.*;
 import org.pipservices.commons.validate.*;
 
 /**
- * Contains a set of commands and events supported by a ICommandable commandable object.
+ * Contains a set of commands and events supported by a {@link ICommandable} commandable object.
  * The CommandSet supports command interceptors to extend and the command call chain.
  * <p>
  * CommandSets can be used as alternative commandable interface to a business object.

@@ -2,7 +2,7 @@ package org.pipservices.commons.convert;
 
 /**
  * Codes for the data types that can be
- * converted using TypeConverter.
+ * converted using {@link TypeConverter}.
  * 
  * @see TypeConverter
  */

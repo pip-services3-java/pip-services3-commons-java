@@ -5,9 +5,12 @@ import java.time.format.*;
 import java.util.*;
 
 /**
- * Converts arbitrary values into Date values using extended conversion rules:
- * - Strings: converted using ISO time format
- * - Numbers: converted using milliseconds since unix epoch
+ * Converts arbitrary values into Date values.
+ * Converts using extended conversion rules:
+ * <ul>
+ * <li>Strings: converted using ISO time format
+ * <li>Numbers: converted using milliseconds since unix epoch
+ * </ul>
  * <p>
  * ### Example ###
  * <pre>

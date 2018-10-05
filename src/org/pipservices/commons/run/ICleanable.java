@@ -4,7 +4,7 @@ import org.pipservices.commons.errors.*;
 
 /**
  * Interface for components that should clean their state.
- * 
+ * <p>
  * Cleaning state most often is used during testing. 
  * But there may be situations when it can be done in production.
  * <p>

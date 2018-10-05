@@ -7,7 +7,7 @@ import org.pipservices.commons.run.*;
 import org.pipservices.commons.validate.*;
 
 /**
- * Implements a ICommand command wrapped by an interceptor.
+ * Implements a {@link ICommand} command wrapped by an interceptor.
  * It allows to build command call chains. The interceptor can alter execution
  * and delegate calls to a next command, which can be intercepted or concrete.
  * <p>

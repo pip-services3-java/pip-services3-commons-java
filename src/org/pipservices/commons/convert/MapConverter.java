@@ -6,9 +6,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 
 /**
- * Converts arbitrary values into map objects using extended conversion rules:
- * - Objects: property names as keys, property values as values
- * - Arrays: element indexes as keys, elements as values
+ * Converts arbitrary values into map objects.
+ * Converts using extended conversion rules:
+ * <ul>
+ * <li>Objects: property names as keys, property values as values
+ * <li>Arrays: element indexes as keys, elements as values
+ * </ul>
  * <p>
  * ### Example ###
  * <pre>

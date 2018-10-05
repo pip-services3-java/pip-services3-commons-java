@@ -4,7 +4,7 @@ import org.pipservices.commons.refer.*;
 
 /**
  * A helper class that allows to extract component name from configuration parameters.
- * The name can be defined in "id", "name" parameters or inside a component descriptor.
+ * The name can be defined in <code>"id"</code>, <code>"name"</code> parameters or inside a component descriptor.
  * <p>
  * ### Example ###
  * <pre>

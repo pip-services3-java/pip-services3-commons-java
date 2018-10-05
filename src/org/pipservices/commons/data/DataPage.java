@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.*;
 /**
  * Data transfer object that is used to pass results of paginated queries.
  * It contains items of retrieved page and optional total number of items.
- * 
+ * <p>
  * Most often this object type is used to send responses to paginated queries.
- * Pagination parameters are defined by [[PagingParams]] object.
- * The Skip parameter in the PagingParams there means how many items to skip.
- * The Takes parameter sets number of items to return in the page.
- * And the optional Total parameter tells to return total number of items in the query.
- * 
- * Remember: not all implementations support Total parameter
+ * Pagination parameters are defined by {@link PagingParams} object.
+ * The <code>skip</code> parameter in the {@link PagingParams} there means how many items to skip.
+ * The <code>takes</code> parameter sets number of items to return in the page.
+ * And the optional <code>total</code> parameter tells to return total number of items in the query.
+ * <p>
+ * Remember: not all implementations support <code>total</code> parameter
  * because its generation may lead to severe performance implications.
  * <p>
  * ### Example ###

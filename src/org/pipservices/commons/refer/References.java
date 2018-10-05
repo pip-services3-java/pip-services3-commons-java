@@ -3,7 +3,7 @@ package org.pipservices.commons.refer;
 import java.util.*;
 
 /**
- * The most basic implementation of IReferences to store and locate component references.
+ * The most basic implementation of {@link IReferences} to store and locate component references.
  * <p>
  * ### Example ###
  * <pre>

@@ -4,10 +4,10 @@ import java.util.*;
 
 /**
  * Helper class to perform property introspection and dynamic writing.
- * 
- * It is similar to ObjectWriter but writes properties recursively
+ * <p>
+ * It is similar to {@link ObjectWriter} but writes properties recursively
  * through the entire object graph. Nested property names are defined
- * using dot notation as "object.subobject.property"
+ * using dot notation as <code>"object.subobject.property"</code>
  *
  * @see PropertyReflector
  * @see ObjectWriter

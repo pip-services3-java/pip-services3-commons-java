@@ -4,9 +4,9 @@ import org.pipservices.commons.errors.*;
 
 /**
  * Interface for components that require explicit closure.
- * 
+ * <p>
  * For components that require opening as well as closing 
- * use IOpenable interface instead.
+ * use {@link IOpenable} interface instead.
  * <p>
  * ### Example ###
  * <pre>

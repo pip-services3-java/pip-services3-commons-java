@@ -7,15 +7,15 @@ import org.pipservices.commons.errors.*;
 /**
  * Interface for a map that holds component references and passes them to components
  * to establish dependencies with each other.
- * 
- * Together with IReferenceable and IUnreferenceable interfaces it implements
+ * <p>
+ * Together with {@link IReferenceable} and {@link IUnreferenceable} interfaces it implements
  * a Locator pattern that is used by PipServices toolkit for Inversion of Control
  * to assign external dependencies to components. 
- * 
- * The IReferences object is a simple map, where keys are locators
+ * <p>
+ * The {@link IReferences} object is a simple map, where keys are locators
  * and values are component references. It allows to add, remove and find components
  * by their locators. Locators can be any values like integers, strings or component types.
- * But most often PipServices toolkit uses Descriptor as locators that match
+ * But most often PipServices toolkit uses {@link Descriptor} as locators that match
  * by 5 fields: group, type, kind, name and version.
  * <p>
  * ### Example ###

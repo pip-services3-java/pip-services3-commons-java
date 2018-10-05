@@ -6,7 +6,7 @@ import org.pipservices.commons.errors.*;
 
 /**
  * Timer that is triggered in equal time intervals.
- * 
+ * <p>
  * It has summetric cross-language implementation 
  * and is often used by Pip.Services toolkit to
  * perform periodic processing and cleanup in microservices.

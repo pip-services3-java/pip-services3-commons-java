@@ -6,7 +6,7 @@ import org.pipservices.commons.errors.*;
  * Interface for components that require explicit opening and closing.
  * 
  * For components that perform opening on demand consider using
- * ICloseable interface instead.
+ * {@link IClosable} interface instead.
  * <p>
  * ### Example ###
  * <pre>

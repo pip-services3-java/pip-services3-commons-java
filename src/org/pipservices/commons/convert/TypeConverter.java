@@ -5,7 +5,7 @@ import java.util.*;
 
 /**
  * Converts arbitrary values into objects specific by TypeCodes.
- * For each TypeCode this class calls corresponding converter which applies
+ * For each {@link TypeCode} this class calls corresponding converter which applies
  * extended conversion rules to convert the values.
  * <p>
  * ### Example ###

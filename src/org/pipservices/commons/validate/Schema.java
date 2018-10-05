@@ -7,7 +7,7 @@ import org.pipservices.commons.reflect.TypeMatcher;
 
 /**
  * Basic schema that validates values against a set of validation rules.
- * 
+ * <p>
  * This schema is used as a basis for specific schemas to validate 
  * objects, project properties, arrays and maps.
  * 

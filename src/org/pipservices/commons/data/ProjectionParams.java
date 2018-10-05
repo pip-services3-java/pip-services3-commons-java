@@ -4,14 +4,14 @@ import java.util.*;
 
 /**
  * Defines projection parameters with list if fields to include into query results.
- * 
+ * <p>
  * The parameters support two formats: dot format and nested format.
- * 
+ * <p>
  * The dot format is the standard way to define included fields and subfields using
- * dot object notation: "field1,field2.field21,field2.field22.field221"
- * 
+ * dot object notation: <code>"field1,field2.field21,field2.field22.field221"</code>
+ * <p>
  * As alternative the nested format offers a more compact representation:
- * "field1,field2(field21,field22(field221))"
+ * <code>"field1,field2(field21,field22(field221))"</code>
  * <p>
  * ### Example ###
  * <pre>

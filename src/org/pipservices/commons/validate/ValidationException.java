@@ -6,8 +6,8 @@ import org.pipservices.commons.errors.*;
 
 /**
  * Errors in schema validation.
- * 
- * Validation errors are usually generated based in ValidationResult.
+ * <p>
+ * Validation errors are usually generated based in {@link ValidationResult}.
  * If using strict mode, warnings will also raise validation exceptions.
  * 
  * @see BadRequestException

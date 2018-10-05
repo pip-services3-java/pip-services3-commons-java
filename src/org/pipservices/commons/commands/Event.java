@@ -6,7 +6,7 @@ import org.pipservices.commons.errors.*;
 import org.pipservices.commons.run.*;
 
 /**
- * Concrete implementation of IEvent interface.
+ * Concrete implementation of {@link IEvent} interface.
  * It allows to send asynchronous notifications to multiple subscribed listeners.
  * <p>
  * ### Example ###

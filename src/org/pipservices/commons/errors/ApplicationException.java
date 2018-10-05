@@ -6,37 +6,38 @@ import com.fasterxml.jackson.annotation.*;
 
 /**
  * Defines a base class to defive various application exceptions.
- * 
+ * <p>
  * Most languages have own definition of base exception (error) types.
  * However, this class is implemented symmetrically in all languages
  * supported by PipServices toolkit. It allows to create portable implementations
  * and support proper error propagation in microservices calls.
- * 
+ * <p>
  * Error propagation means that when microservice implemented in one language
  * calls microservice(s) implemented in a different language(s), errors are returned
  * throught the entire call chain and restored in their original (or close) type.
- * 
+ * <p>
  * Since number of potential exception types is endless, PipServices toolkit
- * supports only 12 standard categories of exceptions defined in ErrorCategory.
+ * supports only 12 standard categories of exceptions defined in {@link ErrorCategory}.
  * This ApplicationException class acts as a basis for
  * all other 12 standard exception types.
- * 
+ * <p>
  * Most exceptions have just free-form message that describes occured error.
  * That may not be sufficient to create meaninful error descriptions.
  * The ApplicationException class proposes an extended error definition
  * that has more standard fields:
- * 
- * - message: is a humand readable error description
- * - category: one of 12 standard error categories of errors
- * - status: numeric HTTP status code for REST invocations
- * - code: a unique error code, usually defined as "MY_ERROR_CODE"
- * - correlation_id: a unique transaction id to trace execution through a call chain
- * - details: map with error parameters that can help to recreate meaningful error description in other languages
- * - stack_trace: a stack trace
- * - cause: original error that is wrapped by this exception
- * 
+ * <ul>
+ * <li>message: is a humand readable error description
+ * <li>category: one of 12 standard error categories of errors
+ * <li>status: numeric HTTP status code for REST invocations
+ * <li>code: a unique error code, usually defined as "MY_ERROR_CODE"
+ * <li>correlation_id: a unique transaction id to trace execution through a call chain
+ * <li>details: map with error parameters that can help to recreate meaningful error description in other languages
+ * <li>stack_trace: a stack trace
+ * <li>cause: original error that is wrapped by this exception
+ * </ul>
+ * <p>
  * ApplicationException class is not serializable. To pass errors through the wire
- * it is converted into ErrorDescription object and restored on receiving end into
+ * it is converted into {@link ErrorDescription} object and restored on receiving end into
  * identical exception type.
  * 
  * @see ErrorCategory

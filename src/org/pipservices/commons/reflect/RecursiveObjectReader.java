@@ -6,10 +6,10 @@ import org.pipservices.commons.convert.*;
 
 /**
  * Helper class to perform property introspection and dynamic reading.
- * 
- * It is similar to ObjectReader but reads properties recursively
+ * <p>
+ * It is similar to {@link ObjectReader} but reads properties recursively
  * through the entire object graph. Nested property names are defined
- * using dot notation as "object.subobject.property"
+ * using dot notation as <code>"object.subobject.property"</code>
  *
  * @see PropertyReflector
  * @see ObjectReader

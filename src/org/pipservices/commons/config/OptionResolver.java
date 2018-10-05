@@ -1,7 +1,7 @@
 package org.pipservices.commons.config;
 
 /**
- * A helper class to parameters from "options" configuration section.
+ * A helper class to parameters from <code>"options"</code> configuration section.
  * <p>
  * ### Example ###
  * <pre>

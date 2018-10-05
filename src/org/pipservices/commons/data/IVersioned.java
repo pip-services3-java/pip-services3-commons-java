@@ -2,12 +2,12 @@ package org.pipservices.commons.data;
 
 /**
  * Interface for data objects that can be versioned.
- * 
+ * <p>
  * Versioning is often used as optimistic concurrency mechanism. 
- * 
+ * <p>
  * The version doesn't have to be a number, but it is recommended to use sequential
  * values to determine if one object has newer or older version than another one.
- * 
+ * <p>
  * It is a common pattern to use the time of change as the object version.
  * <p>
  * ### Example ###

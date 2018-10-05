@@ -4,12 +4,12 @@ import java.util.*;
 
 /**
  * Interface for validation rules.
- * 
+ * <p>
  * Validation rule can validate one or multiple values
  * against complex rules like: value is in range,
  * one property is less than another property,
  * enforce enumerated values and more.
- * 
+ * <p>
  * This interface allows to implement custom rules.
  */
 public interface IValidationRule {

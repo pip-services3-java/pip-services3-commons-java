@@ -8,7 +8,7 @@ import org.pipservices.commons.convert.TypeConverter;
 
 /**
  * Helper class matches value types for equality.
- * 
+ * <p>
  * This class has symmetric implementation across all languages supported
  * by Pip.Services toolkit and used to support dynamic data processing.
  * 

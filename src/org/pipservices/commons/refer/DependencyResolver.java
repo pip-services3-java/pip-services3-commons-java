@@ -8,24 +8,30 @@ import org.pipservices.commons.errors.*;
 
 /**
  * Helper class for resolving component dependencies.
- * 
+ * <p>
  * The resolver is configured to resolve named dependencies by specific locator.
  * During deployment the dependency locator can be changed.
- * 
+ * <p>
  * This mechanism can be used to clarify specific dependency among several alternatives.
  * Typically components are configured to retrieve the first dependency that matches
  * logical group, type and version. But if container contains more than one instance
  * and resolution has to be specific about those instances, they can be given a unique
  * name and dependency resolvers can be reconfigured to retrieve dependencies by their name.
- * 
+ * <p>
  * Configuration parameters:
- *   dependencies:
- *     [dependency name 1]: [dependency 1 locator (descriptor)]
- *     ...
- *     [dependency name N]: [dependency N locator (descriptor)]
+ * <ul>
+ *   <li>dependencies:
+ *   <ul>
+ *     <li>[dependency name 1]: [dependency 1 locator (descriptor)]
+ *     <li>...
+ *     <li>[dependency name N]: [dependency N locator (descriptor)]
+ *   </ul>
  * 
- * References:
- *   [references that match configured dependencies]
+ *   <li>References:
+ *   <ul>
+ *   <li>[references that match configured dependencies]
+ *   </ul>
+ * </ul>
  * <p>
  * ### Example ###
  * <pre>

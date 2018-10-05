@@ -4,9 +4,9 @@ import org.pipservices.commons.errors.ConfigException;
 
 /**
  * Interface for components that depends on other components. 
- * 
+ * <p>
  * If component requires explicit notification to unset references
- * it shall additionally implement IUnreferenceable interface.
+ * it shall additionally implement {@link IUnreferenceable} interface.
  * <p>
  * ### Example ###
  * <pre>

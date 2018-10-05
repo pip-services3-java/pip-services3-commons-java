@@ -11,12 +11,12 @@ import com.fasterxml.jackson.core.*;
 
 /**
  * Contains map with execution parameters.
- * 
+ * <p>
  * In general, this map may contain non-serializable values.
  * And in contrast with other maps, its getters and setters
  * support dot notation and able to access properties
  * in the entire object graph.
- * 
+ * <p>
  * This class is often use to pass execution and notification
  * arguments, and parameterize classes before execution.
  * 

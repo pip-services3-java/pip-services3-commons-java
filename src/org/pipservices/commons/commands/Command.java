@@ -7,7 +7,7 @@ import org.pipservices.commons.run.*;
 import org.pipservices.commons.validate.*;
 
 /**
- * Concrete implementation of ICommand interface. Command allows to call a method
+ * Concrete implementation of {@link ICommand} interface. Command allows to call a method
  * or function using Command pattern.
  * <p>
  * ### Example ###

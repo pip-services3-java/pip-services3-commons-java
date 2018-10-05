@@ -2,7 +2,7 @@ package org.pipservices.commons.data;
 
 /**
  * Generic interface for data objects that can be uniquely identified by an id.
- * 
+ * <p>
  * The type specified in the interface defines the type of id field.
  * <p>
  * ### Example ###

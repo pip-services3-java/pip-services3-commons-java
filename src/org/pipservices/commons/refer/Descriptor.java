@@ -5,27 +5,35 @@ import org.pipservices.commons.errors.*;
 /**
  * Locator type that most often used in PipServices toolkit.
  * It locates components using several fields:
- * - Group: a package or just named group of components like "pip-services"
- * - Type: logical component type that defines it's contract like "persistence"
- * - Kind: physical implementation type like "mongodb"
- * - Name: unique component name like "default"
- * - Version: version of the component contract like "1.0"
- * 
+ * <ul>
+ * <li>Group: a package or just named group of components like <code>"pip-services"</code>
+ * <li>Type: logical component type that defines it's contract like <code>"persistence"</code>
+ * <li>Kind: physical implementation type like <code>"mongodb"</code>
+ * <li>Name: unique component name like <code>"default"</code>
+ * <li>Version: version of the component contract like <code>"1.0"</code>
+ * </ul>
+ * <p>
  * The locator matching can be done by all or only few selected fields. 
- * The fields that shall be excluded from the matching must be set to "*" or null.
+ * The fields that shall be excluded from the matching must be set to <code>"*"</code> or <code>null</code>.
  * That approach allows to implement many interesting scenarios. For instance:
- * - Locate all loggers (match by type and version)
- * - Locate persistence components for a microservice (match by group and type)
- * - Locate specific component by its name (match by name)
+ * <ul>
+ * <li>Locate all loggers (match by type and version)
+ * <li>Locate persistence components for a microservice (match by group and type)
+ * <li>Locate specific component by its name (match by name)
+ * </ul>
+ * <p>
  * 
  * ### Example ###
- * 
+ * <pre>
+ * {@code
  * Descriptor locator1 = new Descriptor("mygroup", "connector", "aws", "default", "1.0");
  * Descriptor locator2 = Descriptor.fromString("mygroup:connector:*:*:1.0");
  * 
  * locator1.match(locator2);		// Result: true
  * locator1.equal(locator2);		// Result: true
  * locator1.exactMatch(locator2);	// Result: false
+ * }
+ * </pre>
  */
 public class Descriptor {
 	private String _group;

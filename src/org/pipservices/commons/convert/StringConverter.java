@@ -6,12 +6,15 @@ import java.time.format.*;
 import java.util.*;
 
 /**
- * Converts arbitrary values into strings using extended conversion rules:
- * - Numbers: are converted with '.' as decimal point
- * - DateTime: using ISO format
- * - Boolean: "true" for true and "false" for false
- * - Arrays: as comma-separated list
- * - Other objects: using toString() method
+ * Converts arbitrary values into strings.
+ * Converts using extended conversion rules:
+ * <ul>
+ * <li>Numbers: are converted with '.' as decimal point
+ * <li>DateTime: using ISO format
+ * <li>Boolean: "true" for true and "false" for false
+ * <li>Arrays: as comma-separated list
+ * <li>Other objects: using toString() method
+ * </ul>
  * <p>
  * ### Example ###
  * <pre>

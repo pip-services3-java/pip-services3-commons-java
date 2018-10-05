@@ -4,7 +4,7 @@ import org.pipservices.commons.convert.TypeCode;
 import org.pipservices.commons.data.*;
 
 /**
- * Schema to validate FilterParams.
+ * Schema to validate {@link org.pipservices.commons.data.FilterParams}.
  * 
  * @see FilterParams
  */

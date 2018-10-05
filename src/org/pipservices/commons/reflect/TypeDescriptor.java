@@ -5,7 +5,7 @@ import org.pipservices.commons.errors.*;
 /**
  * Descriptor that points to specific object type by it's name
  * and optional library (or module) where this type is defined.
- * 
+ * <p>
  * This class has symmetric implementation across all languages supported
  * by Pip.Services toolkit and used to support dynamic data processing.
  */

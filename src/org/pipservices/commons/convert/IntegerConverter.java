@@ -1,10 +1,13 @@
 package org.pipservices.commons.convert;
 
 /**
- * Converts arbitrary values into integer  using extended conversion rules:
- * - Strings are converted to integer values
- * - DateTime: total number of milliseconds since unix epoсh
- * - Boolean: 1 for true and 0 for false
+ * Converts arbitrary values into integer.
+ * Converts using extended conversion rules:
+ * <ul>
+ * <li>Strings are converted to integer values
+ * <li>DateTime: total number of milliseconds since unix epoсh
+ * <li>Boolean: 1 for true and 0 for false
+ * </ul>
  * <p>
  * ### Example ###
  * <pre>

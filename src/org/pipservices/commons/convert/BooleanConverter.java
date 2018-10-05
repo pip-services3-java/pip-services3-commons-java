@@ -3,10 +3,13 @@ package org.pipservices.commons.convert;
 import java.time.*;
 
 /**
- * Converts arbitrary values to boolean values using extended conversion rules:
- * - Numbers: above 0, less more 0 are true; equal to 0 are false
- * - Strings: "true", "yes", "T", "Y", "1" are true, "false", "no", "F", "N" are false
- * - DateTime: above 0, less more 0 total milliseconds are true, equal to 0 are false
+ * Converts arbitrary values to boolean values. 
+ * Converts using extended conversion rules:
+ * <ul>
+ * <li>Numbers: above 0, less more 0 are true; equal to 0 are false
+ * <li>Strings: "true", "yes", "T", "Y", "1" are true, "false", "no", "F", "N" are false
+ * <li>DateTime: above 0, less more 0 total milliseconds are true, equal to 0 are false
+ * </ul>
  * <p>
  * ### Example ###
  * <pre>

@@ -4,10 +4,13 @@ import java.time.Duration;
 import java.util.*;
 
 /**
- * Converts arbitrary values into longs using extended conversion rules:
- * - Strings are converted to floats, then to longs
- * - DateTime: total number of milliseconds since unix epoсh
- * - Boolean: 1 for true and 0 for false
+ * Converts arbitrary values into longs.
+ * Converts using extended conversion rules:
+ * <ul>
+ * <li>Strings are converted to floats, then to longs
+ * <li>DateTime: total number of milliseconds since unix epoсh
+ * <li>Boolean: 1 for true and 0 for false
+ * </ul>
  * <p>
  * ### Example ###
  * <pre>

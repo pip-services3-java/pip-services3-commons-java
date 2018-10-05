@@ -2,7 +2,7 @@ package org.pipservices.commons.errors;
 
 /**
  * Errors due to improper user requests. 
- * 
+ * <p>
  * For example: missing or incorrect parameters.
  */
 public class BadRequestException extends ApplicationException {

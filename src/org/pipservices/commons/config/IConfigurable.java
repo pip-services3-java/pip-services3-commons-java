@@ -4,11 +4,11 @@ import org.pipservices.commons.errors.*;
 
 /**
  * An interface to set configuration parameters to an object.
- * 
- * It can be added to any existing class by implementing a single Configure() method.
- * 
- * If you need to emphasis the fact that Configure() method can be called multiple times
- * to change object configuration in runtime, use IReconfigurable interface instead.
+ * <p>
+ * It can be added to any existing class by implementing a single <code>configure()</code> method.
+ * <p>
+ * If you need to emphasis the fact that <code>configure()</code> method can be called multiple times
+ * to change object configuration in runtime, use {@link IReconfigurable} interface instead.
  * <p>
  * ### Example ###
  * <pre>

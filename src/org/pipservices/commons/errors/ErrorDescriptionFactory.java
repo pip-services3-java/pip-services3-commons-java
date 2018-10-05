@@ -1,9 +1,9 @@
 package org.pipservices.commons.errors;
 
 /**
- * Factory to create serializeable ErrorDescription from ApplicationException
+ * Factory to create serializeable {@link ErrorDescription} from {@link ApplicationException}
  * or from arbitrary errors.
- * 
+ * <p>
  * The ErrorDescriptions are used to pass errors through the wire between microservices
  * implemented in different languages. They allow to restore exceptions on the receiving side
  * close to the original type and preserve additional information.

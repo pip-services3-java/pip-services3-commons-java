@@ -5,11 +5,11 @@ import org.pipservices.commons.convert.*;
 /**
  * Data transfer object to pass paging parameters for queries.
  * The page is defined by two parameters.
- * The Skip parameter defines number of items to skip.
- * The Paging parameter sets how many items to return in a page.
- * And the optional Total parameter tells to return total number of items in the query.
- * 
- * Remember: not all implementations support Total parameter
+ * The <code>skip</code> parameter defines number of items to skip.
+ * The <code>paging</code> parameter sets how many items to return in a page.
+ * And the optional <code>total</code> parameter tells to return total number of items in the query.
+ * <p>
+ * Remember: not all implementations support <code>total</code> parameter
  * because its generation may lead to severe performance implications.
  * <p>
  * ### Example ###

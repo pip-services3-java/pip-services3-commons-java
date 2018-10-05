@@ -8,20 +8,20 @@ import org.pipservices.commons.reflect.*;
 /**
  * Contains a key-value map with configuration parameters. 
  * All values stored as strings and can be serialized as JSON or string forms.
- * When retrieved the values can be automatically converted on read using GetAsXXX methods.
- *
+ * When retrieved the values can be automatically converted on read using <code>getAsXXX()</code> methods.
+ * <p>
  * The keys are case-sensitive, so it is recommended to use consistent C-style as: "my_param"
- *  
+ * <p> 
  * Configuration parameters can be broken into sections and subsections using dot notation as:
- * "section1.subsection1.param1". Using GetSection method all parameters from specified section
+ * <code>"section1.subsection1.param1"</code>. Using <code>getSection()</code> method all parameters from specified section
  * can be extracted from a ConfigMap.
- * 
+ * <p>
  * The ConfigParams supports serialization from/to plain strings as:
- * "key1=123;key2=ABC;key3=2016-09-16T00:00:00.00Z"
- * 
- * ConfigParams are used to pass configurations to IConfigurable objects.
- * They also serve as a basis for more concrete configurations such as ConnectionParams
- * or CredentialParams.
+ * <code>"key1=123;key2=ABC;key3=2016-09-16T00:00:00.00Z"</code>
+ * <p>
+ * ConfigParams are used to pass configurations to {@link IConfigurable} objects.
+ * They also serve as a basis for more concrete configurations such as <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/pip-services-java/pip-services-components-java/master/doc/api/org/pipservices/components/connect/ConnectionParams.html">ConnectionParams</a>
+ * or <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/pip-services-java/pip-services-components-java/master/doc/api/org/pipservices/components/auth/CredentialParams.html">CredentialParams</a>.
  * <p>
  * ### Example ###
  * <pre>

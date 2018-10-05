@@ -3,7 +3,7 @@ package org.pipservices.commons.validate;
 import org.pipservices.commons.convert.TypeCode;
 
 /**
- * Schema to validate ProjectionParams.
+ * Schema to validate {@link org.pipservices.commons.data.ProjectionParams}.
  * 
  * @see org.pipservices.commons.data.ProjectionParams
  */

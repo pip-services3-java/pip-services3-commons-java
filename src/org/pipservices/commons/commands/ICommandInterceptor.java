@@ -9,7 +9,7 @@ import org.pipservices.commons.validate.*;
 /**
  * An interface for stackable command interceptors, which can extend
  * and modify the command call chain.
- * 
+ * <p>
  * This mechanism can be used for authentication, logging, and other functions.
  * 
  * @see ICommand

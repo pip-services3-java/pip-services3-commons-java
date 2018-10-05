@@ -5,10 +5,10 @@ import java.util.*;
 
 /**
  * Helper class to perform property introspection and dynamic reading and writing.
- * 
+ * <p>
  * This class has symmetric implementation across all languages supported
  * by Pip.Services toolkit and used to support dynamic data processing.
- * 
+ * <p>
  * Because all languages have different casing and case sensitivity rules,
  * this PropertyReflector treats all property names as case insensitive.
  * <p>

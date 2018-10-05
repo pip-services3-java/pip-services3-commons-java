@@ -4,10 +4,13 @@ import java.time.Duration;
 import java.util.*;
 
 /**
- * Converts arbitrary values into double using extended conversion rules:
- * - Strings are converted to double values
- * - DateTime: total number of milliseconds since unix epoсh
- * - Boolean: 1 for true and 0 for false
+ * Converts arbitrary values into double.
+ * Converts using extended conversion rules:
+ * <ul>
+ * <li>Strings are converted to double values
+ * <li>DateTime: total number of milliseconds since unix epoсh
+ * <li>Boolean: 1 for true and 0 for false
+ * </ul>
  * <p>
  * ### Example ###
  * <pre>

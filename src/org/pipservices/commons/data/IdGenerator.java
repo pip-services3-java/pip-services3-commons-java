@@ -5,9 +5,9 @@ import java.util.*;
 /**
  * Helper class to generate unique object IDs.
  * It supports two types of IDs: long and short.
- * 
+ * <p>
  * Long IDs are string GUIDs. They are globally unique and 32-character long.
- * 
+ * <p>
  * ShortIDs are just 9-digit random numbers. They are not guaranteed be unique.
  * <p>
  * ### Example ###
