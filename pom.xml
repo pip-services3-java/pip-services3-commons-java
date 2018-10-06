@@ -106,7 +106,7 @@
           <version>3.0.0</version>
           <configuration>
               <reportOutputDirectory>${basedir}/doc</reportOutputDirectory>
-              <destDir>api</destDir>
+              <destDir>${basedir}/doc/api</destDir>
 <!--
               <quiet>true</quiet>
               <nonavbar>true</nonavbar>
