@@ -1,6 +1,6 @@
 # Pip.Services Commons for Java Downloads
 
-Binary releases of the runtime are available through Maven Cental Repository. 
+Binary releases of the commons are available through Maven Cental Repository. 
 To use the library you shall include dependency to project pom.xml file:
 
 ```bash

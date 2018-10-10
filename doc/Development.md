@@ -71,11 +71,13 @@ mvn test
 
 Detail description of the Maven release publishing procedure 
 is described at https://maven.apache.org/repository/guide-central-repository-upload.html or https://central.sonatype.org/pages/ossrh-guide.html.
+
 Another useful release guide: http://kirang89.github.io/blog/2013/01/20/uploading-your-jar-to-maven-central/  
 
 Before publishing a new release you shall register on Sonatype Repository site.
 
-GPG management tool: https://www.gnupg.org/download/index.html
+GPG management tool: https://www.gnupg.org/download/index.html.
+
 Then generate gpg key:
 
 ```bash
@@ -117,18 +119,18 @@ Save the following settings in ~/.m2/settings.xml file:
       </server>
   </servers>
   <profiles> 
-		<profile> 
-			<id>ossrh</id>
-      			<activation>
-        			<activeByDefault>true</activeByDefault>
-      			</activation> 
-			<properties>
-				<gpg.keyname>...KEY_NAME...</gpg.keyname>
-				<gpg.executable>gpg</gpg.executable> 
-				<gpg.passphrase>...PASSPHRASE...</gpg.passphrase> 
-			</properties> 
-		</profile> 
-	</profiles>
+	<profile> 
+		<id>ossrh</id>
+    		<activation>
+       			<activeByDefault>true</activeByDefault>
+    		</activation> 
+		<properties>
+			<gpg.keyname>...KEY_NAME...</gpg.keyname>
+			<gpg.executable>gpg</gpg.executable> 
+			<gpg.passphrase>...PASSPHRASE...</gpg.passphrase> 
+		</properties> 
+	</profile> 
+  </profiles>
 </settings>
 ```
 
