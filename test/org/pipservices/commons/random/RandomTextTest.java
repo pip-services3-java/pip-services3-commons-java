@@ -12,7 +12,7 @@ public class RandomTextTest {
     	assertTrue(RandomText.phrase(-1, 0) == "");  
     	assertTrue(RandomText.phrase(-2, -1) == ""); 
     	
-    	String text = RandomText.phrase(4, 10);
+    	String text = RandomText.phrase(4, null);
     	assertTrue(text.length() >= 4 && text.length() <= 10 ); 
     	String text1 = RandomText.phrase(4, 10);
     	assertTrue(text1.length() >= 4); 

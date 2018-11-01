@@ -125,13 +125,14 @@ public class RandomText {
      * Generates a random phrase which consists of few words separated by spaces.
      * The first word is capitalized, others are not.
      * 
-     * @param minSize     (optional) minimum string length.
-     * @param maxSize     maximum string length.
+     * @param minLength     (optional) minimum string length.
+     * @param maxLength     maximum string length.
      * @return a random phrase.
      */
-    public static String phrase(int minSize, int maxSize) {
-        maxSize = Math.max(minSize, maxSize);
-        int size = RandomInteger.nextInteger(minSize, maxSize);
+    public static String phrase(int minLength, Integer maxLength) {
+        if (maxLength == null ) maxLength = minLength;
+        maxLength = Math.max(minLength, maxLength);
+        int size = RandomInteger.nextInteger(minLength, maxLength);
         if (size <= 0) return "";
         
         StringBuilder result = new StringBuilder();
