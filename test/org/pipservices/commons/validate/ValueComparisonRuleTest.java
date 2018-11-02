@@ -19,6 +19,9 @@ public class ValueComparisonRuleTest {
         schema = new Schema().withRule(new ValueComparisonRule("EQ", "ABC"));
         results = schema.validate("ABC");
         assertEquals(0, results.size());
+
+        results = schema.validate("XYZ");
+        assertEquals(1, results.size());
     }
 
     @Test
@@ -31,26 +34,35 @@ public class ValueComparisonRuleTest {
         assertEquals(0, results.size());
 
         schema = new Schema().withRule(new ValueComparisonRule("NE", "ABC"));
+        results = schema.validate("ABC");
+        assertEquals(1, results.size());
+
         results = schema.validate("XYZ");
         assertEquals(0, results.size());
     }
 
     @Test
-    public void TestLessComparison() {
+    public void TestLessThanOrEqualComparison() {
         Schema schema = new Schema().withRule(new ValueComparisonRule("LE", 123));
         List<ValidationResult> results = schema.validate(123);
         assertEquals(0, results.size());
 
         results = schema.validate(432);
         assertEquals(1, results.size());
-
-        schema = new Schema().withRule(new ValueComparisonRule("LT", 123));
-        results = schema.validate(123);
-        assertEquals(1, results.size());
     }
 
     @Test
-    public void TestMoreComparison() {
+    public void TestLessThanComparison() {
+        Schema schema = new Schema().withRule(new ValueComparisonRule("LT", 123));
+        List<ValidationResult> results = schema.validate(123);
+        assertEquals(1, results.size());
+
+        results = schema.validate(0);
+        assertEquals(0, results.size());
+    }
+
+    @Test
+    public void TestMoreThanOrEqualComparison() {
         Schema schema = new Schema().withRule(new ValueComparisonRule("GE", 123));
         List<ValidationResult> results = schema.validate(123);
         assertEquals(0, results.size());
@@ -58,8 +70,20 @@ public class ValueComparisonRuleTest {
         results = schema.validate(432);
         assertEquals(0, results.size());
 
-        schema = new Schema().withRule(new ValueComparisonRule("GT", 123));
-        results = schema.validate(123);
+        results = schema.validate(0);
+        assertEquals(1, results.size());
+    }
+
+    @Test
+    public void TestMoreThanComparison() {
+        Schema schema = new Schema().withRule(new ValueComparisonRule("GT", 123));
+        List<ValidationResult> results = schema.validate(123);
+        assertEquals(1, results.size());
+
+        results = schema.validate(432);
+        assertEquals(0, results.size());
+
+        results = schema.validate(0);
         assertEquals(1, results.size());
     }
 

@@ -21,7 +21,8 @@ public class RandomIntegerTest {
     	float value = RandomInteger.updateInteger(0, 5);
         assertTrue(value <= 5 && value >= -5);
         
-        value = RandomInteger.updateInteger(5, 0);  
+        value = RandomInteger.updateInteger(5, 0);
+        assertTrue(value == 5);  
         
         value = RandomInteger.updateInteger(0);
         assertTrue(value == 0);
@@ -41,5 +42,8 @@ public class RandomIntegerTest {
         
         list = RandomInteger.sequence(4, 4);
         assertTrue(list.size() == 4);
+
+        list = RandomInteger.sequence(5);
+        assertTrue(list.size() == 5);
     }    
 }

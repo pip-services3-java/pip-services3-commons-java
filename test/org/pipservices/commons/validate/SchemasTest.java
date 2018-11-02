@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 
-public class SchemaTest
+public class SchemasTest
 {
     @Test
     public void testEmptySchema() {

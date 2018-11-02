@@ -55,7 +55,9 @@ public class CommandTest {
 	    Parameters param = new Parameters(map); 
 		try {
 			assertEquals(command.execute("a", param), 0);
-		} catch (ApplicationException e) { }
+		} catch (ApplicationException e) {
+
+		}
 		
 		try {
 			command.execute("wrongId", param);

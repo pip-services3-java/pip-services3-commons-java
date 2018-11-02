@@ -19,14 +19,14 @@ public class IdGeneratorTest {
 	}
 
 	@Test
-	public void testUiid() {
+	public void testLongId() {
 		String id1 = IdGenerator.nextLong();
 		assertNotNull(id1);
-		assertTrue(id1.length() == 32);
+		assertTrue(id1.length() >= 32);
 
 		String id2 = IdGenerator.nextLong();
 		assertNotNull(id2);
-		assertTrue(id2.length() == 32);
+		assertTrue(id2.length() >= 32);
 		assertNotEquals(id1, id2);
 	}
 

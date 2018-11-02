@@ -72,6 +72,16 @@ public class RandomInteger {
 	/**
 	 * Generates a random sequence of integers starting from 0 like: [0,1,2,3...??]
 	 * 
+	 * @param size 	size of sequence
+	 * @return generated array of integers.
+	 */
+	public static List<Integer> sequence(int size) {
+		return sequence(size, size);
+	}
+
+	/**
+	 * Generates a random sequence of integers starting from 0 like: [0,1,2,3...??]
+	 * 
 	 * @param min minimum value of the integer that will be generated. If 'max' is
 	 *            omitted, then 'max' is set to 'min' and 'min' is set to 0.
 	 * @param max (optional) maximum value of the integer that will be generated.

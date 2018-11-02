@@ -14,13 +14,7 @@ public class TypeMatcherTest {
 		assertTrue(TypeMatcher.matchValueByName("Integer", 123));
 		assertTrue(TypeMatcher.matchValue(Integer.class, 123));
 	}
-
-	@Test
-	public void matchLong() {
-		assertTrue(TypeMatcher.matchValueByName("long", 123L));
-		assertTrue(TypeMatcher.matchValue(Long.class, 123L));
-	}
-
+	
 	@Test
 	public void matchBoolean() {
 		assertTrue(TypeMatcher.matchValueByName("bool", true));
@@ -29,17 +23,23 @@ public class TypeMatcherTest {
 	}
 
 	@Test
-	public void matchFloat() {
-		assertTrue(TypeMatcher.matchValueByName("float", 123.456f));
-		assertTrue(TypeMatcher.matchValueByName("Float", 123.456f));
-		assertTrue(TypeMatcher.matchValue(Float.class, 123.456f));
-	}
-
-	@Test
 	public void matchDouble() {
 		assertTrue(TypeMatcher.matchValueByName("double", 123.456));
 		assertTrue(TypeMatcher.matchValueByName("Double", 123.456));
 		assertTrue(TypeMatcher.matchValue(Double.class, 123.456));
+	}
+
+	@Test
+	public void matchLong() {
+		assertTrue(TypeMatcher.matchValueByName("long", 123L));
+		assertTrue(TypeMatcher.matchValue(Long.class, 123L));
+	}
+
+	@Test
+	public void matchFloat() {
+		assertTrue(TypeMatcher.matchValueByName("float", 123.456f));
+		assertTrue(TypeMatcher.matchValueByName("Float", 123.456f));
+		assertTrue(TypeMatcher.matchValue(Float.class, 123.456f));
 	}
 
 	@Test
