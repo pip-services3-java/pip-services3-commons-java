@@ -116,7 +116,7 @@
               <nohelp>true</nohelp>
 -->
           </configuration>
-<!--
+
           <executions>
               <execution>
                   <id>attach-javadocs</id>
@@ -125,7 +125,7 @@
                   </goals>
               </execution>
           </executions>
--->
+
       </plugin>
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
