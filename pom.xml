@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.pipservices</groupId>
-  <artifactId>pip-services-commons</artifactId>
-  <version>3.0.1</version>
+  <groupId>org.pipservices3</groupId>
+  <artifactId>pip-services3-commons</artifactId>
+  <version>3.0.0</version>
   <packaging>jar</packaging>
 
-  <name>Pip.Services Commons</name>
-  <description>Cross-language abstractions and common patterns for Pip.Services in Java</description>
+  <name>Pip.Services3 Commons</name>
+  <description>Cross-language abstractions and common patterns for Pip.Services3 in Java</description>
   <url>http://www.github.com/pip-services/pip-services</url>
 
   <licenses>
@@ -33,9 +33,9 @@
   </developers>
 
   <scm>
-    <connection>scm:git:git@github.com:pip-services-java/pip-services-commons-java.git</connection>
-    <developerConnection>scm:git:git@github.com:pip-services-java/pip-services-commons-java.git</developerConnection>
-    <url>https://github.com/pip-services-java/pip-services-commons-java</url>
+    <connection>scm:git:git@github.com:pip-services3-java/pip-services3-commons-java.git</connection>
+    <developerConnection>scm:git:git@github.com:pip-services3-java/pip-services3-commons-java.git</developerConnection>
+    <url>https://github.com/pip-services3-java/pip-services3-commons-java</url>
     <tag>HEAD</tag>
   </scm>
 

@@ -27,14 +27,14 @@ you may need to install database servers:
 
 After your environment is ready you can check out source code from the Github repository:
 ```bash
-git clone git@github.com:pip-services-java/pip-services-commons-java.git
+git clone git@github.com:pip-services3-java/pip-services3-commons-java.git
 ```
 
 Then go to the pom.xml file in Maven project and add dependencies:
 ```bash
 <dependency>
-  <groupId>org.pipservices</groupId>
-  <artifactId>pip-services-commons</artifactId>
+  <groupId>org.pipservices3</groupId>
+  <artifactId>pip-services3-commons</artifactId>
   <version>3.0.0</version>
 </dependency>
 ```

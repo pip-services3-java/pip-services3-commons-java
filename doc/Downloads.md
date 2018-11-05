@@ -5,8 +5,8 @@ To use the library you shall include dependency to project pom.xml file:
 
 ```bash
 <dependency>
-  <groupId>org.pipservices</groupId>
-  <artifactId>pip-services-commons</artifactId>
+  <groupId>org.pipservices3</groupId>
+  <artifactId>pip-services3-commons</artifactId>
   <version>3.0.0</version>
 </dependency>
 ``` 
@@ -14,5 +14,5 @@ To use the library you shall include dependency to project pom.xml file:
 Source code can be checked out from github repository:
 
 ```bash
-git clone git@github.com:pip-services-java/pip-services-commons-java.git
+git clone git@github.com:pip-services3-java/pip-services3-commons-java.git
 ```
