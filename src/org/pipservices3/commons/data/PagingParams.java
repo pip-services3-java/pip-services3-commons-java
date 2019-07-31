@@ -164,7 +164,7 @@ public class PagingParams {
 	public static PagingParams fromMap(AnyValueMap map) {
 		Long skip = map.getAsNullableLong("skip");
 		Long take = map.getAsNullableLong("take");
-		boolean total = map.getAsBooleanWithDefault("total", true);
+		boolean total = map.getAsBooleanWithDefault("total", false);
 		return new PagingParams(skip, take, total);
 	}
 
