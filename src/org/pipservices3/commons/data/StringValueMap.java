@@ -13,8 +13,8 @@ import org.pipservices3.commons.convert.*;
  * <p>
  * This class is widely used in Pip.Services as a basis for variety of classes, such as
  * {@link org.pipservices3.commons.config.ConfigParams}, 
- * <a href="https://raw.githubusercontent.com/pip-services3-java/pip-services3-components-java/master/doc/api/org/pipservices3/components/connect/ConnectionParams.html">ConnectionParams</a>, 
- * <a href="https://raw.githubusercontent.com/pip-services3-java/pip-services3-components-java/master/doc/api/org/pipservices3/components/auth/CredentialParams.html">CredentialParams</a> and others.
+ * <a href="https://pip-services3-java.github.io/pip-services3-components-java/org/pipservices3/components/connect/ConnectionParams.html">ConnectionParams</a>, 
+ * <a href="https://pip-services3-java.github.io/pip-services3-components-java/org/pipservices3/components/auth/CredentialParams.html">CredentialParams</a> and others.
  * <p>
  * ### Example ###
  * <pre>

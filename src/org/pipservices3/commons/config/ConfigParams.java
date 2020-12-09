@@ -20,8 +20,8 @@ import org.pipservices3.commons.reflect.*;
  * <code>"key1=123;key2=ABC;key3=2016-09-16T00:00:00.00Z"</code>
  * <p>
  * ConfigParams are used to pass configurations to {@link IConfigurable} objects.
- * They also serve as a basis for more concrete configurations such as <a href="https://raw.githubusercontent.com/pip-services3-java/pip-services3-components-java/master/doc/api/org/pipservices3/components/connect/ConnectionParams.html">ConnectionParams</a>
- * or <a href="https://raw.githubusercontent.com/pip-services3-java/pip-services3-components-java/master/doc/api/org/pipservices3/components/auth/CredentialParams.html">CredentialParams</a>.
+ * They also serve as a basis for more concrete configurations such as <a href="https://pip-services3-java.github.io/pip-services3-components-java/org/pipservices3/components/connect/ConnectionParams.html">ConnectionParams</a>
+ * or <a href="https://pip-services3-java.github.io/pip-services3-components-java/org/pipservices3/components/auth/CredentialParams.html">CredentialParams</a>.
  * <p>
  * ### Example ###
  * <pre>
