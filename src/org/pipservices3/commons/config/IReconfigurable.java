@@ -6,7 +6,7 @@ package org.pipservices3.commons.config;
  * It is similar to {@link IConfigurable} interface, but emphasizes the fact
  * that <code>configure()</code> method can be called more than once to change object configuration
  * in runtime.
- * 
+ *
  * @see IConfigurable
  */
 public interface IReconfigurable extends IConfigurable {

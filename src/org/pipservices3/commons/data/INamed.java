@@ -21,15 +21,17 @@ package org.pipservices3.commons.data;
  * </pre>
  */
 public interface INamed {
-	/**
-	 * Gets the object name
-	 * @return the object name
-	 */
-	String getName();
+    /**
+     * Gets the object name
+     *
+     * @return the object name
+     */
+    String getName();
 
-	/**
-	 * Sets the object name
-	 * @param value a new object name
-	 */
-	void setName(String value);
+    /**
+     * Sets the object name
+     *
+     * @param value a new object name
+     */
+    void setName(String value);
 }

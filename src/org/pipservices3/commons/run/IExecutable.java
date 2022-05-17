@@ -14,25 +14,26 @@ import org.pipservices3.commons.errors.*;
  *     Object result = args.getAsObject("message");
  *   }
  * }
- * 
+ *
  * EchoComponent echo = new EchoComponent();
  * String message = "Test";
  * echo.execute("123", Parameters.fromTuples("message", message));
  * }
  * </pre>
+ *
  * @see Executor
  * @see INotifiable
  * @see Parameters
  */
 public interface IExecutable {
-	/**
-	 * Executes component with arguments and receives execution result.
-	 * 
-	 * @param correlationId (optional) transaction id to trace execution through
-	 *                      call chain.
-	 * @param args          execution arguments.
-	 * @return execution result.
-	 * @throws ApplicationException when errors occured.
-	 */
-	Object execute(String correlationId, Parameters args) throws ApplicationException;
+    /**
+     * Executes component with arguments and receives execution result.
+     *
+     * @param correlationId (optional) transaction id to trace execution through
+     *                      call chain.
+     * @param args          execution arguments.
+     * @return execution result.
+     * @throws ApplicationException when errors occured.
+     */
+    Object execute(String correlationId, Parameters args) throws ApplicationException;
 }

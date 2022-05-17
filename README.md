@@ -20,15 +20,14 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [Configuration Pattern](https://www.pipservices.org/recipies/configuration) 
-* [Locator Pattern](https://www.pipservices.org/recipies/references)
-* [Component Lifecycle](https://www.pipservices.org/recipies/component-lifecycle)
-* [Components with Active Logic](https://www.pipservices.org/recipies/active-logic)
-* [Data Patterns](https://www.pipservices.org/recipies/memory-persistence)
+* [Configuration Pattern](http://docs.pipservices.org/toolkit/getting_started/configurations/)
+* [Locator Pattern](http://docs.pipservices.org/toolkit/recipes/component_references/)
+* [Component Lifecycle](http://docs.pipservices.org/toolkit/recipes/component_lifecycle/)
+* [Data Patterns](http://docs.pipservices.org/toolkit/recipes/memory_persistence/)
 * [API Reference](https://pip-services3-java.github.io/pip-services3-commons-java/)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/get_help/)
+* [Contribute](http://docs.pipservices.org/contribute/)
 
 ## Use
 
@@ -37,7 +36,7 @@ Go to the pom.xml file in Maven project and add dependencies::
 <dependency>
   <groupId>org.pipservices3</groupId>
   <artifactId>pip-services3-commons</artifactId>
-  <version>3.0.0</version>
+  <version>3.1.0</version>
 </dependency>
 ```
 

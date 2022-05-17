@@ -1,6 +1,6 @@
 package org.pipservices3.commons.convert;
-
-public enum LogLevel {
+// TODO delete
+public enum EnumTest {
 
 	/**
 	 * Nothing to be logged

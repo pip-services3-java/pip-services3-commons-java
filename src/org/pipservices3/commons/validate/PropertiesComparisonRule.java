@@ -10,20 +10,21 @@ import org.pipservices3.commons.reflect.*;
  * ### Example ###
  * <pre>
  * {@code
- * ObjectSchema schema = new ObjectSchema()
- *      .withRule(new PropertyComparisonRule("field1", "NE", "field2"));
- * 
- * schema.validate({ field1: 1, field2: 2 });       // Result: no errors
- * schema.validate({ field1: 1, field2: 1 });       // Result: field1 shall not be equal to field2
- * schema.validate({});                             // Result: no errors
+ *
+ * Schema schema = new ObjectSchema().withRule(new PropertiesComparisonRule("field1", "NE", "field2"));
+ *
+ * schema.validate(Map.of("field1", 1, "field2", 2)); // Result: no errors
+ * schema.validate(Map.of("field1", 1, "field2", 1)); // Result: field1 shall not be equal to field2
+ * schema.validate(Map.of()); // Result: no errors
+ *
  * }
  * </pre>
  * @see IValidationRule
  */
 public class PropertiesComparisonRule implements IValidationRule {
-	private String _property1;
-	private String _property2;
-	private String _operation;
+	private final String _property1;
+	private final String _property2;
+	private final String _operation;
 
 	/**
 	 * Creates a new validation rule and sets its arguments.
@@ -49,6 +50,7 @@ public class PropertiesComparisonRule implements IValidationRule {
 	 * @param results a list with validation results to add new results.
 	 */
 	public void validate(String path, Schema schema, Object value, List<ValidationResult> results) {
+
 		String name = path != null ? path : "value";
 		Object value1 = ObjectReader.getProperty(value, _property1);
 		Object value2 = ObjectReader.getProperty(value, _property2);

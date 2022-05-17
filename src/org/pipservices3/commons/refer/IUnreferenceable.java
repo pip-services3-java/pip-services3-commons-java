@@ -8,13 +8,13 @@ package org.pipservices3.commons.refer;
  * {@code
  *  public class MyController implements IReferenceable, IUnreferenceable {
  *     public IMyPersistence _persistence;
- *     ...    
+ *     ...
  *     public void setReferences(IReferences references) {
  *       this._persistence = (IMyPersistence)references.getOneRequired(
  *         new Descriptor("mygroup", "persistence", "*", "*", "1.0")
  *       );
  *     }
- * 
+ *
  *     public void unsetReferences() {
  *       this._persistence = null;
  *     }
@@ -22,12 +22,13 @@ package org.pipservices3.commons.refer;
  *  }
  *  }
  *  </pre>
+ *
  * @see IReferences
  * @see IReferenceable
  */
 public interface IUnreferenceable {
-	/**
-	 * Unsets (clears) previously set references to dependent components. 
-	 */
-	void unsetReferences();
+    /**
+     * Unsets (clears) previously set references to dependent components.
+     */
+    void unsetReferences();
 }

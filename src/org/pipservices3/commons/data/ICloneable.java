@@ -8,13 +8,13 @@ package org.pipservices3.commons.data;
  * {@code
  *  public class MyClass implements IMyClass, ICloneable {
  *    MyClass() { };
- * 
+ *
  *    public Object clone() {
  *      Object cloneObj = new Object (this);
- *             
+ *
  *      // Copy every attribute from this to cloneObj here.
  *      ...
- *             
+ *
  *      return cloneObj;
  *    }
  *  }
@@ -22,11 +22,11 @@ package org.pipservices3.commons.data;
  *  </pre>
  */
 public interface ICloneable {
-	/**
-	 * Creates a binary clone of this object.
-	 * 
-	 * @return a clone of this object.
-	 */
-	Object clone();
+    /**
+     * Creates a binary clone of this object.
+     *
+     * @return a clone of this object.
+     */
+    Object clone();
 
 }

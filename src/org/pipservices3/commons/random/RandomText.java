@@ -16,25 +16,25 @@ import java.util.stream.*;
  * </pre>
  */
 public class RandomText {
-    private static final String[] _namePrefixes = new String[] { "Dr.", "Mr.", "Mrs" };
-    private static final String[] _nameSuffixes = new String[] { "Jr.", "Sr.", "II", "III" };
-    private static final String[] _firstNames = new String[] {
-        "John", "Bill", "Andrew", "Nick", "Pamela", "Bela", "Sergio", "George", "Hurry", "Cecilia", "Vesta", "Terry", "Patrick"
+    private static final String[] _namePrefixes = new String[]{"Dr.", "Mr.", "Mrs"};
+    private static final String[] _nameSuffixes = new String[]{"Jr.", "Sr.", "II", "III"};
+    private static final String[] _firstNames = new String[]{
+            "John", "Bill", "Andrew", "Nick", "Pamela", "Bela", "Sergio", "George", "Hurry", "Cecilia", "Vesta", "Terry", "Patrick"
     };
-    private static final String[] _lastNames = new String[] {
-        "Doe", "Smith", "Johns", "Gates", "Carmack", "Zontak", "Clinton", "Adams", "First", "Lopez", "Due", "White", "Black"
+    private static final String[] _lastNames = new String[]{
+            "Doe", "Smith", "Johns", "Gates", "Carmack", "Zontak", "Clinton", "Adams", "First", "Lopez", "Due", "White", "Black"
     };
-    private static final String[] _colors = new String[] {
-        "Black", "White", "Red", "Blue", "Green", "Yellow", "Purple", "Grey", "Magenta", "Cian"
+    private static final String[] _colors = new String[]{
+            "Black", "White", "Red", "Blue", "Green", "Yellow", "Purple", "Grey", "Magenta", "Cian"
     };
-    private static final String[] _stuffs = new String[] {
-        "Game", "Ball", "Home", "Board", "Car", "Plane", "Hotel", "Wine", "Pants", "Boots", "Table", "Chair"
+    private static final String[] _stuffs = new String[]{
+            "Game", "Ball", "Home", "Board", "Car", "Plane", "Hotel", "Wine", "Pants", "Boots", "Table", "Chair"
     };
-    private static final String[] _adjectives = new String[] {
-        "Large", "Small", "High", "Low", "Certain", "Fuzzy", "Modern", "Faster", "Slower"
+    private static final String[] _adjectives = new String[]{
+            "Large", "Small", "High", "Low", "Certain", "Fuzzy", "Modern", "Faster", "Slower"
     };
-    private static final String[] _verbs = new String[] {
-        "Run", "Stay", "Breeze", "Fly", "Lay", "Write", "Draw", "Scream"
+    private static final String[] _verbs = new String[]{
+            "Run", "Stay", "Breeze", "Fly", "Lay", "Write", "Draw", "Scream"
     };
 //    private static final String[] _streetTypes = new String[] {
 //        "Lane", "Court", "Circle", "Drive", "Way", "Loop", "Blvd", "Street"
@@ -74,17 +74,17 @@ public class RandomText {
 //        "Washington", "Water", "Wayne", "Westminster", "Westport", "White", "Whitemarsh", "Wild Rose", "William", "Williams", "Wilson", "Winchester", "Windfall", "Winding Way",
 //        "Winding", "Windsor", "Wintergreen", "Wood", "Woodland", "Woodside", "Woodsman", "Wrangler", "York",
 //    };
-    
+
     private static final String[] _allWords = Stream.concat(Stream.concat(
-		Stream.concat(Arrays.stream(_firstNames), Arrays.stream(_lastNames)),
-		Stream.concat(Arrays.stream(_colors), Arrays.stream(_stuffs))),
-		Stream.concat(Arrays.stream(_adjectives), Arrays.stream(_verbs)))
-		.toArray(String[]::new);
+                            Stream.concat(Arrays.stream(_firstNames), Arrays.stream(_lastNames)),
+                            Stream.concat(Arrays.stream(_colors), Arrays.stream(_stuffs))),
+                    Stream.concat(Arrays.stream(_adjectives), Arrays.stream(_verbs)))
+            .toArray(String[]::new);
 
     /**
      * Generates a random color name.
      * The result value is capitalized.
-     * 
+     *
      * @return a random color name.
      */
     public static String color() {
@@ -94,17 +94,17 @@ public class RandomText {
     /**
      * Generates a random noun.
      * The result value is capitalized.
-     * 
+     *
      * @return a random noun.
      */
-    public static String stuff() {
+    public static String noun() {
         return RandomString.pick(_stuffs);
     }
 
     /**
      * Generates a random adjective.
      * The result value is capitalized.
-     * 
+     *
      * @return a random adjective.
      */
     public static String adjective() {
@@ -114,7 +114,7 @@ public class RandomText {
     /**
      * Generates a random verb.
      * The result value is capitalized.
-     * 
+     *
      * @return a random verb.
      */
     public static String verb() {
@@ -124,8 +124,8 @@ public class RandomText {
     /**
      * Generates a random phrase which consists of few words separated by spaces.
      * The first word is capitalized, others are not.
-     * 
-     * @param size        the length of the phrase
+     *
+     * @param size the length of the phrase
      * @return a random phrase.
      */
     public static String phrase(int size) {
@@ -135,16 +135,16 @@ public class RandomText {
     /**
      * Generates a random phrase which consists of few words separated by spaces.
      * The first word is capitalized, others are not.
-     * 
-     * @param minSize     (optional) minimum string length.
-     * @param maxSize     maximum string length.
+     *
+     * @param minSize (optional) minimum string length.
+     * @param maxSize maximum string length.
      * @return a random phrase.
      */
     public static String phrase(int minSize, int maxSize) {
         maxSize = Math.max(minSize, maxSize);
         int size = RandomInteger.nextInteger(minSize, maxSize);
         if (size <= 0) return "";
-        
+
         StringBuilder result = new StringBuilder();
         result.append(RandomString.pick(_allWords));
         while (result.length() < size) {
@@ -157,7 +157,7 @@ public class RandomText {
     /**
      * Generates a random person's name which has the following structure
      * optional prefix - first name - second name - optional suffix
-     * 
+     *
      * @return a random name.
      */
     public static String fullName() {
@@ -167,8 +167,8 @@ public class RandomText {
             result.append(RandomString.pick(_namePrefixes)).append(" ");
 
         result.append(RandomString.pick(_firstNames))
-        	.append(" ")
-        	.append(RandomString.pick(_lastNames));
+                .append(" ")
+                .append(RandomString.pick(_lastNames));
 
         if (RandomBoolean.chance(5, 10))
             result.append(" ").append(RandomString.pick(_nameSuffixes));
@@ -178,7 +178,7 @@ public class RandomText {
 
     /**
      * Generates a random word from available first names, last names, colors, stuffs, adjectives, or verbs.
-     * 
+     *
      * @return a random word.
      */
     public static String word() {
@@ -187,16 +187,16 @@ public class RandomText {
 
     /**
      * Generates a random text that consists of random number of random words separated by spaces.
-     * 
-     * @param min   (optional) a minimum number of words.
-     * @param max   a maximum number of words.
-     * @return     a random text.
+     *
+     * @param min (optional) a minimum number of words.
+     * @param max a maximum number of words.
+     * @return a random text.
      */
     public static String words(int min, int max) {
         StringBuilder result = new StringBuilder();
-        
-        int count = RandomInteger.nextInteger(min, max);        
-        for(int i = 0; i <count; i++)
+
+        int count = RandomInteger.nextInteger(min, max);
+        for (int i = 0; i < count; i++)
             result.append(RandomString.pick(_allWords));
 
         return result.toString();
@@ -205,45 +205,41 @@ public class RandomText {
     /**
      * Generates a random phone number.
      * The phone number has the format: (XXX) XXX-YYYY
-     * 
+     *
      * @return a random phone number.
      */
     public static String phone() {
-        StringBuilder result = new StringBuilder();
-        
-        result.append("(")
-        	.append(RandomInteger.nextInteger(111, 999))
-        	.append(") ")
-    		.append(RandomInteger.nextInteger(111, 999))
-    		.append("-")
-    		.append(RandomInteger.nextInteger(0, 9999));
-
-        return result.toString();
+        return "(" +
+                RandomInteger.nextInteger(111, 999) +
+                ") " +
+                RandomInteger.nextInteger(111, 999) +
+                "-" +
+                RandomInteger.nextInteger(0, 9999);
     }
 
     /**
      * Generates a random email address.
-     * 
+     *
      * @return a random email address.
      */
     public static String email() {
-        return words(2,6) + "@" + words(1,3) + ".com";
+        return words(2, 6) + "@" + words(1, 3) + ".com";
     }
 
     /**
      * Generates a random text, consisting of first names, last names, colors, stuffs, adjectives, verbs, and punctuation marks.
-     * 
-     * @param minSize   minimum amount of words to generate. Text will contain 'minSize' words if 'maxSize' is omitted.
-     * @param maxSize   (optional) maximum amount of words to generate.
-     * @return         a random text.
+     *
+     * @param minSize minimum amount of words to generate. Text will contain 'minSize' words if 'maxSize' is omitted.
+     * @param maxSize (optional) maximum amount of words to generate.
+     * @return a random text.
      */
     public static String text(int minSize, int maxSize) {
         maxSize = Math.max(minSize, maxSize);
         int size = RandomInteger.nextInteger(minSize, maxSize);
 
-        StringBuilder result = new StringBuilder();        
+        StringBuilder result = new StringBuilder();
         result.append(RandomString.pick(_allWords));
-        
+
         while (result.length() < size) {
             String next = RandomString.pick(_allWords);
             if (RandomBoolean.chance(4, 6))
@@ -260,5 +256,5 @@ public class RandomText {
 
         return result.toString();
     }
-    
+
 }

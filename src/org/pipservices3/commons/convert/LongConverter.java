@@ -24,72 +24,70 @@ import java.util.*;
  */
 public class LongConverter {
 
-	/**
-	 * Converts value into long or returns null when conversion is not possible.
-	 * 
-	 * @param value the value to convert.
-	 * @return long value or null when conversion is not supported.
-	 */
-	public static Long toNullableLong(Object value) {
-		if (value == null)
-			return null;
+    /**
+     * Converts value into long or returns null when conversion is not possible.
+     *
+     * @param value the value to convert.
+     * @return long value or null when conversion is not supported.
+     */
+    public static Long toNullableLong(Object value) {
+        if (value == null)
+            return null;
 
-		if (value instanceof Date)
-			return ((Date) value).getTime();
-		if (value instanceof Calendar)
-			return ((Calendar) value).getTimeInMillis();
-		if (value instanceof Duration)
-			return ((Duration) value).toMillis();
+        if (value instanceof Date)
+            return ((Date) value).getTime();
+        if (value instanceof Calendar)
+            return ((Calendar) value).getTimeInMillis();
+        if (value instanceof Duration)
+            return ((Duration) value).toMillis();
 
-		if (value instanceof Boolean)
-			return (boolean) value ? 1L : 0L;
+        if (value instanceof Boolean)
+            return (boolean) value ? 1L : 0L;
 
-		if (value instanceof Integer)
-			return (long) ((int) value);
-		if (value instanceof Short)
-			return (long) ((short) value);
-		if (value instanceof Long)
-			return (long) value;
-		if (value instanceof Float)
-			return (long) Math.round((float) value);
-		if (value instanceof Double)
-			return (long) Math.round((double) value);
+        if (value instanceof Integer)
+            return (long) ((int) value);
+        if (value instanceof Short)
+            return (long) ((short) value);
+        if (value instanceof Long)
+            return (long) value;
+        if (value instanceof Float)
+            return (long) Math.round((float) value);
+        if (value instanceof Double)
+            return Math.round((double) value);
 
-		if (value instanceof String)
-			try {
-				return (long) Math.round(Double.parseDouble((String) value));
-			} catch (NumberFormatException ex) {
-				return null;
-			}
+        if (value instanceof String)
+            try {
+                return Math.round(Double.parseDouble((String) value));
+            } catch (NumberFormatException ex) {
+                return null;
+            }
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * Converts value into long or returns 0 when conversion is not possible.
-	 * 
-	 * @param value the value to convert.
-	 * @return long value or 0 when conversion is not supported.
-	 * 
-	 * @see LongConverter#toLongWithDefault(Object, long)
-	 */
-	public static long toLong(Object value) {
-		return toLongWithDefault(value, 0);
-	}
+    /**
+     * Converts value into long or returns 0 when conversion is not possible.
+     *
+     * @param value the value to convert.
+     * @return long value or 0 when conversion is not supported.
+     * @see LongConverter#toLongWithDefault(Object, long)
+     */
+    public static long toLong(Object value) {
+        return toLongWithDefault(value, 0);
+    }
 
-	/**
-	 * Converts value into integer or returns default when conversion is not
-	 * possible.
-	 * 
-	 * @param value        the value to convert.
-	 * @param defaultValue the default value.
-	 * @return long value or default when conversion is not supported
-	 * 
-	 * @see LongConverter#toNullableLong(Object)
-	 */
-	public static long toLongWithDefault(Object value, long defaultValue) {
-		Long result = toNullableLong(value);
-		return result != null ? (long) result : defaultValue;
-	}
+    /**
+     * Converts value into integer or returns default when conversion is not
+     * possible.
+     *
+     * @param value        the value to convert.
+     * @param defaultValue the default value.
+     * @return long value or default when conversion is not supported
+     * @see LongConverter#toNullableLong(Object)
+     */
+    public static long toLongWithDefault(Object value, long defaultValue) {
+        Long result = toNullableLong(value);
+        return result != null ? (long) result : defaultValue;
+    }
 
 }

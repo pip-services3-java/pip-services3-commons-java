@@ -59,22 +59,28 @@ public class AnyValueArray extends ArrayList<Object> implements Cloneable {
 	 * @return the value of the array element.
 	 */
 	public Object getAsObject() {
-		List<Object> result = new ArrayList<Object>();
-		for (Object element : this)
-			result.add(element);
-		return result;
+		return new ArrayList<>(this);
 	}
 
 	/**
-	 * Sets a new value for this array element
-	 * 
-	 * @param value the new object value.
+	 * Puts a new value into array element specified by its index.
+	 * @param index an index of the element to put.
+	 * @param value a new value for array element.
 	 */
-	public void setAsObject(Object value) {
-		clear();
-		List<Object> elements = ArrayConverter.toArray(value);
-		append(elements);
+	public void put(int index, Object value) {
+		this.set(index, value);
 	}
+
+//	/**
+//	 * Sets a new value for this array element
+//	 *
+//	 * @param value the new object value.
+//	 */
+//	public void setAsObject(Object value) {
+//		clear();
+//		List<Object> elements = ArrayConverter.toArray(value);
+//		append(elements);
+//	}
 
 	/**
 	 * Appends new elements to this array.
@@ -95,8 +101,7 @@ public class AnyValueArray extends ArrayList<Object> implements Cloneable {
 	 */
 	public void append(Object[] elements) {
 		if (elements != null) {
-			for (Object item : elements)
-				add(item);
+			this.addAll(Arrays.asList(elements));
 		}
 	}
 
@@ -117,7 +122,14 @@ public class AnyValueArray extends ArrayList<Object> implements Cloneable {
 	 * @param value a new value for array element.
 	 */
 	public void setAsObject(int index, Object value) {
-		set(index, value);
+		if (value == null) {
+			value = index; // originally was not present
+			clear();
+			List<Object> elements = ArrayConverter.toArray(value);
+			append(elements);
+		} else {
+			set(index, value);
+		}
 	}
 
 //    @Override

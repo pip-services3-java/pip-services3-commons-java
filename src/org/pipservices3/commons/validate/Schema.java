@@ -2,6 +2,7 @@ package org.pipservices3.commons.validate;
 
 import java.util.*;
 
+import org.pipservices3.commons.convert.TypeConverter;
 import org.pipservices3.commons.reflect.ObjectReader;
 import org.pipservices3.commons.reflect.TypeMatcher;
 
@@ -180,7 +181,7 @@ public class Schema {
 		Class<?> valueType = value.getClass();
 
 		// Match types
-		if (TypeMatcher.matchType(type, valueType))
+		if (TypeMatcher.matchType(type, TypeConverter.toTypeCode(valueType), value))
 			return;
 
 		// Generate type mismatch error

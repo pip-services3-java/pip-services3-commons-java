@@ -11,7 +11,7 @@ package org.pipservices3.commons.data;
  *  public class MyData implements IIdentifiable<String> {
  *    private String id;
  *    public String field1;
- *    public int field2; 
+ *    public int field2;
  *    ...
  *    public String getId() {...}
  *    public void setId(String newId) {...}
@@ -20,15 +20,17 @@ package org.pipservices3.commons.data;
  *  </pre>
  */
 public interface IIdentifiable<K> {
-	/**
-	 * Gets the object id
-	 * @return object id
-	 */
-	K getId();
+    /**
+     * Gets the object id
+     *
+     * @return object id
+     */
+    K getId();
 
-	/**
-	 * Sets the object id
-	 * @param value a new object id
-	 */
-	void setId(K value);
+    /**
+     * Sets the object id
+     *
+     * @param value a new object id
+     */
+    void setId(K value);
 }

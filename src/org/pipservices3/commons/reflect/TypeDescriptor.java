@@ -10,8 +10,8 @@ import org.pipservices3.commons.errors.*;
  * by Pip.Services toolkit and used to support dynamic data processing.
  */
 public class TypeDescriptor {
-	private String _name;
-	private String _library;
+	private final String _name;
+	private final String _library;
 
 	/**
 	 * Creates a new instance of the type descriptor and sets its values.
@@ -57,9 +57,8 @@ public class TypeDescriptor {
 				return false;
 			if (!this.getName().equals(otherType.getName()))
 				return false;
-			if (this.getLibrary() == null || otherType.getLibrary() == null
-					|| this.getLibrary().equals(otherType.getLibrary()))
-				return true;
+			return this.getLibrary() == null || otherType.getLibrary() == null
+					|| this.getLibrary().equals(otherType.getLibrary());
 		}
 
 		return false;

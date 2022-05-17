@@ -4,7 +4,9 @@ import java.util.List;
 
 public interface IProperties {
 
-	List<String> getPropertyNames();
+    List<String> getPropertyNames();
+
     Object getProperty(String name);
+
     void setProperty(String name, Object value);
 }

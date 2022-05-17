@@ -16,7 +16,7 @@ import java.util.*;
  * <pre>
  * {@code
  * MyObject myObj = new MyObject();
- * 
+ *
  * List<String> methods = MethodReflector.getMethodNames();
  * MethodReflector.hasMethod(myObj, "myMethod");
  * MethodReflector.invokeMethod(myObj, "myMethod", 123);
@@ -25,81 +25,81 @@ import java.util.*;
  */
 public class MethodReflector {
 
-	private static boolean matchMethod(Method method, String name) {
-		int mod = method.getModifiers();
-		return method.getName().equalsIgnoreCase(name) && Modifier.isPublic(mod) && !Modifier.isStatic(mod)
-				&& !Modifier.isAbstract(mod);
-	}
+    private static boolean matchMethod(Method method, String name) {
+        int mod = method.getModifiers();
+        return method.getName().equalsIgnoreCase(name) && Modifier.isPublic(mod) && !Modifier.isStatic(mod)
+                && !Modifier.isAbstract(mod);
+    }
 
-	/**
-	 * Checks if object has a method with specified name..
-	 * 
-	 * @param obj  an object to introspect.
-	 * @param name a name of the method to check.
-	 * @return true if the object has the method and false if it doesn't.
-	 */
-	public static boolean hasMethod(Object obj, String name) {
-		if (obj == null)
-			throw new NullPointerException("Object cannot be null");
-		if (name == null)
-			throw new NullPointerException("Method name cannot be null");
+    /**
+     * Checks if object has a method with specified name..
+     *
+     * @param obj  an object to introspect.
+     * @param name a name of the method to check.
+     * @return true if the object has the method and false if it doesn't.
+     */
+    public static boolean hasMethod(Object obj, String name) {
+        if (obj == null)
+            throw new NullPointerException("Object cannot be null");
+        if (name == null)
+            throw new NullPointerException("Method name cannot be null");
 
-		Class<?> objClass = obj.getClass();
+        Class<?> objClass = obj.getClass();
 
-		for (Method method : objClass.getMethods()) {
-			if (matchMethod(method, name))
-				return true;
-		}
+        for (Method method : objClass.getMethods()) {
+            if (matchMethod(method, name))
+                return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * Invokes an object method by its name with specified parameters.
-	 * 
-	 * @param obj  an object to invoke.
-	 * @param name a name of the method to invoke.
-	 * @param args a list of method arguments.
-	 * @return the result of the method invocation or null if method returns void.
-	 */
-	public static Object invokeMethod(Object obj, String name, Object... args) {
-		if (obj == null)
-			throw new NullPointerException("Object cannot be null");
-		if (name == null)
-			throw new NullPointerException("Method name cannot be null");
+    /**
+     * Invokes an object method by its name with specified parameters.
+     *
+     * @param obj  an object to invoke.
+     * @param name a name of the method to invoke.
+     * @param args a list of method arguments.
+     * @return the result of the method invocation or null if method returns void.
+     */
+    public static Object invokeMethod(Object obj, String name, Object... args) {
+        if (obj == null)
+            throw new NullPointerException("Object cannot be null");
+        if (name == null)
+            throw new NullPointerException("Method name cannot be null");
 
-		Class<?> objClass = obj.getClass();
+        Class<?> objClass = obj.getClass();
 
-		for (Method method : objClass.getMethods()) {
-			try {
-				if (matchMethod(method, name))
-					return method.invoke(obj, args);
-			} catch (Throwable t) {
-				// Ignore exceptions
-			}
-		}
+        for (Method method : objClass.getMethods()) {
+            try {
+                if (matchMethod(method, name))
+                    return method.invoke(obj, args);
+            } catch (Throwable t) {
+                // Ignore exceptions
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * Gets names of all methods implemented in specified object.
-	 * 
-	 * @param obj an objec to introspect.
-	 * @return a list with method names.
-	 */
-	public static List<String> getMethodNames(Object obj) {
-		List<String> methods = new ArrayList<String>();
+    /**
+     * Gets names of all methods implemented in specified object.
+     *
+     * @param obj an objec to introspect.
+     * @return a list with method names.
+     */
+    public static List<String> getMethodNames(Object obj) {
+        List<String> methods = new ArrayList<String>();
 
-		Class<?> objClass = obj.getClass();
+        Class<?> objClass = obj.getClass();
 
-		for (Method method : objClass.getMethods()) {
-			if (matchMethod(method, method.getName())) {
-				methods.add(method.getName());
-			}
-		}
+        for (Method method : objClass.getMethods()) {
+            if (matchMethod(method, method.getName())) {
+                methods.add(method.getName());
+            }
+        }
 
-		return methods;
-	}
+        return methods;
+    }
 
 }

@@ -3,7 +3,7 @@ package org.pipservices3.commons.data;
 /**
  * Interface for data objects that can be versioned.
  * <p>
- * Versioning is often used as optimistic concurrency mechanism. 
+ * Versioning is often used as optimistic concurrency mechanism.
  * <p>
  * The version doesn't have to be a number, but it is recommended to use sequential
  * values to determine if one object has newer or older version than another one.
@@ -20,7 +20,7 @@ package org.pipservices3.commons.data;
  *    private String version;
  *    ...
  *  }
- * 
+ *
  * public void updateData(String correlationId, MyData item) {
  *  ...
  *  if (item.getVersion() < oldItem.getVersion()) {
@@ -32,15 +32,17 @@ package org.pipservices3.commons.data;
  * </pre>
  */
 public interface IVersioned {
-	/**
-	 * Gets the object version
-	 * @return the object version
-	 */
-	String getVersion();
+    /**
+     * Gets the object version
+     *
+     * @return the object version
+     */
+    String getVersion();
 
-	/**
-	 * Sets the object version
-	 * @param value a new object version
-	 */
-	void setVersion(String value);
+    /**
+     * Sets the object version
+     *
+     * @param value a new object version
+     */
+    void setVersion(String value);
 }

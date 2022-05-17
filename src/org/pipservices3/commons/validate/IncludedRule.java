@@ -18,7 +18,7 @@ import java.util.*;
  * @see IValidationRule
  */
 public class IncludedRule implements IValidationRule {
-	public Object[] _values;
+	private final Object[] _values;
 
 	/**
 	 * Creates a new validation rule and sets its values.
@@ -50,7 +50,7 @@ public class IncludedRule implements IValidationRule {
 
 		if (!found) {
 			results.add(new ValidationResult(path, ValidationResultType.Error, "VALUE_NOT_INCLUDED",
-					name + " must be one of " + _values, _values, value));
+					name + " must be one of " + Arrays.toString(_values), _values, value));
 		}
 	}
 }

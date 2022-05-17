@@ -3,6 +3,7 @@ package org.pipservices3.commons.reflect;
 import java.time.*;
 import java.util.*;
 
+import org.pipservices3.commons.convert.DateTimeConverter;
 import org.pipservices3.commons.convert.TypeCode;
 import org.pipservices3.commons.convert.TypeConverter;
 
@@ -24,16 +25,72 @@ public class TypeMatcher {
 	 * @param actualValue  a value to match its type to the expected one.
 	 * @return true if types are matching and false if they don't.
 	 * 
-	 * @see #matchType(Object, Class)
-	 * @see #matchValueByName(String, Object) (for matching by types' string names)
+	 * @see #matchType(Object, TypeCode)
+	 * @see #matchValueTypeByName(String, Object) (for matching by types' string names)
 	 */
-	public static boolean matchValue(Object expectedType, Object actualValue) {
+	public static boolean matchValueType(Object expectedType, Object actualValue) {
 		if (expectedType == null)
 			return true;
 		if (actualValue == null)
 			throw new NullPointerException("Actual value cannot be null");
 
-		return matchType(expectedType, actualValue.getClass());
+		return matchType(expectedType, TypeConverter.toTypeCode(actualValue.getClass()));
+	}
+
+	/**
+	 * Matches expected type to an actual type. The types can be specified as types,
+	 * type names or TypeCode.
+	 *
+	 * @param expectedType an expected type to match.
+	 * @param actualType   an actual type to match.
+	 * @param actualValue an optional value to match its type to the expected one.
+	 * @return true if types are matching and false if they don't.
+	 *
+	 * @see #matchTypeByName(String, TypeCode)
+	 */
+	public static boolean matchType(Object expectedType, TypeCode actualType, Object actualValue) {
+		if (expectedType == null)
+			return true;
+		if (actualType == null)
+			throw new NullPointerException("Actual type cannot be null");
+
+		if (!(expectedType instanceof String)) {
+			TypeCode type;
+			if (expectedType instanceof Class)
+				type = TypeConverter.toTypeCode(expectedType);
+			else
+				type = (TypeCode) expectedType;
+
+			if (type != null) {
+				if (type == actualType)
+					return true;
+				// Special provisions for dynamic data
+				if (type == TypeCode.Integer
+						&& (actualType == TypeCode.Long || actualType == TypeCode.Float || actualType == TypeCode.Double))
+					return true;
+				if (type == TypeCode.Long
+						&& (actualType == TypeCode.Integer || actualType == TypeCode.Float || actualType == TypeCode.Double))
+					return true;
+				if (type == TypeCode.Float
+						&& (actualType == TypeCode.Integer || actualType == TypeCode.Long || actualType == TypeCode.Double))
+					return true;
+				if (type == TypeCode.Double
+						&& (actualType == TypeCode.Integer || actualType == TypeCode.Long || actualType == TypeCode.Float))
+					return true;
+				if (type == TypeCode.DateTime
+						&& (actualType == TypeCode.String && DateTimeConverter.toNullableDateTime(actualValue) != null))
+					return true;
+				return false;
+			}
+		}
+
+		if (expectedType.equals(actualType))
+			return true;
+
+		if (expectedType instanceof String)
+			return TypeMatcher.matchTypeByName((String) expectedType, actualType, actualValue);
+
+		return matchTypeByName(expectedType.toString(), actualType);
 	}
 
 	/**
@@ -44,24 +101,10 @@ public class TypeMatcher {
 	 * @param actualType   an actual type to match.
 	 * @return true if types are matching and false if they don't.
 	 * 
-	 * @see #matchTypeByName(String, Class)
+	 * @see #matchTypeByName(String, TypeCode)
 	 */
-	public static boolean matchType(Object expectedType, Class<?> actualType) {
-		if (expectedType == null)
-			return true;
-		if (actualType == null)
-			throw new NullPointerException("Actual type cannot be null");
-
-		if (expectedType instanceof Class<?>)
-			return ((Class<?>) expectedType).isAssignableFrom(actualType);
-
-		if (expectedType instanceof String)
-			return matchTypeByName((String) expectedType, actualType);
-
-		if (expectedType instanceof TypeCode)
-			return TypeConverter.toTypeCode(actualType).equals(expectedType);
-
-		return false;
+	public static boolean matchType(Object expectedType, TypeCode actualType) {
+		return matchType(expectedType, actualType, null);
 	}
 
 	/**
@@ -71,13 +114,75 @@ public class TypeMatcher {
 	 * @param actualValue  a value to match its type to the expected one.
 	 * @return true if types are matching and false if they don't.
 	 */
-	public static boolean matchValueByName(String expectedType, Object actualValue) {
+	public static boolean matchValueTypeByName(String expectedType, Object actualValue) {
 		if (expectedType == null)
 			return true;
 		if (actualValue == null)
 			throw new NullPointerException("Actual value cannot be null");
 
-		return matchTypeByName(expectedType, actualValue.getClass());
+		return matchTypeByName(expectedType, TypeConverter.toTypeCode(actualValue.getClass()));
+	}
+
+	/**
+	 * Matches expected type to an actual type.
+	 * @param expectedType an expected type name to match.
+	 * @param actualType an actual type to match defined by type code.
+	 * @param actualValue an optional value to match its type to the expected one.
+	 * @return true if types are matching and false if they don't.
+	 */
+	public static boolean matchTypeByName(String expectedType, TypeCode actualType, Object actualValue) {
+		if (expectedType == null)
+			return true;
+		if (actualType == null)
+			throw new NullPointerException("Actual type cannot be null");
+
+		expectedType = expectedType.toLowerCase();
+
+		if (expectedType.equals("object"))
+			return true;
+		else if (expectedType.equals("int") || expectedType.equals("integer")) {
+			return actualType == TypeCode.Integer
+					// Special provisions for dynamic data
+					|| actualType == TypeCode.Long;
+		} else if (expectedType.equals("long")) {
+			return actualType == TypeCode.Long
+					// Special provisions for dynamic data
+					|| actualType == TypeCode.Integer;
+		} else if (expectedType.equals("float")) {
+			return actualType == TypeCode.Float
+					// Special provisions for dynamic data
+					|| actualType == TypeCode.Double
+					|| actualType == TypeCode.Integer
+					|| actualType == TypeCode.Long;
+		} else if (expectedType.equals("double")) {
+			return actualType == TypeCode.Double
+					// Special provisions fro dynamic data
+					|| actualType == TypeCode.Float;
+		} else if (expectedType.equals("string")) {
+			return actualType == TypeCode.String;
+		} else if (expectedType.equals("bool") || expectedType.equals("boolean")) {
+			return actualType == TypeCode.Boolean;
+		} else if (expectedType.equals("date") || expectedType.equals("datetime")) {
+			return actualType == TypeCode.DateTime
+					// Special provisions fro dynamic data
+					|| (actualType == TypeCode.String && DateTimeConverter.toNullableDateTime(actualValue) != null);
+		} else if (expectedType.equals("timespan") || expectedType.equals("duration")) {
+			return actualType == TypeCode.Integer
+					|| actualType == TypeCode.Long
+					|| actualType == TypeCode.Float
+					|| actualType == TypeCode.Double;
+		} else if (expectedType.equals("enum")) {
+			return actualType == TypeCode.Integer
+					|| actualType == TypeCode.String;
+		} else if (expectedType.equals("map") || expectedType.equals("dict") || expectedType.equals("dictionary")) {
+			return actualType == TypeCode.Map;
+		} else if (expectedType.equals("array") || expectedType.equals("list")) {
+			return actualType == TypeCode.Array;
+		} else if (expectedType.endsWith("[]")) {
+			// Todo: Check subtype
+			return actualType == TypeCode.Array;
+		} else
+			return false;
 	}
 
 	/**
@@ -87,48 +192,7 @@ public class TypeMatcher {
 	 * @param actualType   an actual type to match defined by type code.
 	 * @return true if types are matching and false if they don't.
 	 */
-	public static boolean matchTypeByName(String expectedType, Class<?> actualType) {
-		if (expectedType == null)
-			return true;
-		if (actualType == null)
-			throw new NullPointerException("Actual type cannot be null");
-
-		expectedType = expectedType.toLowerCase();
-
-		if (actualType.getName().equalsIgnoreCase(expectedType))
-			return true;
-		else if (actualType.getSimpleName().equalsIgnoreCase(expectedType))
-			return true;
-		else if (expectedType.equals("object"))
-			return true;
-		else if (expectedType.equals("int") || expectedType.equals("integer")) {
-			return Integer.class.isAssignableFrom(actualType) || Long.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("long")) {
-			return Long.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("float")) {
-			return Float.class.isAssignableFrom(actualType) || Double.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("double")) {
-			return Double.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("string")) {
-			return String.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("bool") || expectedType.equals("boolean")) {
-			return Boolean.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("date") || expectedType.equals("datetime")) {
-			return Date.class.isAssignableFrom(actualType) || Calendar.class.isAssignableFrom(actualType)
-					|| ZonedDateTime.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("timespan") || expectedType.equals("duration")) {
-			return Integer.class.isAssignableFrom(actualType) || Long.class.isAssignableFrom(actualType)
-					|| Float.class.isAssignableFrom(actualType) || Double.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("enum")) {
-			return Enum.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("map") || expectedType.equals("dict") || expectedType.equals("dictionary")) {
-			return Map.class.isAssignableFrom(actualType);
-		} else if (expectedType.equals("array") || expectedType.equals("list")) {
-			return actualType.isArray() || List.class.isAssignableFrom(actualType);
-		} else if (expectedType.endsWith("[]")) {
-			// Todo: Check subtype
-			return actualType.isArray() || List.class.isAssignableFrom(actualType);
-		} else
-			return false;
+	public static boolean matchTypeByName(String expectedType, TypeCode actualType) {
+		return matchTypeByName(expectedType, actualType, null);
 	}
 }

@@ -1,6 +1,7 @@
 package org.pipservices3.commons.convert;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
 
 import java.util.*;
 import org.junit.*;
@@ -65,7 +66,7 @@ public class RecursiveMapConverterTest {
         assertEquals(222, resultElement0.get("value2"));
 
         // Handling lists
-        value = new TestClass(Arrays.asList(new Object[] { new TestClass(111, 222) }), null);
+        value = new TestClass(List.of(new TestClass(111, 222)), null);
         result = RecursiveMapConverter.toNullableMap(value);
         assertNotNull(result);
         assertTrue(result.get("value1") instanceof List<?>);

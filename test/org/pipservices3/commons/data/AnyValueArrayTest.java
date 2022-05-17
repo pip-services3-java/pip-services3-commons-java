@@ -4,9 +4,20 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 import org.junit.*;
+import org.pipservices3.commons.convert.TypeCode;
 import org.pipservices3.commons.data.AnyValueArray;
 
 public class AnyValueArrayTest {
+
+    @Test
+    public void testGetAndSet() {
+        AnyValue value = new AnyValue();
+
+        value.setAsObject(1);
+        assertEquals(1, value.getAsInteger());
+        assertTrue(1.0 - value.getAsFloat() < 0.001);
+        assertEquals("1", value.getAsString());
+    }
 
     @Test
     public void testCreateValueArray() {
@@ -23,7 +34,7 @@ public class AnyValueArrayTest {
         array = new AnyValueArray(new Object[] { 1, 2, 3 });
         assertEquals(3, array.size());
         assertTrue(array.contains(1));
-//        assertTrue(array.containsAsType<LogLevel>(LogLevel.Error));
+//        assertTrue(array.containsAsType<EnumTest>(EnumTest.Error));
 
         List<Integer> list = new ArrayList<Integer>();
         list.add(1);

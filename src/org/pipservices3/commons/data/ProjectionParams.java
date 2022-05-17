@@ -39,8 +39,7 @@ public class ProjectionParams extends ArrayList<String> {
      */
 	public ProjectionParams(String[] values) {
 		if (values != null) {
-			for (int i = 0; i < values.length; i++)
-				add(values[i]);
+			this.addAll(Arrays.asList(values));
 		}
 	}
 
@@ -110,7 +109,7 @@ public class ProjectionParams extends ArrayList<String> {
      */
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		for (int index = 0; index < builder.length(); index++) {
+		for (int index = 0; index < this.size(); index++) {
 			if (index > 0) {
 				builder.append(',');
 			}

@@ -48,17 +48,14 @@ public class CommandTest {
 	}
 	
 	@Test
-	public void testExecute(){
+	public void testExecute() throws ApplicationException {
 		Map<Integer, Object> map = new HashMap<Integer, Object>();
 	       map.put(8, "title 8");
 	       map.put(11, "title 11");
-	    Parameters param = new Parameters(map); 
-		try {
-			assertEquals(command.execute("a", param), 0);
-		} catch (ApplicationException e) {
+	    Parameters param = new Parameters(map);
 
-		}
-		
+		assertEquals(command.execute("a", param), 0);
+
 		try {
 			command.execute("wrongId", param);
 		} catch (ApplicationException e) {

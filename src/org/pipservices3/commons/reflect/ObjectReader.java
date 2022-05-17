@@ -82,11 +82,11 @@ public class ObjectReader {
 		} else if (obj instanceof List<?>) {
 			Integer index = IntegerConverter.toNullableInteger(name);
 			List<Object> list = (List<Object>) obj;
-			return index != null && index.intValue() >= 0 && index.intValue() < list.size();
+			return index != null && index >= 0 && index < list.size();
 		} else if (obj.getClass().isArray()) {
 			Integer index = IntegerConverter.toNullableInteger(name);
 			int length = Array.getLength(obj);
-			return index != null && index.intValue() >= 0 && index.intValue() < length;
+			return index != null && index >= 0 && index < length;
 		} else {
 			return PropertyReflector.hasProperty(obj, name);
 		}
@@ -117,13 +117,13 @@ public class ObjectReader {
 		} else if (obj instanceof List<?>) {
 			Integer index = IntegerConverter.toNullableInteger(name);
 			List<Object> list = (List<Object>) obj;
-			return index != null && index.intValue() >= 0 && index.intValue() < list.size() ? list.get(index.intValue())
+			return index != null && index >= 0 && index < list.size() ? list.get(index)
 					: null;
 		} else if (obj.getClass().isArray()) {
 			Integer index = IntegerConverter.toNullableInteger(name);
 			int length = Array.getLength(obj);
-			return index != null && index.intValue() >= 0 && index.intValue() < length
-					? Array.get(obj, index.intValue())
+			return index != null && index >= 0 && index < length
+					? Array.get(obj, index)
 					: null;
 		} else {
 			return PropertyReflector.getProperty(obj, name);

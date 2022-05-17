@@ -44,6 +44,12 @@ public class PagingParams {
 		_skip = LongConverter.toNullableLong(skip);
 		_take = LongConverter.toNullableLong(take);
 		_total = BooleanConverter.toBooleanWithDefault(total, false);
+
+		// This is for correctly using PagingParams with gRPC. gRPC defaults to 0 when take is null,
+		// so we have to set it back to null if we get 0 in the constructor.
+		if (_take != null && _take == 0)
+			_take = null;
+
 	}
 
 	/**

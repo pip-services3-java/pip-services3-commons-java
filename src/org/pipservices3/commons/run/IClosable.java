@@ -5,7 +5,7 @@ import org.pipservices3.commons.errors.*;
 /**
  * Interface for components that require explicit closure.
  * <p>
- * For components that require opening as well as closing 
+ * For components that require opening as well as closing
  * use {@link IOpenable} interface instead.
  * <p>
  * ### Example ###
@@ -13,9 +13,9 @@ import org.pipservices3.commons.errors.*;
  * {@code
  * class MyConnector implements ICloseable {
  *   private Object _client = null;
- * 
+ *
  *   ... // The _client can be lazy created
- * 
+ *
  *   public void close(String correlationId) {
  *     if (this._client != null) {
  *       this._client.close();
@@ -25,16 +25,17 @@ import org.pipservices3.commons.errors.*;
  * }
  * }
  * </pre>
+ *
  * @see IOpenable
  * @see Closer
  */
 public interface IClosable {
-	/**
-	 * Closes component and frees used resources.
-	 * 
-	 * @param correlationId (optional) transaction id to trace execution through
-	 *                      call chain.
-	 * @throws ApplicationException when error or null no errors occured.
-	 */
-	void close(String correlationId) throws ApplicationException;
+    /**
+     * Closes component and frees used resources.
+     *
+     * @param correlationId (optional) transaction id to trace execution through
+     *                      call chain.
+     * @throws ApplicationException when error or null no errors occured.
+     */
+    void close(String correlationId) throws ApplicationException;
 }

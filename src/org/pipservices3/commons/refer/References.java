@@ -34,7 +34,7 @@ import java.util.*;
  */
 public class References implements IReferences {
 	protected List<Reference> _references = new ArrayList<Reference>();
-	protected Object _lock = new Object();
+	protected final Object _lock = new Object();
 
 	public References() {
 	}

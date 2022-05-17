@@ -5,7 +5,7 @@ import org.pipservices3.commons.errors.*;
 /**
  * Interface for components that should clean their state.
  * <p>
- * Cleaning state most often is used during testing. 
+ * Cleaning state most often is used during testing.
  * But there may be situations when it can be done in production.
  * <p>
  * ### Example ###
@@ -20,15 +20,16 @@ import org.pipservices3.commons.errors.*;
  * }
  * }
  * </pre>
+ *
  * @see Cleaner
  */
 public interface ICleanable {
-	/**
-	 * Clears component state.
-	 * 
-	 * @param correlationId (optional) transaction id to trace execution through
-	 *                      call chain.
-	 * @throws ApplicationException when error or null no errors occured.
-	 */
-	void clear(String correlationId) throws ApplicationException;
+    /**
+     * Clears component state.
+     *
+     * @param correlationId (optional) transaction id to trace execution through
+     *                      call chain.
+     * @throws ApplicationException when error or null no errors occured.
+     */
+    void clear(String correlationId) throws ApplicationException;
 }

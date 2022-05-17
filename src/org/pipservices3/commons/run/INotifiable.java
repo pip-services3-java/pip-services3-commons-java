@@ -16,23 +16,24 @@ import org.pipservices3.commons.errors.*;
  *     System.out.println("Occured event " + args.getAsString("event"));
  *   }
  * }
- * 
+ *
  * MyComponent myComponent = new MyComponent();
- * 
+ *
  * myComponent.notify("123", Parameters.fromTuples("event", "Test Event"));
  * }
  * </pre>
+ *
  * @see Notifier
  * @see IExecutable
  */
 public interface INotifiable {
-	/**
-	 * Notifies the component about occured event.
-	 * 
-	 * @param correlationId (optional) transaction id to trace execution through
-	 *                      call chain.
-	 * @param args          notification arguments.
-	 * @throws ApplicationException when errors occured.
-	 */
-	void notify(String correlationId, Parameters args) throws ApplicationException;
+    /**
+     * Notifies the component about occured event.
+     *
+     * @param correlationId (optional) transaction id to trace execution through
+     *                      call chain.
+     * @param args          notification arguments.
+     * @throws ApplicationException when errors occured.
+     */
+    void notify(String correlationId, Parameters args) throws ApplicationException;
 }

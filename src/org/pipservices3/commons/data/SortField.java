@@ -33,6 +33,10 @@ public class SortField {
 		_name = name;
 		_ascending = ascending;
 	}
+
+	public SortField(String name) {
+		_name = name;
+	}
 	
 	public String getName() { return _name; }
 	public void setName(String value) { _name = value; }

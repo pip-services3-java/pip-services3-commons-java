@@ -42,9 +42,9 @@ public class FixedRateTimer implements IClosable {
 	private INotifiable _task;
 	private long _delay;
 	private long _interval;
-	private Timer _timer = new Timer("pip-commons-timer", true);
+	private final Timer _timer = new Timer("pip-commons-timer", true);
 	private boolean _started = false;
-	private Object _lock = new Object();
+	private final Object _lock = new Object();
 
 	/**
 	 * Creates new instance of the timer.
@@ -152,7 +152,8 @@ public class FixedRateTimer implements IClosable {
 				@Override
 				public void run() {
 					try {
-						_task.notify("pip-commons-timer", new Parameters());
+						if(_task != null)
+							_task.notify("pip-commons-timer", new Parameters());
 					} catch (Exception ex) {
 						// Ignore or better log!
 					}

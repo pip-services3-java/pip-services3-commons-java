@@ -15,7 +15,7 @@ import org.pipservices3.commons.errors.*;
  * {@code
  * public class MyClass implements IConfigurable {
  *    private String _myParam = "default value";
- *         
+ *
  *    public void configure(ConfigParams config) {
  *      this._myParam = config.getAsStringWithDefault("options.param", myParam);
  *             ...
@@ -23,14 +23,15 @@ import org.pipservices3.commons.errors.*;
  * }
  * }
  * </pre>
+ *
  * @see ConfigParams
  */
 public interface IConfigurable {
-	/**
-	 * Configures object by passing configuration parameters.
-	 * 
-	 * @param config configuration parameters to be set.
-	 * @throws ConfigException when configuration is wrong
-	 */
-	void configure(ConfigParams config) throws ConfigException;
+    /**
+     * Configures object by passing configuration parameters.
+     *
+     * @param config configuration parameters to be set.
+     * @throws ConfigException when configuration is wrong
+     */
+    void configure(ConfigParams config) throws ConfigException;
 }

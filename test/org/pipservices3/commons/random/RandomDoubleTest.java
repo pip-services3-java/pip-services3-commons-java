@@ -8,20 +8,20 @@ import org.pipservices3.commons.convert.*;
 public class RandomDoubleTest {
     @Test
     public void testNextDouble() {
-    	double value = RandomDouble.nextDouble(5);
+        double value = RandomDouble.nextDouble(5);
         assertTrue(value < 5);
-        assertTrue(value == DoubleConverter.toDouble(value));
-        
-    	value = RandomDouble.nextDouble(2,5);
-    	assertTrue(value < 5 && value > 2);
-        assertTrue(value == DoubleConverter.toDouble(value));
+        assertEquals(value, DoubleConverter.toDouble(value), 0.0);
+
+        value = RandomDouble.nextDouble(2, 5);
+        assertTrue(value < 5 && value > 2);
+        assertEquals(value, DoubleConverter.toDouble(value), 0.0);
     }
-    
+
     @Test
     public void testUpdateDouble() {
-    	double value = RandomDouble.updateDouble(0, 5);
-    	
+        double value = RandomDouble.updateDouble(0, 5);
+
         assertTrue(value <= 5 && value >= -5);
-        assertTrue(value == DoubleConverter.toDouble(value));       	  
+        assertEquals(value, DoubleConverter.toDouble(value), 0.0);
     }
 }

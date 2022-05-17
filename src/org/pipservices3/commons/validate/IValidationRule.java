@@ -13,13 +13,13 @@ import java.util.*;
  * This interface allows to implement custom rules.
  */
 public interface IValidationRule {
-	/**
-	 * Validates a given value against this rule.
-	 * 
-	 * @param path    a dot notation path to the value.
-	 * @param schema  a schema this rule is called from
-	 * @param value   a value to be validated.
-	 * @param results a list with validation results to add new results.
-	 */
-	void validate(String path, Schema schema, Object value, List<ValidationResult> results);
+    /**
+     * Validates a given value against this rule.
+     *
+     * @param path    a dot notation path to the value.
+     * @param schema  a schema this rule is called from
+     * @param value   a value to be validated.
+     * @param results a list with validation results to add new results.
+     */
+    void validate(String path, Schema schema, Object value, List<ValidationResult> results);
 }

@@ -60,6 +60,14 @@ public class AnyValueMap extends HashMap<String, Object> implements Cloneable {
 	}
 
 	/**
+	 * Gets keys of all elements stored in this map.
+	 * @return a list with all map keys.
+	 */
+	public List<String> getKeys() {
+		return new ArrayList<>(this.keySet());
+	}
+
+	/**
 	 * Appends new elements to this map.
 	 * 
 	 * @param map a map with elements to be added.
@@ -81,10 +89,7 @@ public class AnyValueMap extends HashMap<String, Object> implements Cloneable {
 	 * @return the value of the map element.
 	 */
 	public Object getAsObject() {
-		Map<String, Object> result = new HashMap<String, Object>();
-		for (Map.Entry<String, Object> entry : this.entrySet())
-			result.put(entry.getKey(), entry.getValue());
-		return result;
+		return new HashMap<String, Object>(this);
 	}
 
 	/**
@@ -96,6 +101,14 @@ public class AnyValueMap extends HashMap<String, Object> implements Cloneable {
 		clear();
 		Map<String, Object> values = MapConverter.toMap(value);
 		append(values);
+	}
+
+	/**
+	 * Gets a number of elements stored in this map.
+	 * @return the number of elements in this map.
+	 */
+	public int length() {
+		return this.size();
 	}
 
 	/**

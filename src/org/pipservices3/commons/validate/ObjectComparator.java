@@ -91,7 +91,7 @@ public class ObjectComparator {
 		if (number1 == null || number2 == null)
 			return false;
 
-		return number1.doubleValue() < number2.doubleValue();
+		return number1 < number2;
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class ObjectComparator {
 		if (number1 == null || number2 == null)
 			return false;
 
-		return number1.doubleValue() > number2.doubleValue();
+		return number1 > number2;
 	}
 
 	/**

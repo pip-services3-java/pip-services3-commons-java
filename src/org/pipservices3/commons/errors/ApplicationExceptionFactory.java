@@ -16,7 +16,7 @@ public class ApplicationExceptionFactory {
 	 * @param description	a serialized error description received as a result of remote call
 	 * @return new ApplicationException object from serialized ErrorDescription.
 	 */
-    public ApplicationException create(ErrorDescription description) {
+    public static ApplicationException create(ErrorDescription description) {
     	if (description == null)
     		throw new NullPointerException("Description cannot be null");
     	

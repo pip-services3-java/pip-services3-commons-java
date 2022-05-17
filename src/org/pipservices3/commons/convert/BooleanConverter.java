@@ -3,7 +3,7 @@ package org.pipservices3.commons.convert;
 import java.time.*;
 
 /**
- * Converts arbitrary values to boolean values. 
+ * Converts arbitrary values to boolean values.
  * Converts using extended conversion rules:
  * <ul>
  * <li>Numbers: above 0, less more 0 are true; equal to 0 are false
@@ -23,57 +23,55 @@ import java.time.*;
  */
 public class BooleanConverter {
 
-	/**
-	 * Converts value into boolean or returns null when conversion is not possible.
-	 * 
-	 * @param value the value to convert.
-	 * @return boolean value or null when conversion is not supported.
-	 */
-	public static Boolean toNullableBoolean(Object value) {
-		if (value == null)
-			return null;
-		if (value instanceof Boolean)
-			return (boolean) value;
-		if (value instanceof Duration)
-			return ((Duration) value).toMillis() > 0;
+    /**
+     * Converts value into boolean or returns null when conversion is not possible.
+     *
+     * @param value the value to convert.
+     * @return boolean value or null when conversion is not supported.
+     */
+    public static Boolean toNullableBoolean(Object value) {
+        if (value == null)
+            return null;
+        if (value instanceof Boolean)
+            return (boolean) value;
+        if (value instanceof Duration)
+            return ((Duration) value).toMillis() > 0;
 
-		String strValue = value.toString().toLowerCase();
-		if (strValue.equals("1") || strValue.equals("true") || strValue.equals("t") || strValue.equals("yes")
-				|| strValue.equals("y"))
-			return true;
+        String strValue = value.toString().toLowerCase();
+        if (strValue.equals("1") || strValue.equals("true") || strValue.equals("t") || strValue.equals("yes")
+                || strValue.equals("y"))
+            return true;
 
-		if (strValue.equals("0") || strValue.equals("false") || strValue.equals("f") || strValue.equals("no")
-				|| strValue.equals("n"))
-			return false;
+        if (strValue.equals("0") || strValue.equals("false") || strValue.equals("f") || strValue.equals("no")
+                || strValue.equals("n"))
+            return false;
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * Converts value into boolean or returns false when conversion is not possible.
-	 * 
-	 * @param value the value to convert.
-	 * @return boolean value or false when conversion is not supported.
-	 * 
-	 * @see BooleanConverter#toBooleanWithDefault(Object, boolean)
-	 */
-	public static boolean toBoolean(Object value) {
-		return toBooleanWithDefault(value, false);
-	}
+    /**
+     * Converts value into boolean or returns false when conversion is not possible.
+     *
+     * @param value the value to convert.
+     * @return boolean value or false when conversion is not supported.
+     * @see BooleanConverter#toBooleanWithDefault(Object, boolean)
+     */
+    public static boolean toBoolean(Object value) {
+        return toBooleanWithDefault(value, false);
+    }
 
-	/**
-	 * Converts value into boolean or returns default value when conversion is not
-	 * possible
-	 * 
-	 * @param value        the value to convert.
-	 * @param defaultValue the default value
-	 * @return boolean value or default when conversion is not supported.
-	 * 
-	 * @see BooleanConverter#toNullableBoolean(Object)
-	 */
-	public static boolean toBooleanWithDefault(Object value, boolean defaultValue) {
-		Boolean result = toNullableBoolean(value);
-		return result != null ? (boolean) result : defaultValue;
-	}
+    /**
+     * Converts value into boolean or returns default value when conversion is not
+     * possible
+     *
+     * @param value        the value to convert.
+     * @param defaultValue the default value
+     * @return boolean value or default when conversion is not supported.
+     * @see BooleanConverter#toNullableBoolean(Object)
+     */
+    public static boolean toBooleanWithDefault(Object value, boolean defaultValue) {
+        Boolean result = toNullableBoolean(value);
+        return result != null ? (boolean) result : defaultValue;
+    }
 
 }

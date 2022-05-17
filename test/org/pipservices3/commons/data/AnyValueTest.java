@@ -3,7 +3,6 @@ package org.pipservices3.commons.data;
 import static org.junit.Assert.*;
 
 import org.junit.*;
-import org.pipservices3.commons.data.AnyValue;
 
 public class AnyValueTest {
     @Test
@@ -16,7 +15,7 @@ public class AnyValueTest {
         assertTrue(1.0 - value.getAsFloat() < 0.001);
         assertEquals("1", value.getAsString());
         //assertEquals(TimeSpan.FromMilliseconds(1), value.GetAsTimeSpan());
-        //assertEquals(LogLevel.Fatal, value.GetAsEnum<LogLevel>());
+        //assertEquals(EnumTest.Fatal, value.GetAsEnum<EnumTest>());
     }
 
     @Test
@@ -24,9 +23,9 @@ public class AnyValueTest {
         AnyValue value = new AnyValue(1);
 
         assertTrue(value.equals(1));
-        //assertTrue(value.equals(1.0));S
-        assertTrue(value.equalsAs(String.class, "1"));
+        //assertTrue(value.equals(1.0));
+        assertTrue(value.equalsAsType(String.class, "1"));
         //assertTrue(value.equals(TimeSpan.FromMilliseconds(1)));
-        //assertTrue(value.equalsAsType<LogLevel>(LogLevel.Fatal));
+        //assertTrue(value.equalsAsType<EnumTest>(EnumTest.Fatal));
     }
 }

@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import java.util.List;
+
 public final class ProjectionParamsTest {
 
 	@Test
@@ -26,12 +28,20 @@ public final class ProjectionParamsTest {
 	@Test
 	public void createProjectionParamsFromObject() {
 		ProjectionParams parameters = ProjectionParams
-				.fromValue(new String[] { new String("field1"), new String("field2"), new String("field3") });
+				.fromValue(new String[] {"field1", "field2", "field3"});
 
 		assertEquals(3, parameters.size());
 		assertEquals("field1", parameters.get(0));
 		assertEquals("field2", parameters.get(1));
 		assertEquals("field3", parameters.get(2));
+	}
+
+	@Test
+	public void testConvertToString() {
+		ProjectionParams parameters = ProjectionParams.fromValue(List.of("field1", "field2", "field3"));
+
+		assertNotNull(parameters.toString());
+		assertEquals(parameters.toString(), "field1,field2,field3");
 	}
 
 	@Test

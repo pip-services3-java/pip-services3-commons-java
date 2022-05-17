@@ -21,45 +21,42 @@ package org.pipservices3.commons.convert;
  */
 public class FloatConverter {
 
-	/**
-	 * Converts value into float or returns null when conversion is not possible.
-	 * 
-	 * @param value the value to convert.
-	 * @return float value or null when conversion is not supported.
-	 * 
-	 * @see DoubleConverter#toNullableDouble(Object)
-	 */
-	public static Float toNullableFloat(Object value) {
-		Double result = DoubleConverter.toNullableDouble(value);
-		return result != null ? (float) ((double) result) : null;
-	}
+    /**
+     * Converts value into float or returns null when conversion is not possible.
+     *
+     * @param value the value to convert.
+     * @return float value or null when conversion is not supported.
+     * @see DoubleConverter#toNullableDouble(Object)
+     */
+    public static Float toNullableFloat(Object value) {
+        Double result = DoubleConverter.toNullableDouble(value);
+        return result != null ? (float) ((double) result) : null;
+    }
 
-	/**
-	 * Converts value into float or returns 0 when conversion is not possible.
-	 * 
-	 * @param value the value to convert.
-	 * @return float value or 0 when conversion is not supported.
-	 * 
-	 * @see DoubleConverter#toDouble(Object)
-	 * @see DoubleConverter#toDoubleWithDefault(Object, double)
-	 */
-	public static float toFloat(Object value) {
-		return toFloatWithDefault(value, 0);
-	}
+    /**
+     * Converts value into float or returns 0 when conversion is not possible.
+     *
+     * @param value the value to convert.
+     * @return float value or 0 when conversion is not supported.
+     * @see DoubleConverter#toDouble(Object)
+     * @see DoubleConverter#toDoubleWithDefault(Object, double)
+     */
+    public static float toFloat(Object value) {
+        return toFloatWithDefault(value, 0);
+    }
 
-	/**
-	 * Converts value into float or returns default when conversion is not possible.
-	 * 
-	 * @param value        the value to convert.
-	 * @param defaultValue the default value.
-	 * @return float value or default value when conversion is not supported.
-	 * 
-	 * @see DoubleConverter#toDoubleWithDefault(Object, double)
-	 * @see FloatConverter#toNullableFloat(Object)
-	 */
-	public static float toFloatWithDefault(Object value, float defaultValue) {
-		Float result = toNullableFloat(value);
-		return result != null ? (float) result : defaultValue;
-	}
+    /**
+     * Converts value into float or returns default when conversion is not possible.
+     *
+     * @param value        the value to convert.
+     * @param defaultValue the default value.
+     * @return float value or default value when conversion is not supported.
+     * @see DoubleConverter#toDoubleWithDefault(Object, double)
+     * @see FloatConverter#toNullableFloat(Object)
+     */
+    public static float toFloatWithDefault(Object value, float defaultValue) {
+        Float result = toNullableFloat(value);
+        return result != null ? (float) result : defaultValue;
+    }
 
 }

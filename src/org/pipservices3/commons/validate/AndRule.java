@@ -24,7 +24,7 @@ import java.util.*;
  * @see IValidationRule
  */
 public class AndRule implements IValidationRule {
-	private IValidationRule[] _rules;
+	private final IValidationRule[] _rules;
 
 	/**
 	 * Creates a new validation rule and sets its values.

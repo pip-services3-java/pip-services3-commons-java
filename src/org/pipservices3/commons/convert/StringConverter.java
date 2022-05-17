@@ -28,89 +28,87 @@ import java.util.*;
  */
 public class StringConverter {
 
-	/**
-	 * Converts value into string or returns null when value is null.
-	 * 
-	 * @param value the value to convert.
-	 * @return string value or null when value is null.
-	 */
-	public static String toNullableString(Object value) {
-		// Shortcuts
-		if (value == null)
-			return null;
-		if (value instanceof String)
-			return (String) value;
+    /**
+     * Converts value into string or returns null when value is null.
+     *
+     * @param value the value to convert.
+     * @return string value or null when value is null.
+     */
+    public static String toNullableString(Object value) {
+        // Shortcuts
+        if (value == null)
+            return null;
+        if (value instanceof String)
+            return (String) value;
 
-		// Legacy and new dates
-		if (value instanceof Date)
-			value = ZonedDateTime.ofInstant(((Date) value).toInstant(), ZoneId.systemDefault());
-		if (value instanceof Calendar) {
-			value = ZonedDateTime.ofInstant(((Calendar) value).toInstant(),
-					((Calendar) value).getTimeZone().toZoneId());
-		}
-		if (value instanceof Duration)
-			value = ((Duration) value).toMillis();
-		if (value instanceof Instant)
-			value = ZonedDateTime.ofInstant((Instant) value, ZoneId.systemDefault());
-		if (value instanceof LocalDateTime)
-			value = ZonedDateTime.of((LocalDateTime) value, ZoneId.systemDefault());
-		if (value instanceof LocalDate)
-			value = ZonedDateTime.of((LocalDate) value, LocalTime.of(0, 0), ZoneId.systemDefault());
-		if (value instanceof ZonedDateTime)
-			return ((ZonedDateTime) value).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        // Legacy and new dates
+        if (value instanceof Date)
+            value = ZonedDateTime.ofInstant(((Date) value).toInstant(), ZoneId.systemDefault());
+        if (value instanceof Calendar) {
+            value = ZonedDateTime.ofInstant(((Calendar) value).toInstant(),
+                    ((Calendar) value).getTimeZone().toZoneId());
+        }
+        if (value instanceof Duration)
+            value = ((Duration) value).toMillis();
+        if (value instanceof Instant)
+            value = ZonedDateTime.ofInstant((Instant) value, ZoneId.systemDefault());
+        if (value instanceof LocalDateTime)
+            value = ZonedDateTime.of((LocalDateTime) value, ZoneId.systemDefault());
+        if (value instanceof LocalDate)
+            value = ZonedDateTime.of((LocalDate) value, LocalTime.of(0, 0), ZoneId.systemDefault());
+        if (value instanceof ZonedDateTime)
+            return ((ZonedDateTime) value).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 
-		// Convert list
-		if (value instanceof List<?>) {
-			StringBuilder builder = new StringBuilder();
-			for (Object element : (List<?>)value) {
-				if (builder.length() > 0)
-					builder.append(",");
-				builder.append(element);
-			}
-			return builder.toString();
-		}
+        // Convert list
+        if (value instanceof List<?>) {
+            StringBuilder builder = new StringBuilder();
+            for (Object element : (List<?>) value) {
+                if (builder.length() > 0)
+                    builder.append(",");
+                builder.append(element);
+            }
+            return builder.toString();
+        }
 
-		// Convert array
-		if (value.getClass().isArray()) {
-			StringBuilder builder = new StringBuilder();
-			int length = Array.getLength(value);
-			for (int index = 0; index < length; index++) {
-				if (builder.length() > 0)
-					builder.append(",");
-				builder.append(Array.get(value, index));
-			}
-			return builder.toString();
-		}
-		
-		
-		// Everything else
-		return value.toString();
-	}
+        // Convert array
+        if (value.getClass().isArray()) {
+            StringBuilder builder = new StringBuilder();
+            int length = Array.getLength(value);
+            for (int index = 0; index < length; index++) {
+                if (builder.length() > 0)
+                    builder.append(",");
+                builder.append(Array.get(value, index));
+            }
+            return builder.toString();
+        }
 
-	/**
-	 * Converts value into string or returns "" when value is null.
-	 * 
-	 * @param value the value to convert.
-	 * @return string value or "" when value is null.
-	 * 
-	 * @see StringConverter#toStringWithDefault(Object, String)
-	 */
-	public static String toString(Object value) {
-		return toStringWithDefault(value, "");
-	}
 
-	/**
-	 * Converts value into string or returns default when value is null.
-	 * 
-	 * @param value        the value to convert.
-	 * @param defaultValue the default value.
-	 * @return string value or default when value is null.
-	 * 
-	 * @see StringConverter#toNullableString(Object)
-	 */
-	public static String toStringWithDefault(Object value, String defaultValue) {
-		String result = toNullableString(value);
-		return result != null ? result : defaultValue;
-	}
+        // Everything else
+        return value.toString();
+    }
+
+    /**
+     * Converts value into string or returns "" when value is null.
+     *
+     * @param value the value to convert.
+     * @return string value or "" when value is null.
+     * @see StringConverter#toStringWithDefault(Object, String)
+     */
+    public static String toString(Object value) {
+        return toStringWithDefault(value, "");
+    }
+
+    /**
+     * Converts value into string or returns default when value is null.
+     *
+     * @param value        the value to convert.
+     * @param defaultValue the default value.
+     * @return string value or default when value is null.
+     * @see StringConverter#toNullableString(Object)
+     */
+    public static String toStringWithDefault(Object value, String defaultValue) {
+        String result = toNullableString(value);
+        return result != null ? result : defaultValue;
+    }
 
 }

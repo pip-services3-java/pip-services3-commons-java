@@ -69,7 +69,7 @@ public class ConfigParamsTest {
 		assertEquals("ABC", config.getAsString("field2.1"));
 		assertEquals(543, config.getAsInteger("field2.2.field21"));
 		assertEquals("XYZ", config.getAsString("field2.2.field22"));
-		assertEquals(true, config.getAsBoolean("field3"));
+		assertTrue(config.getAsBoolean("field3"));
 	}
 
 }

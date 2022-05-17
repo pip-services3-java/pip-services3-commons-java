@@ -1,7 +1,9 @@
 package org.pipservices3.commons.data;
 
 import java.util.*;
+
 import com.fasterxml.jackson.annotation.*;
+
 /**
  * Data transfer object that is used to pass results of paginated queries.
  * It contains items of retrieved page and optional total number of items.
@@ -32,53 +34,58 @@ import com.fasterxml.jackson.annotation.*;
  * );
  * }
  * </pre>
+ *
  * @param <T> class type
  * @see PagingParams
  */
 public class DataPage<T> {
-	/** The total amount of items in a request. */
-	private Long _total;
-	/** The items of the retrieved page. */
-	private List<T> _data;
+    /**
+     * The total amount of items in a request.
+     */
+    private Long _total;
+    /**
+     * The items of the retrieved page.
+     */
+    private List<T> _data;
 
-	public DataPage() {
-	}
+    public DataPage() {
+    }
 
-	/**
-	 * Creates a new instance of data page and assigns its values.
-	 * 
-	 * @param data a list of items from the retrieved page.
-	 */
-	public DataPage(List<T> data) {
-		this(data, null);
-	}
+    /**
+     * Creates a new instance of data page and assigns its values.
+     *
+     * @param data a list of items from the retrieved page.
+     */
+    public DataPage(List<T> data) {
+        this(data, null);
+    }
 
-	/**
-	 * Creates a new instance of data page and assigns its values.
-	 * 
-	 * @param data  a list of items from the retrieved page.
-	 * @param total (optional) .
-	 */
-	public DataPage(List<T> data, Long total) {
-		_total = total;
-		_data = data;
-	}
+    /**
+     * Creates a new instance of data page and assigns its values.
+     *
+     * @param data  a list of items from the retrieved page.
+     * @param total (optional) .
+     */
+    public DataPage(List<T> data, Long total) {
+        _total = total;
+        _data = data;
+    }
 
-	@JsonProperty("total")
-	public Long getTotal() {
-		return _total;
-	}
+    @JsonProperty("total")
+    public Long getTotal() {
+        return _total;
+    }
 
-	public void setTotal(Long value) {
-		_total = value;
-	}
+    public void setTotal(Long value) {
+        _total = value;
+    }
 
-	@JsonProperty("data")
-	public List<T> getData() {
-		return _data;
-	}
+    @JsonProperty("data")
+    public List<T> getData() {
+        return _data;
+    }
 
-	public void setData(List<T> value) {
-		_data = value;
-	}
+    public void setData(List<T> value) {
+        _data = value;
+    }
 }

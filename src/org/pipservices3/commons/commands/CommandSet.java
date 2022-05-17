@@ -46,11 +46,12 @@ import org.pipservices3.commons.validate.*;
  * @see ICommandable
  */
 public class CommandSet {
-	private List<ICommand> _commands = new ArrayList<ICommand>();
+	private final List<ICommand> _commands = new ArrayList<ICommand>();
+	private final List<IEvent> _events = new ArrayList<IEvent>();
+	private final List<ICommandInterceptor> _interceptors = new ArrayList<ICommandInterceptor>();
 	private Map<String, ICommand> _commandsByName = new HashMap<String, ICommand>();
-	private List<IEvent> _events = new ArrayList<IEvent>();
 	private Map<String, IEvent> _eventsByName = new HashMap<String, IEvent>();
-	private List<ICommandInterceptor> _interceptors = new ArrayList<ICommandInterceptor>();
+
 
 	/**
 	 * Creates an empty CommandSet object.
@@ -228,7 +229,7 @@ public class CommandSet {
 	 * 
 	 * @see ICommandInterceptor
 	 */
-	public void addIntercepter(ICommandInterceptor interceptor) {
+	public void addInterceptor(ICommandInterceptor interceptor) {
 		_interceptors.add(interceptor);
 		rebuildAllCommandChains();
 	}

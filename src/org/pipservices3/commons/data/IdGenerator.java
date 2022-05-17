@@ -19,24 +19,24 @@ import java.util.*;
  * </pre>
  */
 public class IdGenerator {
-	/**
-	 * Generates a random 9-digit random ID (code).
-	 * 
-	 * Remember: The returned value is not guaranteed to be unique.
-	 * 
-	 * @return a generated random 9-digit code
-	 */
-	public static String nextShort() {
-		return new Long((long) Math.floor(100000000 + Math.random() * 899999999)).toString();
-	}
+    /**
+     * Generates a random 9-digit random ID (code).
+     * <p>
+     * Remember: The returned value is not guaranteed to be unique.
+     *
+     * @return a generated random 9-digit code
+     */
+    public static String nextShort() {
+        return Long.toString((long) Math.floor(100000000 + Math.random() * 899999999));
+    }
 
-	/**
-	 * Generates a globally unique 32-digit object ID. The value is a string
-	 * representation of a GUID value.
-	 * 
-	 * @return a generated 32-digit object ID
-	 */
-	public static String nextLong() {
-		return UUID.randomUUID().toString().replaceAll("-", "");
-	}
+    /**
+     * Generates a globally unique 32-digit object ID. The value is a string
+     * representation of a GUID value.
+     *
+     * @return a generated 32-digit object ID
+     */
+    public static String nextLong() {
+        return UUID.randomUUID().toString().replaceAll("-", "");
+    }
 }

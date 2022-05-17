@@ -26,7 +26,7 @@ import org.pipservices3.commons.run.*;
  */
 public class Event implements IEvent {
 	private String _name;
-	private List<IEventListener> _listeners = new ArrayList<IEventListener>();
+	private List<IEventListener> _listeners = new ArrayList<>();
 
 	/**
 	 * Creates a new event and assigns its name.
