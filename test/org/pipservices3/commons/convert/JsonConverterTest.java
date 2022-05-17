@@ -27,7 +27,7 @@ public class JsonConverterTest {
 
 		ZonedDateTime date = DateTimeConverter.toDateTime("1975-04-08T00:00:00.000Z");
 		String jsonDate = JsonConverter.toJson(date);
-		assertEquals("\"1975-04-08T00:00Z\"", jsonDate);
+		assertEquals("\"1975-04-08T00:00:00Z\"", jsonDate);
 	}
 
 	@Test
