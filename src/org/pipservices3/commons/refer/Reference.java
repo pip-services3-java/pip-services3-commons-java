@@ -14,7 +14,7 @@ public class Reference {
      * @param locator   a locator to find the reference.
      * @param reference a reference to component.
      */
-    public Reference(Object locator, Object reference) {
+    public Reference(Object locator, Object reference) throws NullPointerException {
 //		if (locator == null)
 //			throw new NullPointerException("Locator cannot be null");
         if (reference == null)
