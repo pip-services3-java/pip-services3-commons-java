@@ -94,7 +94,7 @@ public class TokenizedPagingParams {
      * @param tuples a list of values where odd elements are keys and the following even elements are values
      * @return a newly created TokenizedPagingParams.
      */
-    public static TokenizedPagingParams fromTuples(List<Object>... tuples) {
+    public static TokenizedPagingParams fromTuples(Object... tuples) {
         AnyValueMap map = AnyValueMap.fromTuplesArray(tuples);
         return TokenizedPagingParams.fromMap(map);
     }

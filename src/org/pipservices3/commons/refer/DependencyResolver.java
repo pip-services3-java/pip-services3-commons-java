@@ -366,6 +366,7 @@ public class DependencyResolver implements IReferenceable, IReconfigurable {
      * @param tuples a list of values where odd elements are dependency name and the following even elements are dependency locator (descriptor)
      * @return a newly created DependencyResolver.
      */
+    @SafeVarargs
     public static DependencyResolver fromTuples(List<Object>... tuples) {
         DependencyResolver result = new DependencyResolver();
         if (tuples == null || tuples.length == 0)

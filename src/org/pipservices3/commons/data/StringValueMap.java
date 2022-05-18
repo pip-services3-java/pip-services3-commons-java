@@ -639,7 +639,7 @@ public class StringValueMap extends HashMap<String, String> implements Cloneable
      *
      * @return a clone of this object.
      */
-    public Object clone() {
+    public StringValueMap clone() {
         return new StringValueMap(this);
     }
 
