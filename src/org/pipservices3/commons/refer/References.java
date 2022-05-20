@@ -64,8 +64,6 @@ public class References implements IReferences {
      * @param component a component reference to be added.
      */
     public void put(Object locator, Object component) throws NullPointerException {
-        if (locator == null)
-            throw new NullPointerException("Locator cannot be null");
         if (component == null)
             throw new NullPointerException("Reference cannot be null");
 
