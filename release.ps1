@@ -95,6 +95,9 @@ Expire-Date: 0
     Set-Content -Path "~/.m2/settings.xml" -Value $m2SetingsContent
 }
 
+Write-Host "Getting mvn version..."
+mvn --version
+
 # Release package
 mvn clean deploy
 
