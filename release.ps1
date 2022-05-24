@@ -22,6 +22,7 @@ if (($env:GPG_PUBLIC_KEY -ne $null) -and ($env:GPG_PRIVATE_KEY -ne $null)) {
    gpg --batch --passphrase "$($env:GPG_PASSPHRASE)" --import "gpg_private.key"
    Write-Host "After import"
    gpg --list-keys
+   $env:GPG_TTY=$(tty)
 
    # Remove m2 config for clean run
    if (Test-Path "~/.m2/settings.xml") {
