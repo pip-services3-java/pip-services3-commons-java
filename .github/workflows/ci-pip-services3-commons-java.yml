@@ -27,6 +27,7 @@ jobs:
 
     - name: Verify java version
       run: mvn --version
+      shell: bash
 
     ############# Build #############
 
