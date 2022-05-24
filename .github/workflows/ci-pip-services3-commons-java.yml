@@ -47,13 +47,21 @@ jobs:
 
     ############# Release #############
 
+    # - name: Release binary artifacts
+    #   uses: pip-devops/actions/java/release@v1
+    #   with:
+    #     m2-user: ${{ secrets.M2_USER }}
+    #     m2-pass: ${{ secrets.M2_PASS }}
+    #     gpg-keyname: ${{ secrets.GPG_KEYNAME }}
+    #     gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
     - name: Release binary artifacts
-      uses: pip-devops/actions/java/release@v1
-      with:
-        m2-user: ${{ secrets.M2_USER }}
-        m2-pass: ${{ secrets.M2_PASS }}
-        gpg-keyname: ${{ secrets.GPG_KEYNAME }}
-        gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      run: ./release.ps1
+      env:
+        M2_USER: ${{ secrets.M2_USER }}
+        M2_PASS: ${{ secrets.M2_PASS }}
+        GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
+        GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      shell: bash
 
     ############# Clear #############
 
