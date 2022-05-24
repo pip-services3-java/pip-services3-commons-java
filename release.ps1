@@ -79,9 +79,6 @@ if (!(Test-Path "~/.m2/settings.xml")) {
    Write-Host "'~/.m2/settings.xml' created"
 }
 
-Write-Host "Getting mvn version..."
-mvn --version
-
 # Release package
 mvn clean deploy
 
