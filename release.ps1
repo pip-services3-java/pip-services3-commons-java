@@ -12,7 +12,44 @@ if ($component.version -ne $version) {
 }
 
 # Create ~/.m2/settings.xml if not exists
-if (-not (Test-Path "~/.m2/settings.xml")) {
+if (!(Test-Path "~/.m2/settings.xml")) {
+   # Use existing gpg key if env variables set 
+   if (($env:GPG_PUBLIC_KEY -ne $null) -and ($env:GPG_PRIVATE_KEY -ne $null)) {
+      Set-Content -Path "gpg_public.key" -Value $env:GPG_PUBLIC_KEY
+      Set-Content -Path "gpg_private.key" -Value $env:GPG_PRIVATE_KEY
+
+      Write-Host "Before import"
+      gpg --list-keys
+      gpg --import "gpg_public.key"
+      gpg --batch --passphrase "$($env:GPG_PASSPHRASE)" --import "gpg_private.key"
+      Write-Host "After import"
+      gpg --list-keys
+
+   } else {
+      # Generate new gpg key
+      $genKey = @"
+Key-Type: 1
+Key-Length: 2048
+Subkey-Type: 1
+Subkey-Length: 2048
+Name-Real: $($env:GPG_USERNAME)
+Name-Email: $($env:GPG_EMAIL)
+Passphrase: $($env:GPG_PASSPHRASE)
+Expire-Date: 0
+"@
+
+      Set-Content -Path "genKey" -Value $genKey
+      
+      $gpgOut = gpg --batch --gen-key genKey
+
+      # Get gpg keyname
+      $gpgKeyname = Read-Host "Enter gpg key id"
+
+      # Register gpg
+      gpg --keyserver keyserver.ubuntu.com --send-keys $gpgKeyname
+   }
+
+   # Create m2 config
     $m2SetingsContent = @"
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
@@ -49,10 +86,10 @@ if (-not (Test-Path "~/.m2/settings.xml")) {
 </settings>
 "@
 
-    if (-not (Test-Path "~/.m2")) {
+   # Save config
+    if (!(Test-Path "~/.m2")) {
         $null = New-Item -Path "~/.m2" -ItemType "directory"
     }
-
     Set-Content -Path "~/.m2/settings.xml" -Value $m2SetingsContent
 }
 
