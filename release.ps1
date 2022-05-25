@@ -79,10 +79,20 @@ if (!(Test-Path "~/.m2/settings.xml")) {
    Write-Host "'~/.m2/settings.xml' created"
 }
 
-# Release package
+# Deploy release to staging repository
 mvn clean deploy
+
+# Verify mvn deploy result
+if ($LastExitCode -ne 0) {
+    Write-Error "mvn clean deploy failed. Watch logs above and check environment variables. If you run script from local machine - try to remove ~/.m2/settings.xml and rerun a script."
+}
+
+# Trigger a release of the staging repository
+Write-Host "Triggering a release of the staging repository..."
+mvn nexus-staging:release
 
 # Verify release result
 if ($LastExitCode -ne 0) {
-    Write-Error "Release failed. Watch logs above. If you run script from local machine - try to remove ~/.m2/settings.xml and rerun a script."
+   mvn nexus-staging:drop
+   Write-Error "Release of the staging repository failed. The staging repository dropped."
 }
