@@ -107,11 +107,13 @@ if ($LastExitCode -ne 0) {
 }
 
 # Trigger a release of the staging repository
+Write-Host "Waiting for staging repository..."
+Start-Sleep -Seconds 120
 Write-Host "Triggering a release of the staging repository..."
 mvn nexus-staging:release
 
 # Verify release result
 if ($LastExitCode -ne 0) {
-   mvn nexus-staging:drop
+   # mvn nexus-staging:drop
    Write-Error "Release of the staging repository failed. The staging repository dropped."
 }
