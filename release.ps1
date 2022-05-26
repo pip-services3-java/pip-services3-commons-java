@@ -14,8 +14,11 @@ if ($component.version -ne $version) {
 # Verify release existence on nexus repository
 $groupId = ([xml](Get-Content -Path "pom.xml")).project.groupId
 $mvnPackageUrl = "https://mvnrepository.com/artifact/$groupId/$($component.name)/$($component.version)"
+Write-Host "mvn request url - $mvnPackageUrl"
 try {
     $mvnResponceStatusCode = $(Invoke-WebRequest -Uri $mvnPackageUrl).StatusCode
+    Write-Host $mvnResponceStatusCode
+    Invoke-WebRequest -Uri $mvnPackageUrl
 } catch {
     $mvnResponceStatusCode = $_.Exception.Response.StatusCode.value__
 }
