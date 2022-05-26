@@ -11,6 +11,22 @@ if ($component.version -ne $version) {
     throw "Versions in component.json and pom.xml do not match"
 }
 
+# Verify release existence on nexus repository
+$groupId = ([xml](Get-Content -Path "pom.xml")).project.groupId
+$mvnPackageUrl = "https://mvnrepository.com/artifact/$groupId/$($component.name)/$($component.version)"
+try {
+    $mvnResponceStatusCode = $(Invoke-WebRequest -Uri $mvnPackageUrl).StatusCode
+} catch {
+    $mvnResponceStatusCode = $_.Exception.Response.StatusCode.value__
+}
+
+if ($mvnResponceStatusCode -eq 200) {
+    Write-Host "Package $($component.name):$($component.version) already exists on maven repository. Release skipped."
+    exit 0
+} elseif ($mvnResponceStatusCode -eq 404) {
+   Write-Host "Releasing $($component.name)/$($component.version)..."
+}
+
 # Use existing gpg key if env variables set 
 if (($env:GPG_PUBLIC_KEY -ne $null) -and ($env:GPG_PRIVATE_KEY -ne $null)) {
    Set-Content -Path "gpg_public.key" -Value $env:GPG_PUBLIC_KEY
