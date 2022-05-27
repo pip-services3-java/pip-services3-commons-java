@@ -12,15 +12,15 @@ if ($component.version -ne $version) {
 }
 
 # Verify release existence on nexus repository
-$groupId = ([xml](Get-Content -Path "pom.xml")).project.groupId
-$mvnPackageUrl = "https://mvnrepository.com/artifact/$groupId/$($component.name)/$($component.version)"
-Write-Host "mvn request url - $mvnPackageUrl"
+$mvnPackageUrl = "https://oss.sonatype.org/service/local/repositories/releases/content/org/pipservices/$($component.name)/$($component.version)/$($component.name)-$($component.version).jar"
+Write-Host "request url - $mvnPackageUrl"
 try {
-    $mvnResponceStatusCode = $(Invoke-WebRequest -Uri $mvnPackageUrl).StatusCode
-    Write-Host $mvnResponceStatusCode
-    Invoke-WebRequest -Uri $mvnPackageUrl
+   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+   $mvnResponceStatusCode = $(Invoke-WebRequest -Uri $mvnPackageUrl).StatusCode
+   Write-Host $mvnResponceStatusCode
+   Invoke-WebRequest -Uri $mvnPackageUrl
 } catch {
-    $mvnResponceStatusCode = $_.Exception.Response.StatusCode.value__
+   $mvnResponceStatusCode = $_.Exception.Response.StatusCode.value__
 }
 
 if ($mvnResponceStatusCode -eq 200) {
@@ -106,14 +106,14 @@ if ($LastExitCode -ne 0) {
     Write-Error "mvn clean deploy failed. Watch logs above and check environment variables. If you run script from local machine - try to remove ~/.m2/settings.xml and rerun a script."
 }
 
-# Trigger a release of the staging repository
-Write-Host "Waiting for staging repository..."
-Start-Sleep -Seconds 120
-Write-Host "Triggering a release of the staging repository..."
-mvn nexus-staging:release
+# # Trigger a release of the staging repository
+# Write-Host "Waiting for staging repository..."
+# Start-Sleep -Seconds 120
+# Write-Host "Triggering a release of the staging repository..."
+# mvn nexus-staging:release
 
-# Verify release result
-if ($LastExitCode -ne 0) {
-   # mvn nexus-staging:drop
-   Write-Error "Release of the staging repository failed. The staging repository dropped."
-}
+# # Verify release result
+# if ($LastExitCode -ne 0) {
+#    # mvn nexus-staging:drop
+#    Write-Error "Release of the staging repository failed. The staging repository dropped."
+# }
