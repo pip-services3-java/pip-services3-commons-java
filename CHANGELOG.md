@@ -1,8 +1,12 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Portable Abstractions and Patterns for Java Changelog
 
-## <a name="3.1.0"></a> 3.1.0 (2022-05-17)
+## <a name="3.1.2"></a> 3.1.2 (2022-06-03)
 
-Initial public release
+### Features
+- Added id generation method for IIdentifiable
+
+
+## <a name="3.1.0"></a> 3.1.0 (2022-05-17)
 
 ### Features
 - Update the code to the latest version of pip-services toolkit

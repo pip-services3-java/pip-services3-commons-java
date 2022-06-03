@@ -33,4 +33,9 @@ public interface IIdentifiable<K> {
      * @param value a new object id
      */
     void setId(K value);
+
+    /**
+     * Generate new object id
+     */
+    K withGeneratedId();
 }
