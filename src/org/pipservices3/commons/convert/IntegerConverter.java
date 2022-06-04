@@ -55,7 +55,7 @@ public class IntegerConverter {
      */
     public static int toIntegerWithDefault(Object value, int defaultValue) {
         Integer result = toNullableInteger(value);
-        return result != null ? (int) result : defaultValue;
+        return result != null ? result : defaultValue;
     }
 
 }

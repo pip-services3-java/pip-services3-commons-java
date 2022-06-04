@@ -120,14 +120,13 @@ public class ProjectionParams extends ArrayList<String> {
 	}
 
 	private static String[] parse(char delimiter, String[] values) {
-		List<String> result = new ArrayList<String>();
+		List<String> result = new ArrayList<>();
 		String prefix = "";
 
 		for (String value : values) {
 			parseValue(prefix, result, value.trim(), delimiter);
 		}
-		String[] arrayResult = result.toArray(new String[result.size()]);
-		return arrayResult;
+		return result.toArray(new String[result.size()]);
 	}
 
 	private static void parseValue(String prefix, List<String> result, String value, char delimiter) {

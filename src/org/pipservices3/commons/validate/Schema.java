@@ -117,7 +117,7 @@ public class Schema {
 	 * @return this validation schema.
 	 */
 	public Schema withRule(IValidationRule rule) {
-		_rules = _rules != null ? _rules : new ArrayList<IValidationRule>();
+		_rules = _rules != null ? _rules : new ArrayList<>();
 		_rules.add(rule);
 		return this;
 	}
@@ -198,7 +198,7 @@ public class Schema {
 	 * @see ValidationResult
 	 */
 	public List<ValidationResult> validate(Object value) {
-		List<ValidationResult> results = new ArrayList<ValidationResult>();
+		List<ValidationResult> results = new ArrayList<>();
 		performValidation("", value, results);
 		return results;
 	}

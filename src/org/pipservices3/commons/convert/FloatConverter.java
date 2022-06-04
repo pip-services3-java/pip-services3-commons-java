@@ -56,7 +56,7 @@ public class FloatConverter {
      */
     public static float toFloatWithDefault(Object value, float defaultValue) {
         Float result = toNullableFloat(value);
-        return result != null ? (float) result : defaultValue;
+        return result != null ? result : defaultValue;
     }
 
 }

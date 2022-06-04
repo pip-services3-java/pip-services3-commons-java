@@ -86,7 +86,7 @@ public class DoubleConverter {
      */
     public static double toDoubleWithDefault(Object value, double defaultValue) {
         Double result = toNullableDouble(value);
-        return result != null ? (double) result : defaultValue;
+        return result != null ? result : defaultValue;
     }
 
 }

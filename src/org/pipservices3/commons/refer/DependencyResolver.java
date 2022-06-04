@@ -70,7 +70,7 @@ import org.pipservices3.commons.errors.*;
  * @see IReferences
  */
 public class DependencyResolver implements IReferenceable, IReconfigurable {
-    private final Map<String, Object> _dependencies = new HashMap<String, Object>();
+    private final Map<String, Object> _dependencies = new HashMap<>();
     private IReferences _references;
 
     /**
@@ -115,10 +115,7 @@ public class DependencyResolver implements IReferenceable, IReconfigurable {
 
             try {
                 Descriptor descriptor = Descriptor.fromString(locator);
-                if (descriptor != null)
-                    _dependencies.put(name, descriptor);
-                else
-                    _dependencies.put(name, locator);
+                _dependencies.put(name, Objects.requireNonNullElse(descriptor, locator));
             } catch (Exception ex) {
                 _dependencies.put(name, locator);
             }
@@ -131,7 +128,7 @@ public class DependencyResolver implements IReferenceable, IReconfigurable {
      * @param references references to set.
      */
     @Override
-    public void setReferences(IReferences references) throws ReferenceException {
+    public void setReferences(IReferences references) {
         _references = references;
     }
 

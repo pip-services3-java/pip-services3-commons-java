@@ -189,11 +189,10 @@ public class FixedRateTimer implements IClosable {
 	 * 
 	 * @param correlationId (optional) transaction id to trace execution through
 	 *                      call chain.
-	 * @throws ApplicationException when error or null no errors occured.
 	 * 
 	 * @see #stop()
 	 */
-	public void close(String correlationId) throws ApplicationException {
+	public void close(String correlationId) {
 		stop();
 	}
 }

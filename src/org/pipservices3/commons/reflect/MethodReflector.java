@@ -89,7 +89,7 @@ public class MethodReflector {
      * @return a list with method names.
      */
     public static List<String> getMethodNames(Object obj) {
-        List<String> methods = new ArrayList<String>();
+        List<String> methods = new ArrayList<>();
 
         Class<?> objClass = obj.getClass();
 

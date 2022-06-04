@@ -1,15 +1,11 @@
 package org.pipservices3.commons.data;
 
 import java.io.*;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.time.*;
-import java.util.Calendar;
 
 import org.pipservices3.commons.convert.*;
 
 import com.fasterxml.jackson.annotation.*;
-import org.pipservices3.commons.errors.ApplicationException;
 
 /**
  * Cross-language implementation of dynamic object what can hold value of any type.

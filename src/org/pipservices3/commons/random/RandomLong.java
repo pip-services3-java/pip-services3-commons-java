@@ -93,7 +93,7 @@ public class RandomLong {
     public static List<Long> sequence(long min, long max) {
         long count = nextLong(min, max);
 
-        List<Long> result = new ArrayList<Long>();
+        List<Long> result = new ArrayList<>();
         for (long i = 0; i < count; i++)
             result.add(i);
 

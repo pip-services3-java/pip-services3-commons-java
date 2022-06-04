@@ -24,11 +24,11 @@ import com.fasterxml.jackson.databind.*;
  */
 public class MapConverter {
     private static final ObjectMapper mapper = new ObjectMapper();
-    private static final TypeReference<Map<String, Object>> typeRef = new TypeReference<Map<String, Object>>() {
+    private static final TypeReference<Map<String, Object>> typeRef = new TypeReference<>() {
     };
 
     private static Map<String, Object> listToMap(Collection<Object> list) {
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new HashMap<>();
         int index = 0;
         for (Object item : list) {
             result.put(Integer.toString(index), item);
@@ -38,7 +38,7 @@ public class MapConverter {
     }
 
     private static Map<String, Object> arrayToMap(Object[] array) {
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new HashMap<>();
         int index = 0;
         for (Object item : array) {
             result.put(Integer.toString(index), item);
@@ -48,7 +48,7 @@ public class MapConverter {
     }
 
     private static Map<String, Object> mapToMap(Map<Object, Object> map) {
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new HashMap<>();
         for (Map.Entry<Object, Object> entry : map.entrySet()) {
             result.put(StringConverter.toString(entry.getKey()), entry.getValue());
         }
@@ -97,7 +97,7 @@ public class MapConverter {
      */
     public static Map<String, Object> toMap(Object value) {
         Map<String, Object> result = toNullableMap(value);
-        return result != null ? result : new HashMap<String, Object>();
+        return result != null ? result : new HashMap<>();
     }
 
     /**

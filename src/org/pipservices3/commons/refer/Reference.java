@@ -5,8 +5,8 @@ package org.pipservices3.commons.refer;
  * It is used by {@link References} to store registered component references.
  */
 public class Reference {
-    private Object _locator;
-    private Object _reference;
+    private final Object _locator;
+    private final Object _reference;
 
     /**
      * Create a new instance of the reference object and assigns its values.

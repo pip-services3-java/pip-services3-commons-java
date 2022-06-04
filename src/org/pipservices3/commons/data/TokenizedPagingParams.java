@@ -1,6 +1,5 @@
 package org.pipservices3.commons.data;
 
-import java.util.List;
 
 /**
  * Data transfer object to pass tokenized paging parameters for queries.

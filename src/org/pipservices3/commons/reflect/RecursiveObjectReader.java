@@ -132,10 +132,10 @@ public class RecursiveObjectReader {
      * @return a list with property names.
      */
     public static List<String> getPropertyNames(Object obj) {
-        List<String> propertyNames = new ArrayList<String>();
+        List<String> propertyNames = new ArrayList<>();
 
         if (obj != null) {
-            List<Object> cycleDetect = new ArrayList<Object>();
+            List<Object> cycleDetect = new ArrayList<>();
             performGetPropertyNames(obj, null, propertyNames, cycleDetect);
         }
         return propertyNames;
@@ -187,15 +187,14 @@ public class RecursiveObjectReader {
      * values.
      */
     public static Map<String, Object> getProperties(Object obj) {
-        Map<String, Object> properties = new HashMap<String, Object>();
+        Map<String, Object> properties = new HashMap<>();
 
-        if (obj == null) {
-            return properties;
-        } else {
-            List<Object> cycleDetect = new ArrayList<Object>();
+        if (obj != null) {
+            List<Object> cycleDetect = new ArrayList<>();
             performGetProperties(obj, null, properties, cycleDetect);
-            return properties;
         }
+
+        return properties;
     }
 
 }

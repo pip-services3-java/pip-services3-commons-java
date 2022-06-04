@@ -3,7 +3,6 @@ package org.pipservices3.commons.data;
 
 import org.pipservices3.commons.reflect.ObjectReader;
 import org.pipservices3.commons.reflect.PropertyReflector;
-import org.pipservices3.commons.reflect.TypeReflector;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -15,9 +14,9 @@ import java.util.regex.Pattern;
  * like "This text has #hash_tag that can be used for search."
  */
 public class TagsProcessor {
-    private static final String NORMALIZE_REGEX = "(_|#)+";
-    private static final String COMPRESS_REGEX = "( |_|#)+";
-    private static final String SPLIT_REGEX = "(,|;)+";
+    private static final String NORMALIZE_REGEX = "[_#]+";
+    private static final String COMPRESS_REGEX = "[ _#]+";
+    private static final String SPLIT_REGEX = "[,;]+";
     private static final String HASHTAG_REGEX = "#\\w+";
 
     /**

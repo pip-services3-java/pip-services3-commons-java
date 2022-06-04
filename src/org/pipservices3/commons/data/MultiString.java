@@ -2,7 +2,6 @@ package org.pipservices3.commons.data;
 
 import org.pipservices3.commons.convert.StringConverter;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

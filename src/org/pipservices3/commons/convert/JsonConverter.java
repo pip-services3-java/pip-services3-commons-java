@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.*;
  */
 public class JsonConverter {
     private static final ObjectMapper _mapper = new ObjectMapper();
-    private static final TypeReference<Map<String, Object>> typeRef = new TypeReference<Map<String, Object>>() {
+    private static final TypeReference<Map<String, Object>> typeRef = new TypeReference<>() {
     };
 
     static {
@@ -72,7 +72,7 @@ public class JsonConverter {
             return null;
 
         try {
-            Map<String, Object> map = _mapper.readValue((String) value, typeRef);
+            Map<String, Object> map = _mapper.readValue(value, typeRef);
             return RecursiveMapConverter.toNullableMap(map);
         } catch (Exception ex) {
             return null;
@@ -89,7 +89,7 @@ public class JsonConverter {
      */
     public static Map<String, Object> toMap(String value) {
         Map<String, Object> result = toNullableMap(value);
-        return result != null ? result : new HashMap<String, Object>();
+        return result != null ? result : new HashMap<>();
     }
 
     /**

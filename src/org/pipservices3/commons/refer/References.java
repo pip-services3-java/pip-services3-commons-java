@@ -34,7 +34,7 @@ import java.util.*;
  * @see IReferences
  */
 public class References implements IReferences {
-    protected List<Reference> _references = new ArrayList<Reference>();
+    protected List<Reference> _references = new ArrayList<>();
     protected final Object _lock = new Object();
 
     public References() {
@@ -106,7 +106,7 @@ public class References implements IReferences {
      * @return a list, containing all removed references.
      */
     public List<Object> removeAll(Object locator) {
-        List<Object> components = new ArrayList<Object>();
+        List<Object> components = new ArrayList<>();
 
         if (locator == null)
             return components;
@@ -130,7 +130,7 @@ public class References implements IReferences {
      * @return a list with component locators.
      */
     public List<Object> getAllLocators() {
-        List<Object> locators = new ArrayList<Object>();
+        List<Object> locators = new ArrayList<>();
 
         synchronized (_lock) {
             for (Reference reference : _references)
@@ -146,7 +146,7 @@ public class References implements IReferences {
      * @return a list with component references.
      */
     public List<Object> getAll() {
-        List<Object> components = new ArrayList<Object>();
+        List<Object> components = new ArrayList<>();
 
         synchronized (_lock) {
             for (Reference reference : _references)
@@ -225,7 +225,7 @@ public class References implements IReferences {
         try {
             return find(Object.class, locator, false);
         } catch (Exception ex) {
-            return new ArrayList<Object>();
+            return new ArrayList<>();
         }
     }
 
@@ -242,7 +242,7 @@ public class References implements IReferences {
         try {
             return find(type, locator, false);
         } catch (Exception ex) {
-            return new ArrayList<T>();
+            return new ArrayList<>();
         }
     }
 
@@ -305,7 +305,7 @@ public class References implements IReferences {
         if (locator == null)
             throw new NullPointerException("Locator cannot be null");
 
-        List<T> components = new ArrayList<T>();
+        List<T> components = new ArrayList<>();
 
         synchronized (_lock) {
             // Search all references

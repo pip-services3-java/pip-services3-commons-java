@@ -71,7 +71,7 @@ public class BooleanConverter {
      */
     public static boolean toBooleanWithDefault(Object value, boolean defaultValue) {
         Boolean result = toNullableBoolean(value);
-        return result != null ? (boolean) result : defaultValue;
+        return result != null ? result : defaultValue;
     }
 
 }

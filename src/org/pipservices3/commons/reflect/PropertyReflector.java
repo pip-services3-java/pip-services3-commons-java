@@ -37,8 +37,7 @@ public class PropertyReflector {
             return false;
 
         int mod = method.getModifiers();
-        return method.getName().equalsIgnoreCase(name) && Modifier.isPublic(mod) && !Modifier.isStatic(mod)
-                && !Modifier.isAbstract(mod) && method.getParameterCount() == 0 && method.getReturnType() != null;
+        return method.getName().equalsIgnoreCase(name) && Modifier.isPublic(mod) && !Modifier.isStatic(mod) && !Modifier.isAbstract(mod) && method.getParameterCount() == 0;
     }
 
     private static boolean matchPropertySetter(Method method, String name) {
@@ -126,7 +125,7 @@ public class PropertyReflector {
      * @return a list with property names.
      */
     public static List<String> getPropertyNames(Object obj) {
-        List<String> properties = new ArrayList<String>();
+        List<String> properties = new ArrayList<>();
 
         Class<?> objClass = obj.getClass();
 
@@ -156,7 +155,7 @@ public class PropertyReflector {
      * values.
      */
     public static Map<String, Object> getProperties(Object obj) {
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
 
         Class<?> objClass = obj.getClass();
 

@@ -91,7 +91,7 @@ public class RandomInteger {
     public static List<Integer> sequence(int min, int max) {
         int count = nextInteger(min, max);
 
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
         for (int i = 0; i < count; i++)
             result.add(i);
 

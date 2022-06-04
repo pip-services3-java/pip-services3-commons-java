@@ -47,7 +47,7 @@ public class NotRule implements IValidationRule {
             return;
 
         String name = path != null ? path : "value";
-        List<ValidationResult> localResults = new ArrayList<ValidationResult>();
+        List<ValidationResult> localResults = new ArrayList<>();
         _rule.validate(path, schema, value, localResults);
         if (localResults.size() > 0)
             return;

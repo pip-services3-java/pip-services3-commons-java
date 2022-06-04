@@ -141,7 +141,7 @@ public class ObjectReader {
 	 */
 	@SuppressWarnings("unchecked")
 	public static List<String> getPropertyNames(Object obj) {
-		List<String> properties = new ArrayList<String>();
+		List<String> properties = new ArrayList<>();
 
 		if (obj == null) {
 			// Do nothing
@@ -177,7 +177,7 @@ public class ObjectReader {
 	 */
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> getProperties(Object obj) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 
 		if (obj == null) {
 			// Do nothing

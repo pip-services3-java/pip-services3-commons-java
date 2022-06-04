@@ -35,7 +35,7 @@ public class ArrayConverter {
         }
         // Convert array
         else if (value.getClass().isArray()) {
-            List<Object> array = new ArrayList<Object>();
+            List<Object> array = new ArrayList<>();
             int length = Array.getLength(value);
             for (int index = 0; index < length; index++)
                 array.add(Array.get(value, index));
@@ -43,7 +43,7 @@ public class ArrayConverter {
         }
         // Convert maps by taking all values and ignoring keys
         else if (value instanceof Map<?, ?>) {
-            List<Object> array = new ArrayList<Object>();
+            List<Object> array = new ArrayList<>();
             Map<Object, Object> map = (Map<Object, Object>) value;
             for (Map.Entry<Object, Object> entry : map.entrySet())
                 array.add(entry.getValue());
@@ -51,7 +51,7 @@ public class ArrayConverter {
         }
         // Convert single values
         else {
-            List<Object> array = new ArrayList<Object>();
+            List<Object> array = new ArrayList<>();
             array.add(value);
             return array;
         }
@@ -67,7 +67,7 @@ public class ArrayConverter {
      */
     public static List<Object> toArray(Object value) {
         List<Object> result = toNullableArray(value);
-        return result != null ? result : new ArrayList<Object>();
+        return result != null ? result : new ArrayList<>();
     }
 
     /**
@@ -94,7 +94,7 @@ public class ArrayConverter {
      */
     public static List<Object> listToArray(Object value) {
         if (value == null)
-            return new ArrayList<Object>();
+            return new ArrayList<>();
         if (value instanceof String)
             value = ((String) value).split(",");
         return ArrayConverter.toArray(value);

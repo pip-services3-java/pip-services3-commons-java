@@ -89,7 +89,7 @@ public class AnyValueMap extends HashMap<String, Object> implements Cloneable {
 	 * @return the value of the map element.
 	 */
 	public Object getAsObject() {
-		return new HashMap<String, Object>(this);
+		return new HashMap<>(this);
 	}
 
 	/**

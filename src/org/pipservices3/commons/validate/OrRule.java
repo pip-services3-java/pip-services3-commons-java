@@ -48,7 +48,7 @@ public class OrRule implements IValidationRule {
         if (_rules == null || _rules.length == 0)
             return;
 
-        List<ValidationResult> localResults = new ArrayList<ValidationResult>();
+        List<ValidationResult> localResults = new ArrayList<>();
 
         for (IValidationRule rule : _rules) {
             int resultsCount = localResults.size();

@@ -46,11 +46,11 @@ import org.pipservices3.commons.validate.*;
  * @see ICommandable
  */
 public class CommandSet {
-	private final List<ICommand> _commands = new ArrayList<ICommand>();
-	private final List<IEvent> _events = new ArrayList<IEvent>();
-	private final List<ICommandInterceptor> _interceptors = new ArrayList<ICommandInterceptor>();
-	private Map<String, ICommand> _commandsByName = new HashMap<String, ICommand>();
-	private Map<String, IEvent> _eventsByName = new HashMap<String, IEvent>();
+	private final List<ICommand> _commands = new ArrayList<>();
+	private final List<IEvent> _events = new ArrayList<>();
+	private final List<ICommandInterceptor> _interceptors = new ArrayList<>();
+	private final Map<String, ICommand> _commandsByName = new HashMap<>();
+	private final Map<String, IEvent> _eventsByName = new HashMap<>();
 
 
 	/**
@@ -283,7 +283,7 @@ public class CommandSet {
 	public List<ValidationResult> validate(String commandName, Parameters args) {
 		ICommand cref = findCommand(commandName);
 		if (cref == null) {
-			List<ValidationResult> results = new ArrayList<ValidationResult>();
+			List<ValidationResult> results = new ArrayList<>();
 			results.add(new ValidationResult(null, ValidationResultType.Error, "CMD_NOT_FOUND",
 					"Requested command does not exist", null, null));
 			return results;

@@ -129,7 +129,7 @@ public class TypeReflector {
      * @see #createInstanceByType(Class, Object...)
      */
     public static Object createInstance(String name, Object... args) throws Exception {
-        return createInstance(name, (String) null, args);
+        return createInstance(name, null, args);
     }
 
     /**

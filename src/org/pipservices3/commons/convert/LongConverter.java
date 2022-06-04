@@ -87,7 +87,7 @@ public class LongConverter {
      */
     public static long toLongWithDefault(Object value, long defaultValue) {
         Long result = toNullableLong(value);
-        return result != null ? (long) result : defaultValue;
+        return result != null ? result : defaultValue;
     }
 
 }

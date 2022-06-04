@@ -38,9 +38,9 @@ import org.pipservices3.commons.validate.*;
  */
 
 public class Command implements ICommand {
-    private String _name;
-    private Schema _schema;
-    private IExecutable _function;
+    private final String _name;
+    private final Schema _schema;
+    private final IExecutable _function;
 
     /**
      * Creates a new command object and assigns it's parameters.
@@ -111,6 +111,6 @@ public class Command implements ICommand {
         if (_schema != null)
             return _schema.validate(args);
 
-        return new ArrayList<ValidationResult>();
+        return new ArrayList<>();
     }
 }

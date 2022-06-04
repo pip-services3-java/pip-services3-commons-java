@@ -744,7 +744,7 @@ public class AnyValueArray extends ArrayList<Object> implements Cloneable {
 
 		String[] items = values.split(separator, -1);
 		for (String item : items) {
-			if ((item != null && item.length() > 0) || removeDuplicates == false)
+			if ((item != null && item.length() > 0) || !removeDuplicates)
 				result.add(item != null ? new AnyValue(item) : null);
 		}
 

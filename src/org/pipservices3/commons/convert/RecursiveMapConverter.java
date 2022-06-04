@@ -24,25 +24,25 @@ import com.fasterxml.jackson.databind.*;
  */
 public class RecursiveMapConverter {
     private static final ObjectMapper _mapper = new ObjectMapper();
-    private static final TypeReference<Map<String, Object>> typeRef = new TypeReference<Map<String, Object>>() {
+    private static final TypeReference<Map<String, Object>> typeRef = new TypeReference<>() {
     };
 
     private static List<Object> listToMap(Collection<Object> list) {
-        List<Object> result = new ArrayList<Object>();
+        List<Object> result = new ArrayList<>();
         for (Object item : list)
             result.add(valueToMap(item));
         return result;
     }
 
     private static List<Object> arrayToMap(Object[] array) {
-        List<Object> result = new ArrayList<Object>();
+        List<Object> result = new ArrayList<>();
         for (Object item : array)
             result.add(valueToMap(item));
         return result;
     }
 
     private static Map<String, Object> mapToMap(Map<Object, Object> map) {
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new HashMap<>();
         for (Map.Entry<Object, Object> entry : map.entrySet()) {
             result.put(StringConverter.toString(entry.getKey()), valueToMap(entry.getValue()));
         }
@@ -50,7 +50,7 @@ public class RecursiveMapConverter {
     }
 
     private static Map<String, Object> mapToMap2(Map<String, Object> map) {
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new HashMap<>();
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             result.put(entry.getKey(), valueToMap(entry.getValue()));
         }
@@ -113,7 +113,7 @@ public class RecursiveMapConverter {
      */
     public static Map<String, Object> toMap(Object value) {
         Map<String, Object> result = toNullableMap(value);
-        return result != null ? result : new HashMap<String, Object>();
+        return result != null ? result : new HashMap<>();
     }
 
     /**

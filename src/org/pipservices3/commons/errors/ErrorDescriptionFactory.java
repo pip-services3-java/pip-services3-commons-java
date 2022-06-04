@@ -2,7 +2,6 @@ package org.pipservices3.commons.errors;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.stream.Stream;
 
 /**
  * Factory to create serializeable {@link ErrorDescription} from {@link ApplicationException}

@@ -95,7 +95,7 @@ public class ObjectSchema extends Schema {
      * @see PropertySchema
      */
     public ObjectSchema withProperty(PropertySchema schema) {
-        _properties = _properties != null ? _properties : new ArrayList<PropertySchema>();
+        _properties = _properties != null ? _properties : new ArrayList<>();
         _properties.add(schema);
         return this;
     }
@@ -109,7 +109,7 @@ public class ObjectSchema extends Schema {
      * @return the validation schema
      */
     public ObjectSchema withRequiredProperty(String name, Object type, IValidationRule... rules) {
-        _properties = _properties != null ? _properties : new ArrayList<PropertySchema>();
+        _properties = _properties != null ? _properties : new ArrayList<>();
         PropertySchema schema = new PropertySchema(name, type);
         schema.setRules(Arrays.asList(rules));
         schema.makeRequired();
@@ -125,7 +125,7 @@ public class ObjectSchema extends Schema {
      * @return the validation schema
      */
     public ObjectSchema withOptionalProperty(String name, Object type, IValidationRule... rules) {
-        _properties = _properties != null ? _properties : new ArrayList<PropertySchema>();
+        _properties = _properties != null ? _properties : new ArrayList<>();
         PropertySchema schema = new PropertySchema(name, type);
         schema.setRules(Arrays.asList(rules));
         schema.makeOptional();

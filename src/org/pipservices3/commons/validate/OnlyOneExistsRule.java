@@ -44,7 +44,7 @@ public class OnlyOneExistsRule implements IValidationRule {
      */
     public void validate(String path, Schema schema, Object value, List<ValidationResult> results) {
         String name = path != null ? path : "value";
-        List<String> found = new ArrayList<String>();
+        List<String> found = new ArrayList<>();
 
         for (String property : _properties) {
             Object propertyValue = ObjectReader.getProperty(value, property);
