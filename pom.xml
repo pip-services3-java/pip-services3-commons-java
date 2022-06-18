@@ -110,7 +110,6 @@
                 <version>3.4.0</version>
                 <configuration>
                     <reportOutputDirectory>${basedir}/docs</reportOutputDirectory>
-                    <destDir>.</destDir>
                     <!--
                                   <quiet>true</quiet>
                                   <nonavbar>true</nonavbar>
