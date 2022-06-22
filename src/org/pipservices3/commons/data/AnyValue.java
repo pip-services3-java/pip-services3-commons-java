@@ -3,9 +3,12 @@ package org.pipservices3.commons.data;
 import java.io.*;
 import java.time.*;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import jakarta.ws.rs.core.GenericType;
 import org.pipservices3.commons.convert.*;
 
 import com.fasterxml.jackson.annotation.*;
+import org.pipservices3.commons.reflect.TypeReflector;
 
 /**
  * Cross-language implementation of dynamic object what can hold value of any type.
@@ -79,6 +82,40 @@ public class AnyValue implements Serializable, Cloneable {
     @JsonProperty("value")
     public Object getAsObject() {
         return _value;
+    }
+
+    /**
+     * Gets the value stored in this object without any conversions
+     *
+     * @param objectType type of returned object
+     * @return the object value.
+     */
+    public <T> T getAsObject(Class<T> objectType) {
+        String value = "";
+        try {
+            if (!(_value instanceof String))
+                value = JsonConverter.toJson(_value);
+            return JsonConverter.fromJson(objectType, value);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    /**
+     * Gets the value stored in this object without any conversions
+     *
+     * @param objectType type of returned object
+     * @return the object value.
+     */
+    public <T> T getAsObject(TypeReference<T> objectType) {
+        String value = "";
+        try {
+            if (!(_value instanceof String))
+                value = JsonConverter.toJson(_value);
+            return JsonConverter.fromJson(objectType, value);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     /**

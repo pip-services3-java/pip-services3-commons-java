@@ -6,6 +6,7 @@ import java.util.*;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.core.type.*;
 import com.fasterxml.jackson.databind.*;
+import jakarta.ws.rs.core.GenericType;
 
 /**
  * Converts arbitrary values from and to JSON (JavaScript Object Notation) strings.
@@ -40,6 +41,23 @@ public class JsonConverter {
      * @throws IOException          when conversion fails for input/output stream reason.
      */
     public static <T> T fromJson(Class<T> type, String value)
+            throws JsonMappingException, JsonParseException, IOException {
+        if (value == null)
+            return null;
+        return _mapper.readValue(value, type);
+    }
+
+    /**
+     * Converts JSON string into a value of generic type specified by Class type.
+     *
+     * @param type  the Class type for the data type into which 'value' is to be converted.
+     * @param value the JSON string to convert.
+     * @return converted object value or null when value is null.
+     * @throws JsonMappingException when conversion fails for mapping reason.
+     * @throws JsonParseException   when conversion fails for parse reason.
+     * @throws IOException          when conversion fails for input/output stream reason.
+     */
+    public static <T> T fromJson(TypeReference<T> type, String value)
             throws JsonMappingException, JsonParseException, IOException {
         if (value == null)
             return null;
