@@ -81,6 +81,7 @@ jobs:
       shell: bash
       run: ./script-delivery-ps/authoring/publish/publish.ps1
       env:
+        GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
         GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
