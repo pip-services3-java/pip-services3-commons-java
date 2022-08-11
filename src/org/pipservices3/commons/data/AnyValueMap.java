@@ -1,8 +1,10 @@
 package org.pipservices3.commons.data;
 
+import java.io.IOException;
 import java.time.*;
 import java.util.*;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.pipservices3.commons.convert.*;
 /**
  * Cross-language implementation of dynamic object map (dictionary) what can hold values of any type.
@@ -120,6 +122,44 @@ public class AnyValueMap extends HashMap<String, Object> implements Cloneable {
 	 */
 	public Object getAsObject(String key) {
 		return get(key);
+	}
+
+	/**
+	 * Gets the value stored in map element without any conversions. When element
+	 * key is not defined it returns the entire map value.
+	 *
+	 * @param key a key of the element to get
+	 * @return the element value or value of the map when index is not defined.
+	 */
+	public <T> T getAsObject(Class<T> objectType, String key) {
+		String strValue = "";
+		var value = get(key);
+		try {
+			if (!(value instanceof String))
+				strValue = JsonConverter.toJson(value);
+			return JsonConverter.fromJson(objectType, strValue);
+		} catch (IOException ex) {
+			throw new RuntimeException(ex);
+		}
+	}
+
+	/**
+	 * Gets the value stored in map element without any conversions. When element
+	 * key is not defined it returns the entire map value.
+	 *
+	 * @param key a key of the element to get
+	 * @return the element value or value of the map when index is not defined.
+	 */
+	public <T> T getAsObject(TypeReference<T> objectType, String key) {
+		String strValue = "";
+		var value = get(key);
+		try {
+			if (!(value instanceof String))
+				strValue = JsonConverter.toJson(value);
+			return JsonConverter.fromJson(objectType, strValue);
+		} catch (IOException ex) {
+			throw new RuntimeException(ex);
+		}
 	}
 
 	/**
