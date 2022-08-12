@@ -5,15 +5,11 @@ $component = Get-Content -Path "$PSScriptRoot/component.json" | ConvertFrom-Json
 $buildImage = "$($component.registry)/$($component.name):$($component.version)-$($component.build)-build"
 $docsImage = "$($component.registry)/$($component.name):$($component.version)-$($component.build)-docs"
 $testImage = "$($component.registry)/$($component.name):$($component.version)-$($component.build)-test"
-$rcImage = "$($component.registry)/$($component.name):$($component.version)-$($component.build)"
-$latestImage = "$($component.registry)/$($component.name):latest"
 
 # Remove docker images
 docker rmi $buildImage --force
 docker rmi $docsImage --force
 docker rmi $testImage --force
-docker rmi $rcImage --force
-docker rmi $latestImage --force
 docker rmi -f $(docker images -f "dangling=true" -q) # remove build container if build fails
 docker image prune --force
 
